@@ -1,7 +1,7 @@
 body{
 background:#ffffff;
 color:#111;
-font-family:Inter,sans-serif;
+
 }
 nav{
 position:fixed;
@@ -18,7 +18,7 @@ z-index:999;
 .logo a{
 text-decoration:none;
 color:#111;
-font-family:"Cormorant Garamond",serif;
+
 font-size:28px;
 letter-spacing:8px;
 }
@@ -51,7 +51,7 @@ opacity:.45;
 margin-bottom:20px;
 }
 .hero-ocean h1{
-font-family:"Cormorant Garamond",serif;
+
 font-size:7rem;
 letter-spacing:15px;
 font-weight:500;
@@ -88,7 +88,7 @@ transform:translateY(0);
     align-items:center;
 }
 .intro h2{
-    font-family:"Cormorant Garamond",serif;
+    
     font-size:4rem;
     margin-bottom:30px;
 }
@@ -117,7 +117,7 @@ transform:translateY(0);
     color:#999;
 }
 .story-text h2{
-    font-family:"Cormorant Garamond",serif;
+    
     font-size:4.5rem;
     margin:25px 0;
 }
@@ -152,7 +152,7 @@ transform:translateY(0);
     left:80px;
     color:white;
     font-size:4rem;
-    font-family:"Cormorant Garamond",serif;
+    
     letter-spacing:2px;
 }
 .marine-life{
