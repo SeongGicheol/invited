@@ -233,3 +233,18 @@ transform:translateY(0);
     font-size:34px;
 }
 }
+.cta{
+    display:inline-block;
+    margin-top:50px;
+    padding:16px 42px;
+    border:1px solid #0d2d44;
+    color:#0d2d44;
+    text-decoration:none;
+    letter-spacing:2px;
+    transition:.3s;
+}
+
+.cta:hover{
+    background:#0d2d44;
+    color:#fff;
+}
