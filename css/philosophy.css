@@ -16,7 +16,7 @@
 
 .hero h1{
     margin:25px 0;
-    font-family:"Cormorant Garamond",serif;
+    
     font-size:72px;
     font-weight:600;
     max-width:900px;
@@ -43,7 +43,7 @@
 }
 
 .value h2{
-    font-family:"Cormorant Garamond",serif;
+   
     font-size:64px;
     margin-bottom:30px;
 }
@@ -71,7 +71,7 @@
 }
 
 .ending h2{
-    font-family:"Cormorant Garamond",serif;
+    
     font-size:64px;
     margin-bottom:20px;
 }
