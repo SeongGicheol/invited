@@ -16,13 +16,21 @@ scroll-behavior:smooth;
 
 body{
 
-background:#021018;
+    background:#021018;
 
-color:white;
+    color:white;
 
-font-family:Inter,sans-serif;
+    overflow-x:hidden;
 
-overflow-x:hidden;
+    font-family:var(--font-body);
+
+    font-weight:300;
+
+    line-height:1.8;
+
+    -webkit-font-smoothing:antialiased;
+
+    text-rendering:optimizeLegibility;
 
 }
 
@@ -318,13 +326,6 @@ nav a:hover{
 :root{
     --font-title: "Cormorant Garamond", serif;
     --font-body: "Inter", sans-serif;
-}
-
-body{
-    font-family: var(--font-body);
-    font-weight:300;
-    color:#222;
-    line-height:1.8;
 }
 
 h1,h2,h3,h4,h5,h6{
