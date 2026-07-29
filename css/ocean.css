@@ -15,12 +15,14 @@ align-items:center;
 background:white;
 z-index:999;
 }
-.logo a{
-text-decoration:none;
-color:#111;
+.logo{
+
+font-family:"Cormorant Garamond",serif;
 
 font-size:28px;
-letter-spacing:8px;
+
+letter-spacing:10px;
+
 }
 nav ul{
 display:flex;
