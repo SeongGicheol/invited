@@ -54,10 +54,13 @@ margin-bottom:20px;
 }
 .hero-ocean h1{
 
-font-size:7rem;
-letter-spacing:15px;
+font-family:"Cormorant Garamond",serif;
+
+font-size:8rem;
+
 font-weight:500;
-margin-bottom:10px;
+
+letter-spacing:18px;
 }
 .hero-ocean p{
 font-size:1.3rem;
