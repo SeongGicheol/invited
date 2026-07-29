@@ -324,8 +324,8 @@ nav a:hover{
 
 }
 :root{
-    --font-title: "Cormorant Garamond", serif;
-    --font-body: "Inter", sans-serif;
+    --font-en: "Cormorant Garamond", serif;
+    --font-ko: "Pretendard", "Noto Sans KR", sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6{
