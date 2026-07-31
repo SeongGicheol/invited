@@ -304,12 +304,27 @@ transform:translateY(0);
     text-align:center;
 }
 .ending h2{
-    font-size:54px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:4.5rem;
+
+    font-weight:600;
+
     margin-bottom:20px;
+
 }
+
 .ending p{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:1.3rem;
+
     color:#777;
+
     letter-spacing:2px;
+
 }
 @media(max-width:768px){
 .gallery{
@@ -325,14 +340,27 @@ transform:translateY(0);
 }
 }
 .cta{
+
     display:inline-block;
+
     margin-top:50px;
+
     padding:16px 42px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:1.2rem;
+
+    letter-spacing:3px;
+
     border:1px solid #0d2d44;
+
     color:#0d2d44;
+
     text-decoration:none;
-    letter-spacing:2px;
+
     transition:.3s;
+
 }
 
 .cta:hover{
