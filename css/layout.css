@@ -1,0 +1,143 @@
+/* ===========================
+   LAYOUT
+=========================== */
+
+.site-header{
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:35px 70px;
+
+    z-index:1000;
+
+    transition:.35s ease;
+
+}
+
+/* HOME */
+
+.site-header.dark{
+
+    color:#ffffff;
+
+}
+
+/* SUB PAGE */
+
+.site-header.light{
+
+    color:#0d2d44;
+
+}
+
+
+/* LOGO */
+
+.logo a{
+
+    font-family:var(--font-title);
+
+    font-size:30px;
+
+    font-weight:500;
+
+    letter-spacing:8px;
+
+    transition:.3s;
+
+}
+
+
+/* MENU */
+
+.site-header ul{
+
+    display:flex;
+
+    gap:45px;
+
+}
+
+.site-header ul li{
+
+    list-style:none;
+
+}
+
+.site-header ul li a{
+
+    font-family:var(--font-title);
+
+    font-size:20px;
+
+    font-weight:500;
+
+    letter-spacing:1px;
+
+    opacity:.8;
+
+    transition:.3s;
+
+}
+
+.site-header ul li a:hover{
+
+    opacity:1;
+
+}
+
+
+/* FOOTER */
+
+footer{
+
+    padding:120px 0;
+
+    text-align:center;
+
+}
+
+footer p{
+
+    font-family:var(--font-title);
+
+    font-size:18px;
+
+    color:#777;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.site-header{
+
+    padding:24px;
+
+}
+
+.logo a{
+
+    font-size:26px;
+
+    letter-spacing:6px;
+
+}
+
+.site-header ul{
+
+    display:none;
+
+}
+
+}
