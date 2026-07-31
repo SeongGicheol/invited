@@ -1,511 +1,329 @@
-body{
-background:#ffffff;
-color:#111;
+/* ========================================
+   INVITED - OCEAN
+======================================== */
 
+:root{
+    --navy:#021018;
+    --white:#ffffff;
 }
+
+body{
+    background:var(--navy);
+    color:var(--white);
+}
+
+
+
 /* ===========================
-
-   LIGHT PAGE NAVIGATION
-
+   Navigation
 =========================== */
 
 nav{
-
-    position:fixed;
-
-    top:0;
-
-    left:0;
-
-    width:100%;
-
-    padding:35px 70px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    z-index:999;
-
     background:transparent;
-
 }
 
-.logo{
-
-    font-family:"Cormorant Garamond", serif;
-
-    font-size:30px;
-
-    font-weight:500;
-
-    letter-spacing:8px;
-
+nav .logo a,
+nav ul li a{
+    color:#fff;
 }
 
-.logo a{
 
-    color:#0d2d44;
 
-    text-decoration:none;
+/* ===========================
+   Hero
+=========================== */
 
-    transition:.3s;
-
-}
-
-.logo a:hover{
-
-    opacity:.8;
-
-}
-
-nav ul{
-
-    display:flex;
-
-    gap:45px;
-
-    list-style:none;
-
-}
-
-nav li{
-
-    list-style:none;
-
-}
-
-nav li a{
-
-    font-family:"Cormorant Garamond", serif;
-
-    font-size:20px;
-
-    font-weight:500;
-
-    color:#0d2d44;
-
-    text-decoration:none;
-
-    letter-spacing:1px;
-
-    opacity:.8;
-
-    transition:.3s;
-
-}
-
-nav li a:hover{
-
-    opacity:1;
-
-}
-
-@media(max-width:900px){
-
-    nav{
-
-        padding:25px;
-
-    }
-
-    nav ul{
-
-        display:none;
-
-    }
-
-    .logo{
-
-        font-size:26px;
-
-        letter-spacing:6px;
-
-    }
-
-}
-nav{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-padding:35px 70px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:white;
-z-index:999;
-}
-.logo a{
-
-font-family:"Cormorant Garamond",serif;
-
-font-size:28px;
-
-letter-spacing:10px;
-
-}
-nav ul{
-display:flex;
-gap:45px;
-list-style:none;
-} 
-nav a{
-text-decoration:none;
-color:#111;
-opacity:.7;
-transition:.3s;
-}
-nav a:hover{
-opacity:1;
-}
 .hero-ocean{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-}
-.hero-ocean span{
-
-    font-family:"Cormorant Garamond",serif;
-
-    letter-spacing:6px;
-
-    font-size:1rem;
-
-    opacity:.55;
-
-    margin-bottom:20px;
-
+    position:relative;
+    height:100vh;
+    overflow:hidden;
 }
 
-.hero-ocean h1{
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:8rem;
-
-    font-weight:600;
-
-    letter-spacing:18px;
-
-}
-
-.hero-ocean p{
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:1.45rem;
-
-    line-height:2;
-
-    color:#666;
-
-}
-.scroll{
-margin-top:100px;
-font-size:30px;
-animation:float 2s infinite;
-}
-@keyframes float{
-0%{
-transform:translateY(0);
-}
-50%{
-transform:translateY(10px);
-}
-100%{
-transform:translateY(0);
-}
-}
-.intro{
-    width:1200px;
-    max-width:90%;
-    margin:120px auto;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:80px;
-    align-items:center;
-}
-.intro h2{
-    
-    font-size:4rem;
-    margin-bottom:30px;
-}
-.intro p{
-    font-size:1.1rem;
-    line-height:2;
-    color:#666;
-}
-.image img{
+.hero-ocean video{
+    position:absolute;
+    inset:0;
     width:100%;
-    border-radius:10px;
+    height:100%;
+    object-fit:cover;
 }
-/* Story Section */
+
+.hero-ocean::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45)),
+    radial-gradient(circle at top,rgba(255,255,255,.08),transparent 65%);
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero-overlay span{
+    font-family:"Inter",sans-serif;
+    letter-spacing:8px;
+    font-size:.85rem;
+    opacity:.7;
+}
+
+.hero-overlay h1{
+    margin-top:18px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:7rem;
+    font-weight:500;
+    letter-spacing:12px;
+}
+
+.hero-overlay p{
+    margin-top:28px;
+    font-size:1.15rem;
+    line-height:2;
+    opacity:.9;
+}
+
+
+
+/* ===========================
+   Story
+=========================== */
+
 .ocean-story{
-    width:1200px;
-    max-width:90%;
-    margin:60px auto;
+    max-width:1300px;
+    margin:180px auto;
+    padding:0 80px;
+
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:100px;
+    gap:90px;
     align-items:center;
 }
+
 .story-text span{
-
-    font-family:"Cormorant Garamond",serif;
-
-    letter-spacing:5px;
-
-    font-size:1rem;
-
-    color:#999;
-
+    letter-spacing:6px;
+    font-size:.8rem;
+    opacity:.5;
 }
 
 .story-text h2{
-
+    margin:20px 0 40px;
     font-family:"Cormorant Garamond",serif;
-
-    font-size:4.8rem;
-
-    font-weight:600;
-
-    margin:25px 0;
-
+    font-size:4rem;
+    font-weight:500;
 }
+
 .story-text p{
     font-size:1.1rem;
-    line-height:2.1;
-    color:#666;
+    line-height:2.2;
+    opacity:.85;
 }
+
 .story-image img{
-
     width:100%;
-
-    height:auto;
-
-    display:block;
-
-    border-radius:8px;
-
-    transition:.5s;
-
+    border-radius:4px;
 }
-.story-image img:hover{
-    transform:scale(1.02);
-}
+
+
+
+/* ===========================
+   Full Image
+=========================== */
+
 .full-image{
-
-    width:100%;
-
-    margin-top:140px;
-
     position:relative;
-
+    margin:180px 0;
 }
 
 .full-image img{
-
     width:100%;
-
-    height:auto;
-
-    display:block;
-
+    height:85vh;
+    object-fit:cover;
 }
-.overlay-text{
 
+.full-image::after{
+    content:"";
     position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.35);
+}
 
-    bottom:80px;
-
-    left:80px;
+.overlay-text{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    z-index:2;
 
     font-family:"Cormorant Garamond",serif;
-
-    color:white;
-
-    font-size:4.8rem;
-
-    font-weight:600;
-
-    letter-spacing:3px;
-
-}
-.marine-life{
-    padding:140px 10%;
+    font-size:4rem;
     text-align:center;
+    letter-spacing:3px;
 }
+
+
+
+/* ===========================
+   Marine Life
+=========================== */
+
+.marine-life{
+    max-width:1400px;
+    margin:180px auto;
+    padding:0 70px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:80px;
+}
+
 .section-title span{
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:1rem;
-
-    letter-spacing:5px;
-
-    color:#8da7b5;
-
+    letter-spacing:7px;
+    opacity:.55;
+    font-size:.8rem;
 }
 
 .section-title h2{
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:4rem;
-
-    font-weight:600;
-
     margin:20px 0;
-
+    font-family:"Cormorant Garamond",serif;
+    font-size:4rem;
+    font-weight:500;
 }
 
 .section-title p{
-
-    font-family:"Cormorant Garamond",serif;
-
-    max-width:700px;
-
-    margin:auto;
-
-    font-size:1.3rem;
-
-    line-height:2;
-
-    color:#666;
-
+    font-size:1.05rem;
+    opacity:.8;
 }
+
 .gallery{
-    margin-top:80px;
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:24px;
+    gap:30px;
 }
+
 .gallery img{
-
     width:100%;
-
-    height:auto;
-
-    display:block;
-
-    border-radius:8px;
-
+    aspect-ratio:4/5;
+    object-fit:cover;
+    transition:.6s;
 }
+
 .gallery img:hover{
     transform:scale(1.03);
 }
+
+
+
+/* ===========================
+   Conservation
+=========================== */
+
 .conservation{
-    padding:180px 10%;
-    background:#07141d;
-    color:#fff;
+    padding:200px 20px;
     text-align:center;
 }
+
 .conservation span{
-
-    font-family:"Cormorant Garamond",serif;
-
-    letter-spacing:5px;
-
-    font-size:1rem;
-
-    color:#9db7c4;
-
+    letter-spacing:7px;
+    opacity:.5;
+    font-size:.8rem;
 }
 
 .conservation h2{
-
+    margin:22px 0 35px;
     font-family:"Cormorant Garamond",serif;
-
-    font-size:4.2rem;
-
-    font-weight:600;
-
-    margin:20px 0 40px;
-
+    font-size:4rem;
+    font-weight:500;
 }
 
 .conservation p{
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:1.3rem;
-
-    line-height:2.2;
-
-    color:#d7d7d7;
-
+    font-size:1.1rem;
+    line-height:2.4;
+    opacity:.85;
 }
+
+
+
+/* ===========================
+   Ending
+=========================== */
+
 .ending{
-    padding:180px 10%;
+    padding:180px 20px 220px;
     text-align:center;
 }
+
 .ending h2{
-
     font-family:"Cormorant Garamond",serif;
-
-    font-size:4.5rem;
-
-    font-weight:600;
-
-    margin-bottom:20px;
-
+    font-size:4rem;
+    font-weight:500;
+    margin-bottom:25px;
 }
 
 .ending p{
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:1.3rem;
-
-    color:#777;
-
-    letter-spacing:2px;
-
+    opacity:.75;
+    margin-bottom:60px;
 }
-@media(max-width:768px){
-.gallery{
-    grid-template-columns:1fr;
-}
-.gallery img{
-    height:350px;
-}
-.section-title h2,
-.conservation h2,
-.ending h2{
-    font-size:34px;
-}
-}
+
 .cta{
-
     display:inline-block;
-
-    margin-top:50px;
-
-    padding:16px 42px;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:1.2rem;
-
-    letter-spacing:3px;
-
-    border:1px solid #0d2d44;
-
-    color:#0d2d44;
-
-    text-decoration:none;
-
-    transition:.3s;
-
+    padding:18px 46px;
+    border:1px solid rgba(255,255,255,.35);
+    color:#fff;
+    letter-spacing:2px;
+    transition:.35s;
 }
 
 .cta:hover{
-    background:#0d2d44;
-    color:#fff;
+    background:#fff;
+    color:#021018;
+}
+
+
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width:900px){
+
+    .hero-overlay h1{
+        font-size:4rem;
+    }
+
+    .ocean-story{
+        grid-template-columns:1fr;
+        gap:60px;
+        padding:0 30px;
+        margin:120px auto;
+    }
+
+    .story-text h2,
+    .section-title h2,
+    .conservation h2,
+    .ending h2,
+    .overlay-text{
+        font-size:2.7rem;
+    }
+
+    .marine-life{
+        padding:0 30px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .full-image img{
+        height:60vh;
+    }
+
 }
