@@ -1,0 +1,328 @@
+/* ========================================
+   INVITED - CONTACT
+======================================== */
+
+:root{
+    --navy:#021018;
+    --white:#ffffff;
+}
+
+
+
+/* ========================================
+   BODY
+======================================== */
+
+body{
+    background:var(--navy);
+    color:var(--white);
+}
+
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero{
+
+    min-height:75vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:140px 20px 80px;
+
+}
+
+.hero span{
+
+    letter-spacing:8px;
+
+    font-size:.85rem;
+
+    opacity:.55;
+
+}
+
+.hero h1{
+
+    margin:22px 0;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:5.5rem;
+
+    font-weight:500;
+
+}
+
+.hero p{
+
+    font-size:1.1rem;
+
+    line-height:2;
+
+    opacity:.8;
+
+}
+
+
+
+/* ========================================
+   CONTACT
+======================================== */
+
+.contact-wrapper{
+
+    max-width:1280px;
+
+    margin:100px auto 180px;
+
+    padding:0 70px;
+
+    display:grid;
+
+    grid-template-columns:420px 1fr;
+
+    gap:100px;
+
+}
+
+.contact-info span{
+
+    letter-spacing:6px;
+
+    font-size:.8rem;
+
+    opacity:.45;
+
+}
+
+.contact-info h2{
+
+    margin:22px 0 50px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:3.8rem;
+
+    font-weight:500;
+
+}
+
+.info-item{
+
+    margin-bottom:38px;
+
+}
+
+.info-item h3{
+
+    margin-bottom:10px;
+
+    font-size:.85rem;
+
+    letter-spacing:3px;
+
+    opacity:.5;
+
+}
+
+.info-item p{
+
+    font-size:1.05rem;
+
+    opacity:.85;
+
+}
+
+
+
+/* ========================================
+   FORM
+======================================== */
+
+.contact-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:26px;
+
+}
+
+.contact-form input,
+.contact-form textarea{
+
+    width:100%;
+
+    padding:18px 0;
+
+    background:none;
+
+    border:none;
+
+    border-bottom:1px solid rgba(255,255,255,.18);
+
+    color:#fff;
+
+    font-size:1rem;
+
+    font-family:"Inter",sans-serif;
+
+    outline:none;
+
+}
+
+.contact-form textarea{
+
+    resize:vertical;
+
+    min-height:180px;
+
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+
+    color:rgba(255,255,255,.45);
+
+}
+
+.contact-form button{
+
+    width:230px;
+
+    margin-top:25px;
+
+    padding:18px;
+
+    background:transparent;
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.28);
+
+    font-size:.9rem;
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.contact-form button:hover{
+
+    background:#fff;
+
+    color:#021018;
+
+}
+
+
+
+/* ========================================
+   ENDING
+======================================== */
+
+.ending{
+
+    text-align:center;
+
+    padding:0 20px 220px;
+
+}
+
+.ending h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:4rem;
+
+    font-weight:500;
+
+    margin-bottom:20px;
+
+}
+
+.ending p{
+
+    font-size:1.05rem;
+
+    opacity:.75;
+
+}
+
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width:900px){
+
+    .hero{
+
+        min-height:65vh;
+
+        padding:120px 25px 60px;
+
+    }
+
+    .hero h1{
+
+        font-size:3.5rem;
+
+    }
+
+    .hero p{
+
+        font-size:1rem;
+
+    }
+
+    .contact-wrapper{
+
+        grid-template-columns:1fr;
+
+        gap:70px;
+
+        padding:0 25px;
+
+        margin:70px auto 120px;
+
+    }
+
+    .contact-info h2{
+
+        font-size:3rem;
+
+    }
+
+    .ending{
+
+        padding:0 25px 140px;
+
+    }
+
+    .ending h2{
+
+        font-size:2.8rem;
+
+    }
+
+    .contact-form button{
+
+        width:100%;
+
+    }
+
+}
