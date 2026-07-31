@@ -3,6 +3,34 @@
 =========================== */
 
 body{
+
+    background:#fff;
+
+    color:#111;
+
+}
+
+nav a{
+
+    color:#0d2d44;
+
+    opacity:.8;
+
+}
+
+nav a:hover{
+
+    opacity:1;
+
+}
+
+.logo a{
+
+    color:#0d2d44;
+
+}
+
+body{
     background:#fff;
     color:#111;
 }
