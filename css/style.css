@@ -324,13 +324,13 @@ nav a:hover{
 
 }
 :root{
-    --font-en: "Cormorant Garamond", serif;
-    --font-ko: "Pretendard", "Noto Sans KR", sans-serif;
+    --font-title: "Cormorant Garamond", serif;
+    --font-body: "Inter", "Pretendard", "Noto Sans KR", sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6{
-    font-family: var(--font-title);
-    font-weight:600;
+    font-family:var(--font-title);
+    font-weight:500;
 }
 
 p,
@@ -340,5 +340,5 @@ li,
 button,
 input,
 textarea{
-    font-family: var(--font-body);
+    font-family:var(--font-body);
 }
