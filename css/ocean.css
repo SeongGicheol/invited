@@ -47,25 +47,41 @@ align-items:center;
 text-align:center;
 }
 .hero-ocean span{
-letter-spacing:6px;
-font-size:.8rem;
-opacity:.45;
-margin-bottom:20px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    letter-spacing:6px;
+
+    font-size:1rem;
+
+    opacity:.55;
+
+    margin-bottom:20px;
+
 }
+
 .hero-ocean h1{
 
-font-family:"Cormorant Garamond",serif;
+    font-family:"Cormorant Garamond",serif;
 
-font-size:8rem;
+    font-size:8rem;
 
-font-weight:500;
+    font-weight:600;
 
-letter-spacing:18px;
+    letter-spacing:18px;
+
 }
+
 .hero-ocean p{
-font-size:1.3rem;
-line-height:2;
-color:#666;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:1.45rem;
+
+    line-height:2;
+
+    color:#666;
+
 }
 .scroll{
 margin-top:100px;
