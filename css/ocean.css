@@ -133,14 +133,27 @@ transform:translateY(0);
     align-items:center;
 }
 .story-text span{
-    letter-spacing:4px;
-    font-size:.8rem;
+
+    font-family:"Cormorant Garamond",serif;
+
+    letter-spacing:5px;
+
+    font-size:1rem;
+
     color:#999;
+
 }
+
 .story-text h2{
-    
-    font-size:4.5rem;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:4.8rem;
+
+    font-weight:600;
+
     margin:25px 0;
+
 }
 .story-text p{
     font-size:1.1rem;
