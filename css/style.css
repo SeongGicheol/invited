@@ -34,61 +34,101 @@ body{
 
 }
 
-/* ---------------- */
+/* ===========================
+
+   NAVIGATION
+
+=========================== */
 
 nav{
 
-position:fixed;
+    position:fixed;
 
-top:0;
+    top:0;
 
-left:0;
+    left:0;
 
-width:100%;
+    width:100%;
 
-padding:35px 70px;
+    padding:35px 70px;
 
-display:flex;
+    display:flex;
 
-justify-content:space-between;
+    justify-content:space-between;
 
-align-items:center;
+    align-items:center;
 
-z-index:999;
+    z-index:999;
 
 }
 
 .logo{
 
-font-family:"Cormorant Garamond",serif;
+    font-family:"Cormorant Garamond", serif;
 
-font-size:28px;
+    font-size:30px;
 
-letter-spacing:10px;
+    font-weight:500;
+
+    letter-spacing:8px;
+
+}
+
+.logo a{
+
+    color:#ffffff;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+.logo a:hover{
+
+    opacity:.8;
 
 }
 
 nav ul{
 
-display:flex;
+    display:flex;
 
-gap:45px;
+    gap:45px;
 
-list-style:none;
+    list-style:none;
 
 }
 
 nav li{
 
-font-size:1rem;
-
-letter-spacing:1px;
+    list-style:none;
 
 }
 
-nav li:hover{
+nav li a{
 
-opacity:1;
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:20px;
+
+    font-weight:500;
+
+    color:#ffffff;
+
+    text-decoration:none;
+
+    letter-spacing:1px;
+
+    opacity:.8;
+
+    transition:.3s;
+
+}
+
+nav li a:hover{
+
+    opacity:1;
 
 }
 
