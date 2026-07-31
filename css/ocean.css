@@ -265,16 +265,39 @@ transform:translateY(0);
     text-align:center;
 }
 .conservation span{
-    letter-spacing:4px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    letter-spacing:5px;
+
+    font-size:1rem;
+
     color:#9db7c4;
+
 }
+
 .conservation h2{
-    font-size:52px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:4.2rem;
+
+    font-weight:600;
+
     margin:20px 0 40px;
+
 }
+
 .conservation p{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:1.3rem;
+
     line-height:2.2;
+
     color:#d7d7d7;
+
 }
 .ending{
     padding:180px 10%;
