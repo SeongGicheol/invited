@@ -1,347 +1,196 @@
-/* ===========================
-   PHILOSOPHY
-=========================== */
-
-body{
-
-    background:#fff;
-
-    color:#111;
-
-}
-/* ===========================
-
-   LIGHT PAGE NAVIGATION
-
-=========================== */
-
-nav{
-
-    position:fixed;
-
-    top:0;
-
-    left:0;
-
-    width:100%;
-
-    padding:35px 70px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    z-index:999;
-
-    background:transparent;
-
-}
-
-.logo{
-
-    font-family:"Cormorant Garamond", serif;
-
-    font-size:30px;
-
-    font-weight:500;
-
-    letter-spacing:8px;
-
-}
-
-.logo a{
-
-    color:#0d2d44;
-
-    text-decoration:none;
-
-    transition:.3s;
-
-}
-
-.logo a:hover{
-
-    opacity:.8;
-
-}
-
-nav ul{
-
-    display:flex;
-
-    gap:45px;
-
-    list-style:none;
-
-}
-
-nav li{
-
-    list-style:none;
-
-}
-
-nav li a{
-
-    font-family:"Cormorant Garamond", serif;
-
-    font-size:20px;
-
-    font-weight:500;
-
-    color:#0d2d44;
-
-    text-decoration:none;
-
-    letter-spacing:1px;
-
-    opacity:.8;
-
-    transition:.3s;
-
-}
-
-nav li a:hover{
-
-    opacity:1;
-
-}
-
-@media(max-width:900px){
-
-    nav{
-
-        padding:25px;
-
-    }
-
-    nav ul{
-
-        display:none;
-
-    }
-
-    .logo{
-
-        font-size:26px;
-
-        letter-spacing:6px;
-
-    }
-
-}
-
-nav a{
-
-    color:#0d2d44;
-
-    opacity:.8;
-
-}
-
-nav a:hover{
-
-    opacity:1;
-
-}
-
-.logo a{
-
-    color:#0d2d44;
-
+/* ========================================
+   INVITED - PHILOSOPHY
+======================================== */
+
+:root{
+    --navy:#021018;
+    --white:#ffffff;
 }
 
 body{
-    background:#fff;
-    color:#111;
+    background:var(--navy);
+    color:var(--white);
 }
 
 
-/* HERO */
+
+/* ========================================
+   HERO
+======================================== */
 
 .hero{
-    height:100vh;
+
+    min-height:100vh;
+
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+
     text-align:center;
-    padding:0 10%;
+
+    padding:140px 20px 80px;
 }
 
 .hero span{
-    font-family:"Cormorant Garamond",serif;
-    font-size:16px;
-    letter-spacing:6px;
-    color:#8da7b5;
-    margin-bottom:20px;
+
+    letter-spacing:8px;
+
+    font-size:.85rem;
+
+    opacity:.55;
 }
 
 .hero h1{
-    font-family:"Cormorant Garamond",serif;
-    font-size:96px;
-    font-weight:500;
-    line-height:1.1;
+
+    margin-top:24px;
+
     max-width:900px;
-    margin-bottom:30px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:5.8rem;
+
+    font-weight:500;
+
+    line-height:1.1;
 }
 
 .hero p{
-    font-family:"Cormorant Garamond",serif;
-    font-size:34px;
-    color:#666;
-    line-height:1.6;
+
+    margin-top:35px;
+
+    font-size:1.25rem;
+
+    opacity:.8;
 }
 
 
 
-/* VALUE SECTION */
+/* ========================================
+   VALUE
+======================================== */
 
 .value{
-    width:1200px;
-    max-width:90%;
+
+    max-width:1350px;
+
     margin:180px auto;
 
+    padding:0 80px;
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
-    gap:100px;
+
+    gap:90px;
+
     align-items:center;
 }
 
-.value.reverse .value-image{
-    order:1;
+.value.reverse{
+
+    direction:rtl;
 }
 
-.value.reverse .value-text{
-    order:2;
-}
+.value.reverse>*{
 
-
-
-/* TEXT */
-
-.value-text span{
-    display:block;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:18px;
-
-    letter-spacing:5px;
-
-    color:#8da7b5;
-
-    margin-bottom:20px;
-}
-
-.value-text h2{
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:72px;
-
-    font-weight:500;
-
-    margin-bottom:35px;
-
-    line-height:1.1;
-}
-
-.value-text p{
-
-    font-family:"Inter",sans-serif;
-
-    font-size:19px;
-
-    line-height:2;
-
-    color:#666;
-
-    font-weight:300;
-}
-
-
-
-/* IMAGE */
-
-.value-image{
-    overflow:hidden;
-    border-radius:8px;
+    direction:ltr;
 }
 
 .value-image img{
 
     width:100%;
 
-    display:block;
+    aspect-ratio:4/5;
 
-    height:auto;
+    object-fit:cover;
 
-    transition:.6s ease;
+    border-radius:4px;
+
+    transition:.5s;
 }
 
 .value-image img:hover{
 
-    transform:scale(1.03);
+    transform:scale(1.02);
+}
 
+.value-text span{
+
+    display:inline-block;
+
+    margin-bottom:20px;
+
+    font-size:.85rem;
+
+    letter-spacing:5px;
+
+    opacity:.45;
+}
+
+.value-text h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:4rem;
+
+    font-weight:500;
+
+    margin-bottom:35px;
+}
+
+.value-text p{
+
+    font-size:1.08rem;
+
+    line-height:2.2;
+
+    opacity:.82;
 }
 
 
 
-/* ENDING */
+/* ========================================
+   ENDING
+======================================== */
 
 .ending{
 
-    padding:220px 10%;
-
     text-align:center;
+
+    padding:180px 20px 220px;
 }
 
 .ending h2{
 
     font-family:"Cormorant Garamond",serif;
 
-    font-size:78px;
+    font-size:4rem;
 
     font-weight:500;
 
-    line-height:1.2;
-
-    margin-bottom:25px;
+    margin-bottom:30px;
 }
 
 .ending p{
 
-    font-family:"Cormorant Garamond",serif;
+    font-size:1.15rem;
 
-    font-size:32px;
+    opacity:.75;
 
-    color:#666;
+    margin-bottom:55px;
 }
-
-
-
-/* BUTTON */
 
 .cta{
 
     display:inline-block;
 
-    margin-top:60px;
-
     padding:18px 48px;
 
-    border:1px solid #0d2d44;
+    border:1px solid rgba(255,255,255,.35);
 
-    color:#0d2d44;
-
-    text-decoration:none;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:20px;
+    color:#fff;
 
     letter-spacing:2px;
 
@@ -350,100 +199,58 @@ body{
 
 .cta:hover{
 
-    background:#0d2d44;
+    background:#fff;
 
-    color:#fff;
-
+    color:#021018;
 }
 
 
 
-/* MOBILE */
+/* ========================================
+   MOBILE
+======================================== */
 
-@media(max-width:992px){
+@media (max-width:900px){
 
-.value{
+    .hero h1{
 
-    grid-template-columns:1fr;
+        font-size:3.5rem;
+    }
 
-    gap:60px;
+    .hero p{
 
-    margin:120px auto;
-}
+        font-size:1rem;
+    }
 
-.reverse .value-image,
-.reverse .value-text{
+    .value{
 
-    order:unset;
-}
+        grid-template-columns:1fr;
 
-}
+        gap:50px;
 
+        margin:120px auto;
 
+        padding:0 30px;
+    }
 
-@media(max-width:768px){
+    .value.reverse{
 
-.hero{
+        direction:ltr;
+    }
 
-    padding:0 8%;
-}
+    .value-text h2{
 
-.hero h1{
+        font-size:2.8rem;
+    }
 
-    font-size:54px;
-}
+    .ending{
 
-.hero p{
+        padding:120px 20px 150px;
+    }
 
-    font-size:24px;
-}
+    .ending h2{
 
-.hero span{
-
-    font-size:14px;
-}
-
-.value{
-
-    max-width:92%;
-
-    margin:100px auto;
-
-    gap:40px;
-}
-
-.value-text h2{
-
-    font-size:48px;
-}
-
-.value-text p{
-
-    font-size:17px;
-
-    line-height:1.8;
-}
-
-.ending{
-
-    padding:120px 8%;
-}
-
-.ending h2{
-
-    font-size:52px;
-}
-
-.ending p{
-
-    font-size:24px;
-}
-
-.cta{
-
-    padding:16px 36px;
-
-    font-size:18px;
-}
+        font-size:2.8rem;
+    }
 
 }
