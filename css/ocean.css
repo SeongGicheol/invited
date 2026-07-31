@@ -204,19 +204,43 @@ transform:translateY(0);
     text-align:center;
 }
 .section-title span{
-    font-size:12px;
-    letter-spacing:4px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:1rem;
+
+    letter-spacing:5px;
+
     color:#8da7b5;
+
 }
+
 .section-title h2{
-    font-size:48px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:4rem;
+
+    font-weight:600;
+
     margin:20px 0;
+
 }
+
 .section-title p{
+
+    font-family:"Cormorant Garamond",serif;
+
     max-width:700px;
+
     margin:auto;
-    line-height:1.8;
+
+    font-size:1.3rem;
+
+    line-height:2;
+
     color:#666;
+
 }
 .gallery{
     margin-top:80px;
