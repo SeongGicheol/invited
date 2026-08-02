@@ -391,7 +391,9 @@ nav ul li a{
 
     overflow:hidden;
 
-    transition:.35s;
+    color:#fff;
+
+    transition:.35s ease;
 
 }
 
@@ -401,17 +403,25 @@ nav ul li a::before{
 
     position:absolute;
 
-    top:50%;
-
     left:50%;
+
+    top:50%;
 
     transform:translate(-50%,120%);
 
     opacity:0;
 
-    transition:.35s ease;
+    color:#fff;
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:inherit;
+
+    letter-spacing:1px;
 
     white-space:nowrap;
+
+    transition:all .35s ease;
 
 }
 
@@ -426,7 +436,5 @@ nav ul li a:hover::before{
     transform:translate(-50%,-50%);
 
     opacity:1;
-
-    color:#0d2d44;
 
 }
