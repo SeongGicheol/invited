@@ -34,11 +34,16 @@ body{
 
 .hero span{
 
-    letter-spacing:8px;
+    font-family:"Cormorant Garamond", serif;
 
-    font-size:.85rem;
+    font-size:.8rem;
 
-    opacity:.55;
+    letter-spacing:6px;
+
+    opacity:.45;
+
+    margin-bottom:20px;
+
 }
 
 .hero h1{
