@@ -14,13 +14,28 @@ body{
 
 
 
-/* ========================================
+/* ===========================
+   Navigation
+=========================== */
+
+nav{
+    background:transparent;
+}
+
+nav .logo a,
+nav ul li a{
+    color:#fff;
+}
+
+
+
+/* ===========================
    HERO
-======================================== */
+=========================== */
 
 .hero{
 
-    min-height:85vh;
+    min-height:100vh;
 
     display:flex;
     flex-direction:column;
@@ -29,151 +44,320 @@ body{
 
     text-align:center;
 
-    padding:140px 20px 80px;
+    padding:20px;
+
 }
 
 .hero span{
 
-    font-size:.85rem;
+    font-family:"Inter",sans-serif;
 
     letter-spacing:8px;
 
-    opacity:.55;
+    font-size:.85rem;
+
+    opacity:.7;
+
 }
 
 .hero h1{
 
-    margin:25px 0;
+    margin-top:18px;
 
     font-family:"Cormorant Garamond",serif;
 
-    font-size:5.8rem;
+    font-size:7rem;
 
     font-weight:500;
 
-    line-height:1.1;
+    letter-spacing:12px;
+
+    line-height:1.05;
+
 }
 
 .hero p{
 
-    max-width:760px;
+    margin-top:28px;
 
-    font-size:1.1rem;
+    font-size:1.15rem;
 
     line-height:2;
 
-    opacity:.8;
+    opacity:.9;
+
 }
 
 
 
-/* ========================================
-   COURSES
-======================================== */
-
-.courses{
-
-    max-width:1300px;
-
-    margin:100px auto 180px;
-
-    padding:0 70px;
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:35px;
-}
+/* ===========================
+   COURSE
+=========================== */
 
 .course{
 
-    padding:55px 45px;
+    max-width:1300px;
 
-    border:1px solid rgba(255,255,255,.12);
+    margin:180px auto;
 
-    transition:.4s;
+    padding:0 80px;
 
-    display:flex;
+    display:grid;
 
-    flex-direction:column;
+    grid-template-columns:1fr 1fr;
+
+    gap:90px;
+
+    align-items:center;
+
 }
 
-.course:hover{
+.course.reverse{
 
-    transform:translateY(-8px);
+    direction:rtl;
 
-    border-color:rgba(255,255,255,.35);
-
-    background:rgba(255,255,255,.03);
 }
 
-.course span{
+.course.reverse>*{
+
+    direction:ltr;
+
+}
+
+
+
+/* ===========================
+   IMAGE
+=========================== */
+
+.course-image{
+
+    overflow:hidden;
+
+}
+
+.course-image img{
+
+    width:100%;
+
+    aspect-ratio:4/5;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:.6s;
+
+    border-radius:4px;
+
+}
+
+.course-image img:hover{
+
+    transform:scale(1.03);
+
+}
+
+
+
+/* ===========================
+   TEXT
+=========================== */
+
+.course-text span{
+
+    font-family:"Inter",sans-serif;
+
+    letter-spacing:6px;
 
     font-size:.8rem;
 
-    letter-spacing:5px;
+    opacity:.5;
 
-    opacity:.45;
 }
 
-.course h2{
+.course-text h2{
 
-    margin:22px 0;
+    margin:20px 0 40px;
 
     font-family:"Cormorant Garamond",serif;
 
-    font-size:2.5rem;
+    font-size:4rem;
 
     font-weight:500;
+
 }
 
-.course p{
+.course-text p{
 
-    line-height:2;
+    font-size:1.1rem;
 
-    opacity:.8;
+    line-height:2.2;
 
-    flex:1;
+    opacity:.85;
 
-    margin-bottom:40px;
+    margin-bottom:45px;
+
 }
 
-.course a{
+.course-text a{
 
     display:inline-block;
 
-    width:fit-content;
+    padding:18px 46px;
 
-    padding:14px 32px;
-
-    border:1px solid rgba(255,255,255,.25);
+    border:1px solid rgba(255,255,255,.35);
 
     color:#fff;
 
+    text-decoration:none;
+
     letter-spacing:2px;
 
-    transition:.3s;
+    transition:.35s;
+
 }
 
-.course a:hover{
+.course-text a:hover{
 
     background:#fff;
 
     color:#021018;
+
 }
 
 
 
-/* ========================================
-   ENDING
-======================================== */
+/* ===========================
+   SPECIAL
+=========================== */
 
-.ending{
+.special{
+
+    max-width:1000px;
+
+    margin:220px auto;
 
     text-align:center;
 
-    padding:0 20px 220px;
+    padding:0 30px;
+
+}
+
+.special span{
+
+    font-family:"Inter",sans-serif;
+
+    letter-spacing:8px;
+
+    font-size:.85rem;
+
+    opacity:.5;
+
+}
+
+.special h2{
+
+    margin:20px 0 80px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:4rem;
+
+    font-weight:500;
+
+}
+
+.program-list{
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+}
+
+.program-list div{
+
+    padding:34px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2rem;
+
+    transition:.35s;
+
+}
+
+.program-list div:hover{
+
+    background:rgba(255,255,255,.04);
+
+    letter-spacing:2px;
+
+}
+
+.program-list small{
+
+    font-family:"Inter",sans-serif;
+
+    font-size:.8rem;
+
+    margin-left:10px;
+
+    opacity:.55;
+
+}
+
+
+
+/* ===========================
+   QUOTE
+=========================== */
+
+.quote{
+
+    height:70vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:20px;
+
+    background:
+
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+
+    url("../images/learn/quote.jpg") center/cover;
+
+}
+
+.quote h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:5rem;
+
+    font-weight:500;
+
+}
+
+
+
+/* ===========================
+   ENDING
+=========================== */
+
+.ending{
+
+    padding:180px 20px 220px;
+
+    text-align:center;
+
 }
 
 .ending h2{
@@ -184,16 +368,20 @@ body{
 
     font-weight:500;
 
+    line-height:1.2;
+
     margin-bottom:25px;
+
 }
 
 .ending p{
 
     opacity:.75;
 
-    margin-bottom:55px;
+    margin-bottom:60px;
 
-    font-size:1.05rem;
+    font-size:1.1rem;
+
 }
 
 .cta{
@@ -206,9 +394,12 @@ body{
 
     color:#fff;
 
+    text-decoration:none;
+
     letter-spacing:2px;
 
     transition:.35s;
+
 }
 
 .cta:hover{
@@ -216,60 +407,73 @@ body{
     background:#fff;
 
     color:#021018;
+
 }
 
 
 
-/* ========================================
-   MOBILE
-======================================== */
+/* ===========================
+   RESPONSIVE
+=========================== */
 
-@media (max-width:900px){
+@media(max-width:900px){
 
-    .hero{
+.hero h1{
 
-        min-height:70vh;
+    font-size:4rem;
 
-        padding:120px 25px 60px;
-    }
+}
 
-    .hero h1{
+.hero p{
 
-        font-size:3.5rem;
-    }
+    font-size:1rem;
 
-    .hero p{
+}
 
-        font-size:1rem;
-    }
+.course{
 
-    .courses{
+    grid-template-columns:1fr;
 
-        grid-template-columns:1fr;
+    gap:60px;
 
-        padding:0 25px;
+    padding:0 30px;
 
-        margin:80px auto 120px;
-    }
+    margin:120px auto;
 
-    .course{
+}
 
-        padding:40px 30px;
-    }
+.course.reverse{
 
-    .course h2{
+    direction:ltr;
 
-        font-size:2.2rem;
-    }
+}
 
-    .ending{
+.course-text h2,
 
-        padding:0 25px 140px;
-    }
+.special h2,
 
-    .ending h2{
+.ending h2{
 
-        font-size:2.8rem;
-    }
+    font-size:2.7rem;
+
+}
+
+.program-list div{
+
+    font-size:1.5rem;
+
+}
+
+.quote{
+
+    height:45vh;
+
+}
+
+.quote h2{
+
+    font-size:3rem;
+
+}
 
 }
