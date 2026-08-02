@@ -377,3 +377,56 @@ nav ul{
 }
 
 }
+/* ==========================
+
+   MENU HOVER (EN → KO)
+
+========================== */
+
+nav ul li a{
+
+    position:relative;
+
+    display:inline-block;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+}
+
+nav ul li a::before{
+
+    content:attr(data-ko);
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,120%);
+
+    opacity:0;
+
+    transition:.35s ease;
+
+    white-space:nowrap;
+
+}
+
+nav ul li a:hover{
+
+    color:transparent;
+
+}
+
+nav ul li a:hover::before{
+
+    transform:translate(-50%,-50%);
+
+    opacity:1;
+
+    color:#0d2d44;
+
+}
