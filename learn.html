@@ -1,160 +1,857 @@
-<!-- OPEN WATER -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="INVITED의 스쿠버다이빙과 프리다이빙. 나의 속도로 시작하는 바다, 기본과 안전을 생각하는 배움."
+  >
+  <meta name="theme-color" content="#123d42">
+  <title>다이빙 교육 | INVITED</title>
 
-<section class="course">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
-    <div class="course-image">
-        <img src="images/learn/openwater.jpg" alt="Open Water Diver">
+  <style>
+    :root {
+      --paper: #f7f7f2;
+      --ink: #173e42;
+      --muted: #637570;
+      --line: #d7ded6;
+      --ocean: #123d42;
+      --lime: #d6eba9;
+      --gutter: clamp(22px, 6vw, 96px);
+      --space: clamp(72px, 9vw, 130px);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 150px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "DM Sans", "Noto Sans KR", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid #83a948;
+      outline-offset: 5px;
+    }
+
+    ::selection {
+      color: var(--ink);
+      background: var(--lime);
+    }
+
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: 20px;
+      z-index: 100;
+      padding: 14px 20px;
+      background: var(--lime);
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    .container {
+      max-width: 1500px;
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 84px;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -1.5px;
+    }
+
+    .header nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 26px;
+    }
+
+    .header nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 13px;
+    }
+
+    .header nav a:hover {
+      color: #658340;
+    }
+
+    .eyebrow {
+      margin-bottom: 24px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      line-height: 1.8;
+    }
+
+    .hero {
+      padding-block: var(--space);
+      color: var(--paper);
+      background: var(--ocean);
+    }
+
+    .breadcrumb {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 64px;
+      color: #c3d1c9;
+      font-size: 11px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 5vw, 72px);
+      font-weight: 500;
+      letter-spacing: -2px;
+      line-height: 1.4;
+    }
+
+    .hero-description {
+      margin-top: 26px;
+      color: #d0dcd5;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 36px;
+      min-height: 54px;
+      padding: 16px 24px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      transition: background .2s;
+    }
+
+    .button span {
+      font-size: 23px;
+      line-height: 1;
+    }
+
+    .button-light {
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    .button-light:hover {
+      background: var(--lime);
+    }
+
+    .button-outline {
+      color: var(--paper);
+      border-color: #a8beb1;
+    }
+
+    .button-outline:hover {
+      background: #ffffff12;
+    }
+
+    .button-dark {
+      color: white;
+      background: var(--ocean);
+    }
+
+    .button-dark:hover {
+      background: #21585b;
+    }
+
+    .section {
+      padding-block: var(--space);
+    }
+
+    .section-title {
+      font-size: clamp(30px, 3.5vw, 48px);
+      font-weight: 500;
+      letter-spacing: -1.6px;
+      line-height: 1.5;
+    }
+
+    .section-description {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .course-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: clamp(36px, 7vw, 100px);
+      align-items: start;
+    }
+
+    .course-tag {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      font-size: 11px;
+    }
+
+    .course-options {
+      border-top: 1px solid var(--line);
+    }
+
+    .course-option {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 18px;
+      padding-block: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .number {
+      padding-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .course-option h3 {
+      margin-bottom: 12px;
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: -.6px;
+    }
+
+    .course-option p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .course-link {
+      margin-top: 28px;
+    }
+
+    .free-section {
+      background: #eaf0e3;
+    }
+
+    .note {
+      margin-top: 28px;
+      padding: 20px 24px;
+      border-left: 2px solid #779557;
+      color: var(--muted);
+      background: #ffffff66;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .process-heading {
+      max-width: 700px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 30px;
+      margin-top: 46px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .steps h3 {
+      margin: 24px 0 14px;
+      font-size: 21px;
+      font-weight: 500;
+    }
+
+    .steps p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .faq-section {
+      padding-top: 0;
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 60px;
+    }
+
+    .faq-list {
+      border-top: 1px solid var(--line);
+    }
+
+    details {
+      border-bottom: 1px solid var(--line);
+    }
+
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 76px;
+      padding-block: 20px;
+      list-style: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      flex-shrink: 0;
+      font-size: 23px;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    details p {
+      padding: 0 20px 24px 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .contact {
+      text-align: center;
+      background: #e3ead9;
+    }
+
+    .contact .section-description {
+      max-width: 600px;
+      margin-inline: auto;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .contact-small {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 22px;
+      padding-block: 36px;
+    }
+
+    .footer p,
+    .footer > a:last-child {
+      font-size: 12px;
+    }
+
+    @media (max-width: 760px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding-block: 16px 8px;
+      }
+
+      .logo {
+        font-size: 27px;
+      }
+
+      .header nav {
+        justify-content: space-between;
+        width: 100%;
+        gap: 4px 12px;
+      }
+
+      .header nav a {
+        font-size: 12px;
+      }
+
+      .breadcrumb {
+        margin-bottom: 40px;
+      }
+
+      .hero h1 {
+        font-size: clamp(34px, 8vw, 52px);
+        letter-spacing: -1.5px;
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .course-layout,
+      .faq-layout,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .course-layout,
+      .faq-layout {
+        gap: 38px;
+      }
+
+      .steps {
+        gap: 20px;
+      }
+
+      .steps h3 {
+        margin-top: 16px;
+      }
+
+      .footer p {
+        width: 100%;
+        order: 3;
+        color: var(--muted);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="INVITED 홈페이지">
+        INVITED
+      </a>
+
+      <nav aria-label="교육 페이지 메뉴">
+        <a href="#scuba">스쿠버다이빙</a>
+        <a href="#freediving">프리다이빙</a>
+        <a href="#guide">참여 안내</a>
+        <a href="#contact">문의</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="course-text">
+  <main id="main">
+    <!-- 첫 화면 -->
+    <section class="hero" aria-labelledby="page-title">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">HOME</a>
+          <span aria-hidden="true">/</span>
+          <span>LEARN</span>
+        </div>
 
-        <span>01</span>
+        <p class="eyebrow">LEARN THE OCEAN, AT YOUR OWN PACE</p>
 
-        <h2>Open Water Diver</h2>
+        <h1 id="page-title">
+          처음의 호흡부터,<br>
+          나만의 바다가 되기까지.
+        </h1>
 
-        <p>
-            Your first invitation beneath the surface.<br><br>
-            Learn the foundations of scuba diving with confidence.
+        <p class="hero-description">
+          빠르게 해내는 것보다 편안하게 익히는 것.<br>
+          기본을 배우고, 서로를 살피며,<br>
+          오래 즐길 수 있는 다이빙을 시작합니다.
         </p>
 
-        <a href="courses/openwater.html">Explore Course →</a>
+        <div class="hero-links">
+          <a class="button button-light" href="#scuba">
+            스쿠버다이빙
+            <span aria-hidden="true">↓</span>
+          </a>
 
-    </div>
+          <a class="button button-outline" href="#freediving">
+            프리다이빙
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
-</section>
+    <!-- 스쿠버다이빙 -->
+    <section class="section" id="scuba" aria-labelledby="scuba-title">
+      <div class="container course-layout">
+        <div>
+          <p class="eyebrow">01 — SCUBA DIVING</p>
 
+          <h2 class="section-title" id="scuba-title">
+            물속에서 만나는<br>
+            새로운 호흡.
+          </h2>
 
+          <p class="section-description">
+            장비와 친숙해지고, 물속에서의 움직임을 익히는 시간.
+            처음의 낯섦이 편안함으로 바뀔 수 있도록
+            나에게 맞는 시작점을 찾아봅니다.
+          </p>
 
-<!-- ADVANCED -->
+          <span class="course-tag">
+            입문 상담 · 교육 과정 상담 · 자격 다이버
+          </span>
+        </div>
 
-<section class="course reverse">
+        <div>
+          <div class="course-options">
+            <article class="course-option">
+              <span class="number">01</span>
+              <div>
+                <h3>처음 시작하는 분</h3>
+                <p>
+                  다이빙 경험이 없어도 괜찮습니다.
+                  물에 대한 편안함과 원하는 경험을 알려주세요.
+                  입문 프로그램의 참여 조건과 진행 내용을 상담합니다.
+                </p>
+              </div>
+            </article>
 
-    <div class="course-image">
-        <img src="images/learn/advanced.jpg" alt="Advanced Open Water">
-    </div>
+            <article class="course-option">
+              <span class="number">02</span>
+              <div>
+                <h3>기본부터 배우고 싶은 분</h3>
+                <p>
+                  장비의 이해부터 기본 기술까지,
+                  어떤 교육 과정이 나에게 필요한지 함께 확인합니다.
+                  교육 단체, 자격 과정, 기간과 비용은 상담 시 확인해주세요.
+                </p>
+              </div>
+            </article>
 
-    <div class="course-text">
+            <article class="course-option">
+              <span class="number">03</span>
+              <div>
+                <h3>다시 바다로 돌아오는 분</h3>
+                <p>
+                  자격 취득 후 시간이 지났거나 새로운 환경이 낯설다면,
+                  보유 자격과 최근 다이빙 경험을 알려주세요.
+                  연습 또는 다이빙 참여 가능 여부를 상담합니다.
+                </p>
+              </div>
+            </article>
+          </div>
 
-        <span>02</span>
+          <a
+            class="button button-dark course-link"
+            href="mailto:invited.hq@gmail.com?subject=INVITED%20Scuba%20Inquiry"
+          >
+            스쿠버 교육 문의
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
-        <h2>Advanced Open Water</h2>
+    <!-- 프리다이빙 -->
+    <section
+      class="section free-section"
+      id="freediving"
+      aria-labelledby="freediving-title"
+    >
+      <div class="container course-layout">
+        <div>
+          <p class="eyebrow">02 — FREEDIVING</p>
 
-        <p>
-            Expand your limits through adventure dives,
-            buoyancy and underwater navigation.
+          <h2 class="section-title" id="freediving-title">
+            한 번의 호흡,<br>
+            나에게 집중하는 시간.
+          </h2>
+
+          <p class="section-description">
+            더 깊이 가는 것만이 다이빙의 목적은 아닙니다.
+            자신의 상태를 알아가고,
+            물속에서 편안함을 찾는 과정부터 시작합니다.
+          </p>
+
+          <span class="course-tag">
+            입문 상담 · 기초 교육 상담 · 연습 상담
+          </span>
+        </div>
+
+        <div>
+          <div class="course-options">
+            <article class="course-option">
+              <span class="number">01</span>
+              <div>
+                <h3>처음 만나는 프리다이빙</h3>
+                <p>
+                  프리다이빙이 어떤 활동인지,
+                  시작하기 전에 무엇을 알아야 하는지 궁금한 분을 위한 상담입니다.
+                  경험과 목표에 맞는 입문 방향을 확인합니다.
+                </p>
+              </div>
+            </article>
+
+            <article class="course-option">
+              <span class="number">02</span>
+              <div>
+                <h3>차근차근 배우는 기본</h3>
+                <p>
+                  기록을 서두르기보다 기본과 안전을 이해하는 배움을 지향합니다.
+                  세부 교육 내용, 참여 조건과 자격 과정 운영 여부는
+                  상담을 통해 확인해주세요.
+                </p>
+              </div>
+            </article>
+
+            <article class="course-option">
+              <span class="number">03</span>
+              <div>
+                <h3>배운 뒤에도 이어지는 연습</h3>
+                <p>
+                  이미 교육을 받았다면 현재 수준과 연습하고 싶은 내용을 알려주세요.
+                  자신의 경험에 맞는 연습 방향과
+                  함께할 수 있는 일정이 있는지 상담합니다.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <p class="note">
+            INVITED는 기록보다 안전과 기본을 우선하는 다이빙을 지향합니다.
+            이 페이지는 프로그램 소개이며 실제 교육을 대신하지 않습니다.
+          </p>
+
+          <a
+            class="button button-dark course-link"
+            href="mailto:invited.hq@gmail.com?subject=INVITED%20Freediving%20Inquiry"
+          >
+            프리다이빙 교육 문의
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 참여 안내 -->
+    <section class="section" id="guide" aria-labelledby="guide-title">
+      <div class="container">
+        <div class="process-heading">
+          <p class="eyebrow">BEFORE YOUR FIRST DIVE</p>
+
+          <h2 class="section-title" id="guide-title">
+            시작하기 전,<br>
+            함께 확인할 것들.
+          </h2>
+
+          <p class="section-description">
+            프로그램을 선택하기 어렵다면 지금의 경험과
+            만나고 싶은 바다부터 이야기해주세요.
+          </p>
+        </div>
+
+        <ol class="steps">
+          <li>
+            <span class="number">STEP 01</span>
+            <h3>경험과 목표</h3>
+            <p>
+              관심 있는 프로그램, 다이빙 경험,
+              보유 자격이 있다면 함께 알려주세요.
+              처음 시작하는 분은 배우고 싶은 내용을 적어주시면 됩니다.
+            </p>
+          </li>
+
+          <li>
+            <span class="number">STEP 02</span>
+            <h3>일정과 참여 조건</h3>
+            <p>
+              희망 날짜와 인원을 알려주세요.
+              진행 가능 여부와 장소, 비용, 포함 사항,
+              변경·취소 조건을 예약 전에 확인합니다.
+            </p>
+          </li>
+
+          <li>
+            <span class="number">STEP 03</span>
+            <h3>장비와 준비 사항</h3>
+            <p>
+              보유 장비와 대여가 필요한 장비를 확인합니다.
+              참여에 필요한 서류와 준비물은
+              해당 프로그램의 안내를 받아 준비해주세요.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 자주 묻는 질문 -->
+    <section class="section faq-section" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <div>
+          <p class="eyebrow">QUESTIONS & ANSWERS</p>
+          <h2 class="section-title" id="faq-title">
+            처음이라면,<br>
+            더 궁금할 테니까.
+          </h2>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>어떤 프로그램을 선택해야 할지 모르겠어요.</summary>
+            <p>
+              원하는 경험과 다이빙 경험을 알려주세요.
+              스쿠버와 프리다이빙의 차이,
+              각 프로그램의 참여 조건을 확인한 뒤 선택할 수 있습니다.
+            </p>
+          </details>
+
+          <details>
+            <summary>수영을 잘하지 못해도 상담할 수 있나요?</summary>
+            <p>
+              상담할 수 있습니다.
+              수영 경험과 물에 대한 편안함을 먼저 알려주세요.
+              실제 참여 가능 여부와 필요한 수영 능력은
+              선택한 프로그램의 기준에 따라 확인해야 합니다.
+            </p>
+          </details>
+
+          <details>
+            <summary>교육 기간과 비용은 어떻게 되나요?</summary>
+            <p>
+              과정과 일정, 포함 사항에 따라 달라질 수 있어
+              이 페이지에는 확정되지 않은 가격과 기간을 표시하지 않았습니다.
+              희망 프로그램을 알려주시면 세부 내용을 확인할 수 있습니다.
+            </p>
+          </details>
+
+          <details>
+            <summary>장비를 먼저 구매해야 하나요?</summary>
+            <p>
+              구매 전에 필요한 장비와 대여 가능 여부를 확인해주세요.
+              프로그램과 개인 상황에 따라 준비할 항목이 다를 수 있습니다.
+            </p>
+          </details>
+
+          <details>
+            <summary>문의하면 바로 예약이 확정되나요?</summary>
+            <p>
+              문의만으로 예약이 확정되지는 않습니다.
+              일정, 참여 조건, 비용과 예약 절차를 안내받고
+              확정 여부를 별도로 확인해주세요.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 문의 -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <p class="eyebrow">YOUR FIRST CHAPTER</p>
+
+        <h2 class="section-title" id="contact-title">
+          당신의 첫 바다를<br>
+          함께 이야기해요.
+        </h2>
+
+        <p class="section-description">
+          관심 프로그램 · 희망 날짜 · 인원 · 다이빙 경험을 알려주세요.<br>
+          아직 정하지 못한 부분은 비워두셔도 괜찮습니다.
         </p>
 
-        <a href="courses/advanced.html">Explore Course →</a>
+        <div class="contact-links">
+          <a class="button button-dark" href="mailto:invited.hq@gmail.com">
+            이메일로 문의
+            <span aria-hidden="true">↗</span>
+          </a>
 
-    </div>
+          <a
+            class="button button-light"
+            href="https://www.instagram.com/invited_diving/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            인스타그램
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
 
-</section>
-
-
-
-<!-- RESCUE -->
-
-<section class="course">
-
-    <div class="course-image">
-        <img src="images/learn/rescue.jpg" alt="Rescue Diver">
-    </div>
-
-    <div class="course-text">
-
-        <span>03</span>
-
-        <h2>Rescue Diver</h2>
-
-        <p>
-            Learn to prevent and manage diving emergencies
-            while becoming a safer buddy.
+        <p class="contact-small">
+          이메일 앱이 열리지 않으면<br>
+          invited.hq@gmail.com으로 직접 보내주세요.
         </p>
+      </div>
+    </section>
+  </main>
 
-        <a href="courses/rescue.html">Explore Course →</a>
-
-    </div>
-
-</section>
-
-
-
-<!-- DIVEMASTER -->
-
-<section class="course reverse">
-
-    <div class="course-image">
-        <img src="images/learn/divemaster.jpg" alt="Divemaster">
-    </div>
-
-    <div class="course-text">
-
-        <span>04</span>
-
-        <h2>Divemaster</h2>
-
-        <p>
-            Take your first professional step and become
-            a dive leader.
-        </p>
-
-        <a href="courses/divemaster.html">Explore Course →</a>
-
-    </div>
-
-</section>
-
-
-
-<!-- EXPERIENCE -->
-
-<section class="course">
-
-    <div class="course-image">
-        <img src="images/learn/experience.jpg" alt="Experience Diving">
-    </div>
-
-    <div class="course-text">
-
-        <span>05</span>
-
-        <h2>Experience Diving</h2>
-
-        <p>
-            Never dived before?<br><br>
-            Experience the underwater world safely
-            with an instructor.
-        </p>
-
-        <a href="courses/experience.html">Explore Course →</a>
-
-    </div>
-
-</section>
-
-
-
-<!-- FREEDIVING -->
-
-<section class="course reverse">
-
-    <div class="course-image">
-        <img src="images/learn/freediving.jpg" alt="AIDA Freediving">
-    </div>
-
-    <div class="course-text">
-
-        <span>06</span>
-
-        <h2>AIDA Freediving</h2>
-
-        <p>
-            Discover silence beneath the surface.<br><br>
-            Learn breath-hold diving with confidence.
-        </p>
-
-        <a href="courses/freediving.html">Explore Course →</a>
-
-    </div>
-
-</section>
+  <footer class="container footer">
+    <a class="logo" href="index.html">INVITED</a>
+    <p>INVITED, 바다에 초대받은 사람들.</p>
+    <a href="index.html#programs">메인으로 돌아가기 ↗</a>
+  </footer>
+</body>
+</html>
