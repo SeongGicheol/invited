@@ -751,6 +751,112 @@
     padding: 28px;
   }
 }
+    /* ===== 레스큐 / OFA·BLS ===== */
+.rescue-section {
+  border-top: 1px solid var(--line);
+}
+
+.rescue-curriculum {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.rescue-curriculum .ow-module {
+  background: #f0f3eb;
+}
+
+.rescue-requirements {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 2;
+}
+
+.rescue-requirements li + li {
+  margin-top: 10px;
+}
+
+.rescue-requirements a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.ofa-section {
+  border-top: 1px solid var(--line);
+  background: #eaf0e3;
+}
+
+.ofa-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.ofa-card {
+  padding: 32px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.ofa-card h3 {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.ofa-fees {
+  margin: 0;
+}
+
+.ofa-fees > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.ofa-fees dt {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.ofa-fees dd {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.ofa-fees .ofa-total {
+  border-bottom: 0;
+}
+
+.ofa-total dd {
+  font-size: 24px;
+}
+
+.ofa-caption {
+  margin: 20px 0 26px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+@media (max-width: 760px) {
+  .rescue-curriculum,
+  .ofa-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ofa-card {
+    padding: 24px;
+  }
+}
   </style>
 </head>
 
@@ -818,7 +924,9 @@
   <div class="container">
 <nav class="course-shortcuts" aria-label="스쿠버 교육 과정">
   <a href="#scuba">오픈워터</a>
-  <a href="#advanced">어드밴스 스쿠버 다이버 ↗</a>
+  <a href="#advanced">어드밴스</a>
+  <a href="#rescue">레스큐</a>
+  <a href="#ofa-bls">OFA/BLS</a>
 </nav>
     <div class="ow-heading">
       <p class="eyebrow">
@@ -1244,6 +1352,355 @@
 
   </div>
 </section>
+    <!-- 레스큐 다이버 -->
+<section
+  class="section rescue-section"
+  id="rescue"
+  aria-labelledby="rescue-title"
+>
+  <div class="container">
+
+    <div class="ow-heading">
+      <p class="eyebrow">
+        SCUBA DIVING · PTRD RESCUE DIVER
+      </p>
+
+      <h2 class="section-title" id="rescue-title">
+        레스큐 다이버<br>
+        나를 넘어, 버디를 살피는 다이빙.
+      </h2>
+
+      <p class="section-description">
+        좋은 다이버는 자신의 상태뿐 아니라
+        함께하는 사람의 작은 변화에도 주의를 기울입니다.
+        레스큐 과정은 문제가 커지기 전에 위험을 알아차리고,
+        도움이 필요한 상황에 대응하는 능력을 기르는 교육입니다.
+      </p>
+
+      <p class="section-description">
+        자기 구조와 사고 예방을 바탕으로,
+        수면과 수중에서의 다이버 지원,
+        구조 장비 활용과 팀 단위 시나리오를 연습합니다.
+        구조자 자신의 안전을 지키는 판단도 함께 배웁니다.
+      </p>
+    </div>
+
+    <!-- 핵심 정보 -->
+    <dl class="ow-facts">
+      <div>
+        <dt>교육 단체</dt>
+        <dd>PTRD</dd>
+      </div>
+
+      <div>
+        <dt>교육 기간</dt>
+        <dd>3~5일</dd>
+      </div>
+
+      <div>
+        <dt>레스큐 교육비</dt>
+        <dd>650,000원</dd>
+      </div>
+
+      <div>
+        <dt>별도 이수 과정</dt>
+        <dd class="ow-format">
+          OFA/BLS<br>
+          200,000원 별도
+        </dd>
+      </div>
+    </dl>
+
+    <!-- 추천 대상 -->
+    <div class="ow-block">
+      <h3>이런 분들에게 추천합니다</h3>
+
+      <ul class="ow-audience">
+        <li>
+          <span>01 / AWARENESS</span>
+          자신의 다이빙을 관리하는 데서 나아가
+          버디의 상태와 주변 위험까지 살피고 싶은 분
+        </li>
+
+        <li>
+          <span>02 / PREVENTION</span>
+          스트레스와 문제의 징후를 알아차리고
+          사고 예방 능력을 기르고 싶은 분
+        </li>
+
+        <li>
+          <span>03 / TEAMWORK</span>
+          도움이 필요한 상황에서
+          다른 다이버와 협력하는 방법을 배우고 싶은 분
+        </li>
+      </ul>
+    </div>
+
+    <!-- 교육 내용 -->
+    <div class="ow-block">
+      <h3>무엇을 배우나요?</h3>
+
+      <div class="ow-curriculum rescue-curriculum">
+
+        <article class="ow-module">
+          <p class="eyebrow">01 · SELF RESCUE</p>
+          <h4>자기 구조와 사고 예방</h4>
+
+          <p>
+            다른 사람을 돕기 전에
+            자신의 안전과 상태를 관리하는 기본을 점검합니다.
+          </p>
+
+          <ul>
+            <li>개인 장비와 다이빙 준비 상태 확인</li>
+            <li>기본 기술과 부력 조절 능력 점검</li>
+            <li>얽힘과 장비 문제 등 상황별 대응 연습</li>
+            <li>자신의 한계 인식과 도움 요청의 중요성</li>
+          </ul>
+        </article>
+
+        <article class="ow-module">
+          <p class="eyebrow">02 · STRESS & ASSISTANCE</p>
+          <h4>스트레스 인지와 다이버 지원</h4>
+
+          <p>
+            불편함과 스트레스의 징후를 살피고,
+            상황에 맞는 의사소통과 지원 방법을 배웁니다.
+          </p>
+
+          <ul>
+            <li>피로·불안·스트레스와 패닉의 인지</li>
+            <li>도움이 필요한 다이버의 상태 파악</li>
+            <li>상황에 맞는 접근과 의사소통</li>
+            <li>구조자 안전을 고려한 개입 판단</li>
+          </ul>
+        </article>
+
+        <article class="ow-module">
+          <p class="eyebrow">03 · RESCUE EQUIPMENT</p>
+          <h4>구조 장비와 현장 자원 활용</h4>
+
+          <p>
+            주변에서 사용할 수 있는 장비와 인력을 파악하고,
+            구조 활동에 연결하는 방법을 익힙니다.
+          </p>
+
+          <ul>
+            <li>부력 보조 도구와 로프의 활용</li>
+            <li>보트·해안 환경에 따른 접근 방법 검토</li>
+            <li>비상 장비와 현장 지원 체계 확인</li>
+            <li>도움 요청과 팀원 역할 분담</li>
+          </ul>
+        </article>
+
+        <article class="ow-module">
+          <p class="eyebrow">04 · SURFACE & UNDERWATER</p>
+          <h4>수면·수중 구조 기술</h4>
+
+          <p>
+            반응이 있거나 없는 다이버를 가정한 훈련을 통해,
+            상황을 평가하고 적절하게 대응하는 능력을 기릅니다.
+          </p>
+
+          <ul>
+            <li>수면에서 도움이 필요한 다이버 지원</li>
+            <li>수중 장비·기체 관련 문제 대응 연습</li>
+            <li>반응이 없는 다이버의 구조 상황 연습</li>
+            <li>강사 감독 아래 진행하는 상승 지원 훈련</li>
+          </ul>
+        </article>
+
+        <article class="ow-module">
+          <p class="eyebrow">05 · TRANSPORT & EXIT</p>
+          <h4>조난 다이버 이동과 출수</h4>
+
+          <p>
+            구조 이후에도 안전하게 도움을 이어갈 수 있도록,
+            이동과 출수 과정의 협력을 연습합니다.
+          </p>
+
+          <ul>
+            <li>상황과 장비에 맞는 수면 이동 방법</li>
+            <li>조난 다이버의 상태 관찰과 팀 의사소통</li>
+            <li>해안·보트 환경에 따른 출수 방법</li>
+            <li>응급처치 지원과 인계 과정의 연결</li>
+          </ul>
+        </article>
+
+        <article class="ow-module">
+          <p class="eyebrow">06 · RESCUE SCENARIOS</p>
+          <h4>수색과 통합 구조 시나리오</h4>
+
+          <p>
+            배운 기술을 하나의 상황으로 연결하며,
+            판단과 협력, 문제 해결 능력을 확인합니다.
+          </p>
+
+          <ul>
+            <li>실종 다이버 상황의 정보 수집과 수색 계획</li>
+            <li>수면 문제와 수중 구조를 가정한 시나리오</li>
+            <li>현장 자원 활용과 팀 단위 역할 수행</li>
+            <li>훈련 후 피드백과 대응 과정 돌아보기</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- 참가 조건 -->
+    <div class="ow-block">
+      <h3>참가 전 확인해주세요</h3>
+
+      <ul class="rescue-requirements">
+        <li>
+          제공된 PTRD 교재 기준으로
+          어드밴스드 오픈워터 다이버 또는
+          타 교육 단체의 동등 자격이 필요합니다.
+          보유 자격의 인정 여부는 신청 시 확인합니다.
+        </li>
+
+        <li>
+          일반 과정은 만 15세 이상을 기준으로 안내합니다.
+          주니어 과정은 별도 조건이 적용되므로 개별 문의해주세요.
+        </li>
+
+        <li>
+          CPR·응급처치와 산소 공급자 관련 인증이 필요합니다.
+          INVITED의
+          <a href="#ofa-bls">OFA/BLS 과정</a>은
+          레스큐와 별도로 운영됩니다.
+        </li>
+
+        <li>
+          기존 응급처치 자격을 보유한 경우,
+          인정 여부와 유효기간을 담당 강사에게 확인해주세요.
+        </li>
+
+        <li>
+          보유 자격과 최근 다이빙 경험을 확인하며,
+          필요에 따라 기본 기술 사전 평가를 진행할 수 있습니다.
+        </li>
+      </ul>
+    </div>
+
+    <div class="ow-notes">
+      <p>
+        <strong>교육 일정과 이수</strong><br>
+        레스큐 교육 기간은 3~5일입니다.
+        일정은 현장 조건과 교육 진행 상태에 따라 조정될 수 있으며,
+        참여 기간만으로 자격 취득이 보장되지는 않습니다.
+        적용되는 교육 및 평가 기준을 충족해야 합니다.
+      </p>
+
+      <p>
+        <strong>훈련의 범위</strong><br>
+        구조 훈련은 강사의 감독과 안전 관리 아래 진행합니다.
+        이 페이지는 교육 내용을 소개하는 안내이며,
+        실제 구조나 응급처치 절차를 대신하지 않습니다.
+      </p>
+
+      <p>
+        <strong>교육비</strong><br>
+        레스큐 교육비는 650,000원이며
+        OFA/BLS 교육비 200,000원은 별도입니다.
+        장비·시설·기체·교재·자격증 발급과
+        이동·숙박·식사 비용의 포함 여부는 예약 전에 확인해주세요.
+      </p>
+    </div>
+
+    <div class="ow-bottom">
+      <p>
+        함께하는 다이버를 더 잘 살피고 싶다면,<br>
+        다음 배움을 레스큐로 이어가세요.
+      </p>
+
+      <a
+        class="button button-dark"
+        href="mailto:invited.hq@gmail.com?subject=PTRD%20Rescue%20Diver%20Inquiry"
+      >
+        레스큐 과정 문의
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- OFA / BLS 별도 과정 -->
+<section
+  class="section ofa-section"
+  id="ofa-bls"
+  aria-labelledby="ofa-title"
+>
+  <div class="container ofa-layout">
+
+    <div>
+      <p class="eyebrow">
+        SEPARATE COURSE · OFA / BLS
+      </p>
+
+      <h2 class="section-title" id="ofa-title">
+        OFA / BLS<br>
+        응급상황에 대비하는 배움.
+      </h2>
+
+      <p class="section-description">
+        산소 투여 응급처치와 기본소생술을 배우는
+        별도 교육 과정입니다.
+        레스큐 과정에서 요구되는 응급처치 역량과
+        연결해 준비합니다.
+      </p>
+
+      <p class="section-description">
+        레스큐 교육비에 포함되지 않으며,
+        교육 일정과 기간은 별도로 안내합니다.
+        세부 커리큘럼과 발급 자격은 신청 시 확인해주세요.
+      </p>
+
+      <p class="note">
+        이미 관련 자격이 있다면 보유 자격과 발급 시점을 알려주세요.
+        인정 여부를 확인한 뒤 필요한 이수 과정을 안내합니다.
+      </p>
+    </div>
+
+    <aside class="ofa-card" aria-labelledby="ofa-fee-title">
+      <h3 id="ofa-fee-title">교육비 안내</h3>
+
+      <dl class="ofa-fees">
+        <div>
+          <dt>레스큐 · 3~5일</dt>
+          <dd>650,000원</dd>
+        </div>
+
+        <div>
+          <dt>OFA/BLS · 별도 과정</dt>
+          <dd>200,000원</dd>
+        </div>
+
+        <div class="ofa-total">
+          <dt>두 과정 모두 수강 시<br>교육비 합계</dt>
+          <dd>850,000원</dd>
+        </div>
+      </dl>
+
+      <p class="ofa-caption">
+        위 합계는 두 과정의 교육비를 합산한 금액입니다.
+        기타 비용의 포함 여부는 예약 전에 확인해주세요.
+        OFA/BLS 일정이 레스큐의 3~5일 안에 포함되는지는
+        별도 안내합니다.
+      </p>
+
+      <a
+        class="button button-dark"
+        href="mailto:invited.hq@gmail.com?subject=OFA%20BLS%20Course%20Inquiry"
+      >
+        OFA/BLS 문의
+        <span aria-hidden="true">↗</span>
+      </a>
+    </aside>
+
+  </div>
+</section>
     <!-- 프리다이빙 -->
     <section
       class="section free-section"
@@ -1407,14 +1864,24 @@
             </p>
           </details>
 
-         <details>
+        <details>
   <summary>교육 기간과 비용은 어떻게 되나요?</summary>
+
   <p>
-    PTRD 오픈워터는 3일, 교육비 500,000원입니다.
-    PTRD 어드밴스 스쿠버 다이버는 2일,
-    교육비 400,000원이며 해양 실습 5회로 구성됩니다.
-    각 과정의 비용 포함 항목과 추가 비용 유무는
-    예약 전에 확인해주세요.
+    오픈워터는 3일, 500,000원입니다.
+    어드밴스는 2일, 400,000원이며 해양 실습 5회로 구성됩니다.
+    레스큐는 3~5일, 650,000원입니다.
+  </p>
+
+  <p>
+    레스큐와 별도로 이수하는 OFA/BLS는 200,000원이며,
+    두 과정 모두 수강할 경우 교육비 합계는 850,000원입니다.
+    OFA/BLS의 교육 기간과 일정은 별도로 안내합니다.
+  </p>
+
+  <p>
+    기존 응급처치 자격의 인정 여부와
+    각 과정의 비용 포함·불포함 항목은 예약 전에 확인해주세요.
     프리다이빙 과정은 별도로 문의해주세요.
   </p>
 </details>
@@ -1486,6 +1953,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
