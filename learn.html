@@ -1966,8 +1966,209 @@
     <p>INVITED, 바다에 초대받은 사람들.</p>
     <a href="index.html#programs">메인으로 돌아가기 ↗</a>
   </footer>
+  <!-- 어디서든 열 수 있는 과정 이동 메뉴 -->
+<style>
+  .course-jump {
+    position: fixed;
+    right: 24px;
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    z-index: 1000;
+    font-family: inherit;
+  }
+
+  .course-jump__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    min-height: 52px;
+    padding: 14px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    background: #123d42;
+    color: #fff;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(18, 61, 66, 0.2);
+  }
+
+  .course-jump__panel {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 12px);
+    width: min(280px, calc(100vw - 32px));
+    padding: 12px;
+    border: 1px solid #d7ded6;
+    border-radius: 20px;
+    background: #f7f7f2;
+    box-shadow: 0 12px 40px rgba(18, 61, 66, 0.18);
+  }
+
+  .course-jump__panel[hidden] {
+    display: none;
+  }
+
+  .course-jump__title {
+    margin: 0;
+    padding: 10px 12px 14px;
+    color: #637570;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .course-jump__panel a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 50px;
+    padding: 13px 14px;
+    border-radius: 12px;
+    color: #173e42;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .course-jump__panel a + a {
+    margin-top: 4px;
+  }
+
+  .course-jump__panel a:hover,
+  .course-jump__panel a:focus-visible {
+    background: #e8eedf;
+  }
+
+  .course-jump__toggle:focus-visible,
+  .course-jump__panel a:focus-visible {
+    outline: 3px solid #8fa85b;
+    outline-offset: 3px;
+  }
+
+  .course-jump__toggle[aria-expanded="true"] {
+    background: #d6eba9;
+    border-color: #d6eba9;
+    color: #123d42;
+  }
+
+  @media (max-width: 760px) {
+    .course-jump {
+      right: 16px;
+      bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .course-jump__toggle {
+      min-height: 48px;
+      padding: 12px 18px;
+      font-size: 13px;
+    }
+  }
+</style>
+
+<div class="course-jump" id="course-jump">
+  <nav
+    class="course-jump__panel"
+    id="course-jump-panel"
+    aria-label="교육 과정 빠른 이동"
+    hidden
+  >
+    <p class="course-jump__title">어떤 과정을 살펴볼까요?</p>
+
+    <a href="#scuba">
+      오픈워터
+      <span aria-hidden="true">↗</span>
+    </a>
+
+    <a href="#advanced">
+      어드밴스
+      <span aria-hidden="true">↗</span>
+    </a>
+
+    <a href="#rescue">
+      레스큐
+      <span aria-hidden="true">↗</span>
+    </a>
+
+    <a href="#ofa-bls">
+      OFA / BLS
+      <span aria-hidden="true">↗</span>
+    </a>
+  </nav>
+
+  <button
+    class="course-jump__toggle"
+    id="course-jump-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="course-jump-panel"
+  >
+    <span>과정 이동</span>
+    <span class="course-jump__icon" aria-hidden="true">＋</span>
+  </button>
+</div>
+
+<script>
+  (() => {
+    const root = document.getElementById("course-jump");
+    const toggle = document.getElementById("course-jump-toggle");
+    const panel = document.getElementById("course-jump-panel");
+    const icon = root.querySelector(".course-jump__icon");
+
+    function setOpen(open) {
+      panel.hidden = !open;
+      toggle.setAttribute("aria-expanded", String(open));
+      icon.textContent = open ? "−" : "＋";
+    }
+
+    toggle.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") !== "true";
+      setOpen(open);
+
+      if (open) {
+        panel.querySelector("a").focus({ preventScroll: true });
+      }
+    });
+
+    panel.addEventListener("click", (event) => {
+      const link = event.target.closest("a");
+      if (!link) return;
+
+      const destination = document.getElementById(
+        link.getAttribute("href").slice(1)
+      );
+
+      if (!destination) return;
+
+      setOpen(false);
+
+      // 이동 후 키보드 탐색도 선택한 과정에서 이어집니다.
+      if (!destination.hasAttribute("tabindex")) {
+        destination.setAttribute("tabindex", "-1");
+      }
+
+      destination.focus({ preventScroll: true });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!root.contains(event.target)) {
+        setOpen(false);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !panel.hidden) {
+        setOpen(false);
+        toggle.focus({ preventScroll: true });
+      }
+    });
+  })();
+</script>
 </body>
 </html>
+
 
 
 
