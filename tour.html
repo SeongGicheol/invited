@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="INVITED가 울릉도와 세계의 바다에서 진행하는 다이빙 투어 일정을 확인하세요."
+  >
+
+  <title>다이브 트립 | INVITED</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --paper: #f7f7f2;
+      --ink: #173e42;
+      --ocean: #123d42;
+      --muted: #637570;
+      --line: #d7ded6;
+      --lime: #d6eba9;
+      --soft: #e9eee5;
+      --white: #ffffff;
+      --gutter: clamp(22px, 6vw, 96px);
+      --section: clamp(72px, 9vw, 130px);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "DM Sans", "Noto Sans KR", sans-serif;
+      word-break: keep-all;
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 2000;
+      padding: 12px 16px;
+      background: var(--white);
+      transform: translateY(-150%);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1500px;
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 247, 242, 0.94);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      color: var(--ink);
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -1.4px;
+      text-decoration: none;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 4vw, 52px);
+    }
+
+    .main-nav a {
+      color: var(--ink);
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .main-nav a:hover,
+    .main-nav a:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+
+    .hero {
+      min-height: 680px;
+      display: flex;
+      align-items: flex-end;
+      padding-block: clamp(110px, 15vw, 190px) clamp(72px, 9vw, 120px);
+      background:
+        linear-gradient(90deg, rgba(18, 61, 66, 0.97), rgba(18, 61, 66, 0.68)),
+        radial-gradient(circle at 80% 20%, #4d7b7d, var(--ocean));
+      color: var(--white);
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 54px;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+    }
+
+    .breadcrumb a {
+      text-decoration: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 24px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+    }
+
+    .hero h1 {
+      max-width: 980px;
+      margin: 0;
+      font-size: clamp(44px, 7.4vw, 106px);
+      font-weight: 500;
+      letter-spacing: -0.055em;
+      line-height: 1.08;
+    }
+
+    .hero-description {
+      max-width: 620px;
+      margin: 38px 0 0;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 15px;
+      line-height: 2;
+    }
+
+    .trip-section {
+      padding-block: var(--section);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.6fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 54px;
+    }
+
+    .section-head h2 {
+      max-width: 850px;
+      margin: 0;
+      font-size: clamp(34px, 5vw, 68px);
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      line-height: 1.2;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .trip-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+      padding-block: 18px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trip-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-button {
+      min-height: 42px;
+      padding: 10px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .filter-button[aria-pressed="true"] {
+      border-color: var(--ocean);
+      background: var(--ocean);
+      color: var(--white);
+    }
+
+    .trip-count {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .trip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .trip-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--white);
+    }
+
+    .trip-card[hidden] {
+      display: none;
+    }
+
+    .trip-image {
+      position: relative;
+      min-height: 330px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, transparent 28%, rgba(8, 35, 39, 0.7)),
+        var(--trip-image, linear-gradient(135deg, #658e91, #123d42));
+      background-position: center;
+      background-size: cover;
+    }
+
+    .trip-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.08), transparent 55%);
+    }
+
+    .trip-badges {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .trip-badge {
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(247, 247, 242, 0.92);
+      color: var(--ink);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    .trip-badge.status-soon {
+      background: var(--lime);
+    }
+
+    .trip-badge.status-closed {
+      background: #d7d7d2;
+      color: #666;
+    }
+
+    .trip-place {
+      position: absolute;
+      right: 20px;
+      bottom: 18px;
+      left: 20px;
+      z-index: 1;
+      margin: 0;
+      color: var(--white);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+    }
+
+    .trip-content {
+      padding: 26px;
+    }
+
+    .trip-number {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+    }
+
+    .trip-content h3 {
+      min-height: 2.7em;
+      margin: 0;
+      font-size: clamp(24px, 2.3vw, 32px);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 1.35;
+    }
+
+    .trip-summary {
+      min-height: 4.2em;
+      margin: 18px 0 24px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .trip-info {
+      margin: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .trip-info div {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block: 13px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trip-info dt {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .trip-info dd {
+      margin: 0;
+      text-align: right;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .trip-actions {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      margin-top: 26px;
+    }
+
+    .trip-link {
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 13px 17px;
+      border: 1px solid var(--ocean);
+      border-radius: 12px;
+      background: var(--ocean);
+      color: var(--white);
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .trip-link.secondary {
+      min-width: 50px;
+      justify-content: center;
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .empty-trip {
+      grid-column: 1 / -1;
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+      padding: 50px 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--soft);
+      text-align: center;
+    }
+
+    .empty-trip strong {
+      display: block;
+      margin-bottom: 18px;
+      font-size: clamp(27px, 4vw, 42px);
+      font-weight: 500;
+    }
+
+    .empty-trip p {
+      max-width: 520px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .trip-philosophy {
+      padding-block: var(--section);
+      background: var(--ocean);
+      color: var(--white);
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: clamp(48px, 10vw, 150px);
+    }
+
+    .philosophy-grid h2 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 66px);
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      line-height: 1.25;
+    }
+
+    .philosophy-list {
+      border-top: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .philosophy-item {
+      display: grid;
+      grid-template-columns: 55px 1fr;
+      gap: 20px;
+      padding-block: 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .philosophy-item span {
+      color: var(--lime);
+      font-size: 11px;
+    }
+
+    .philosophy-item h3 {
+      margin: 0 0 12px;
+      font-size: 21px;
+      font-weight: 500;
+    }
+
+    .philosophy-item p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .contact {
+      padding-block: var(--section);
+      text-align: center;
+    }
+
+    .contact h2 {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: clamp(36px, 6vw, 76px);
+      font-weight: 500;
+      letter-spacing: -0.05em;
+      line-height: 1.2;
+    }
+
+    .contact p {
+      margin: 30px auto 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 38px;
+    }
+
+    .contact-actions a {
+      min-height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 15px 22px;
+      border: 1px solid var(--ocean);
+      background: var(--ocean);
+      color: var(--white);
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .contact-actions a:last-child {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding-block: 34px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 1050px) {
+      .trip-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .header-inner {
+        min-height: 72px;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
+
+      .main-nav {
+        gap: 18px;
+      }
+
+      .main-nav a:nth-child(2) {
+        display: none;
+      }
+
+      .hero {
+        min-height: 620px;
+      }
+
+      .section-head,
+      .philosophy-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trip-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .trip-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trip-image {
+        min-height: 310px;
+      }
+
+      .trip-content h3,
+      .trip-summary {
+        min-height: 0;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/" aria-label="INVITED 홈페이지">
+        INVITED
+      </a>
+
+      <nav class="main-nav" aria-label="투어 페이지 메뉴">
+        <a href="#trips">투어 일정</a>
+        <a href="#about">투어 이야기</a>
+        <a href="#contact">문의</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="tour-title">
+      <div class="container">
+        <p class="breadcrumb">
+          <a href="/">HOME</a>
+          <span>/</span>
+          <span>DIVE TRIP</span>
+        </p>
+
+        <p class="eyebrow">INVITED DIVE TRIP · KOREA & OVERSEAS</p>
+
+        <h1 id="tour-title">
+          다음 바다는,<br>
+          어디에서 만날까요?
+        </h1>
+
+        <p class="hero-description">
+          울릉도에서 시작해 세계의 바다로 이어지는 다이빙 여행.
+          가장 가까운 일정부터 확인하고, 함께할 다음 바다를 선택해보세요.
+        </p>
+      </div>
+    </section>
+
+    <section class="trip-section" id="trips" aria-labelledby="trip-list-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">UPCOMING TRIPS</p>
+            <h2 id="trip-list-title">
+              가장 가까운 바다부터<br>
+              차례로 소개합니다.
+            </h2>
+          </div>
+
+          <p>
+            출발일을 기준으로 가까운 일정이 먼저 표시됩니다.
+            모집 상태와 참가 조건을 확인하고 궁금한 점은 카카오톡으로 문의해주세요.
+          </p>
+        </div>
+
+        <div class="trip-toolbar">
+          <div class="trip-filters" role="group" aria-label="투어 지역 필터">
+            <button
+              class="filter-button"
+              type="button"
+              data-filter="all"
+              aria-pressed="true"
+            >
+              전체
+            </button>
+
+            <button
+              class="filter-button"
+              type="button"
+              data-filter="korea"
+              aria-pressed="false"
+            >
+              국내 투어
+            </button>
+
+            <button
+              class="filter-button"
+              type="button"
+              data-filter="overseas"
+              aria-pressed="false"
+            >
+              해외 투어
+            </button>
+          </div>
+
+          <p class="trip-count" id="trip-count" aria-live="polite"></p>
+        </div>
+
+        <div class="trip-grid" id="trip-grid"></div>
+      </div>
+    </section>
+
+    <section class="trip-philosophy" id="about" aria-labelledby="about-title">
+      <div class="container philosophy-grid">
+        <div>
+          <p class="eyebrow">TRAVEL WITH INVITED</p>
+          <h2 id="about-title">
+            다이빙과 여행,<br>
+            그 사이의 모든 시간.
+          </h2>
+        </div>
+
+        <div class="philosophy-list">
+          <article class="philosophy-item">
+            <span>01</span>
+            <div>
+              <h3>안전하게 만나는 새로운 바다</h3>
+              <p>
+                참가자의 자격과 경험, 현지 환경을 함께 고려해
+                투어와 다이빙을 준비합니다.
+              </p>
+            </div>
+          </article>
+
+          <article class="philosophy-item">
+            <span>02</span>
+            <div>
+              <h3>다이빙 뒤에도 이어지는 여행</h3>
+              <p>
+                입수와 출수 사이만이 여행의 전부는 아닙니다.
+                함께 먹고 걷고 쉬는 시간까지 소중하게 생각합니다.
+              </p>
+            </div>
+          </article>
+
+          <article class="philosophy-item">
+            <span>03</span>
+            <div>
+              <h3>같은 바다를 좋아하는 사람들</h3>
+              <p>
+                버디로 만나 서로를 배려하고, 새로운 장소에서
+                함께한 경험을 오래 이어갑니다.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <p class="eyebrow">JOIN THE NEXT TRIP</p>
+
+        <h2 id="contact-title">
+          우리의 다음 바다에,<br>
+          당신도 함께할래요?
+        </h2>
+
+        <p>
+          관심 있는 지역과 보유 자격, 최근 다이빙 경험을 알려주세요.<br>
+          아직 공개되지 않은 투어 소식도 상담할 수 있습니다.
+        </p>
+
+        <div class="contact-actions">
+          <a
+            href="https://pf.kakao.com/_bCxexaX"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            카카오톡으로 문의
+            <span aria-hidden="true">↗</span>
+          </a>
+
+          <a
+            href="https://www.instagram.com/invited_diving/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            인스타그램으로 문의
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 INVITED</span>
+      <span>SLOW / SAFE / STANDARD</span>
+      <a href="/">메인으로 돌아가기 ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    /*
+      ============================================================
+      투어 일정 수정 영역
+      ============================================================
+
+      새로운 투어를 등록할 때 아래 TOURS 배열 안에 정보를 추가하세요.
+
+      start: 출발일을 YYYY-MM-DD 형식으로 입력
+      end: 종료일을 YYYY-MM-DD 형식으로 입력
+      category: 국내는 "korea", 해외는 "overseas"
+      status:
+        "open"   = 모집 중
+        "soon"   = 마감 임박
+        "closed" = 모집 마감
+      image:
+        이미지가 없다면 "" 유지
+        이미지가 있다면 "images/tour-파일명.jpg" 입력
+      published:
+        true  = 홈페이지 공개
+        false = 숨김
+    */
+
+    const TOURS = [
+      /*
+      {
+        id: "ulleungdo-2026-10",
+        title: "울릉도 가을 다이브 트립",
+        location: "ULLEUNGDO · KOREA",
+        category: "korea",
+        start: "2026-10-09",
+        end: "2026-10-11",
+        duration: "2박 3일",
+        dives: "일정별 안내",
+        price: "별도 안내",
+        level: "참가 자격 확인",
+        status: "open",
+        summary: "울릉도의 가을 바다와 섬의 일상을 함께 만나는 다이빙 여행.",
+        image: "images/tour-ulleungdo-autumn.jpg",
+        published: true
+      },
+
+      {
+        id: "overseas-sample",
+        title: "해외 다이브 트립",
+        location: "OVERSEAS",
+        category: "overseas",
+        start: "2026-12-01",
+        end: "2026-12-05",
+        duration: "4박 5일",
+        dives: "일정별 안내",
+        price: "별도 안내",
+        level: "참가 자격 확인",
+        status: "soon",
+        summary: "새로운 바다와 다이빙 문화를 함께 경험하는 해외 다이빙 여행.",
+        image: "",
+        published: true
+      }
+      */
+    ];
+
+    const grid = document.getElementById("trip-grid");
+    const count = document.getElementById("trip-count");
+    const filterButtons = document.querySelectorAll(".filter-button");
+
+    const statusLabels = {
+      open: "모집 중",
+      soon: "마감 임박",
+      closed: "모집 마감"
+    };
+
+    function formatDate(dateString) {
+      if (!dateString) return "일정 준비 중";
+
+      const date = new Date(dateString + "T00:00:00");
+
+      return new Intl.DateTimeFormat("ko-KR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      }).format(date);
+    }
+
+    function escapeHTML(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function createImageStyle(image) {
+      if (!image) {
+        return "linear-gradient(135deg, #668f91, #123d42)";
+      }
+
+      const safeURL = encodeURI(image)
+        .replaceAll('"', "%22")
+        .replaceAll("'", "%27");
+
+      return `url("${safeURL}")`;
+    }
+
+    function getPublishedTours() {
+      return TOURS
+        .filter((tour) => tour.published)
+        .sort((a, b) => {
+          const aDate = a.start
+            ? new Date(a.start + "T00:00:00").getTime()
+            : Number.MAX_SAFE_INTEGER;
+
+          const bDate = b.start
+            ? new Date(b.start + "T00:00:00").getTime()
+            : Number.MAX_SAFE_INTEGER;
+
+          return aDate - bDate;
+        });
+    }
+
+    function renderTrips(filter = "all") {
+      const publishedTours = getPublishedTours();
+
+      const filteredTours = publishedTours.filter((tour) => {
+        return filter === "all" || tour.category === filter;
+      });
+
+      count.textContent = `총 ${filteredTours.length}개의 공개 일정`;
+
+      if (filteredTours.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-trip">
+            <div>
+              <strong>다음 투어를 준비하고 있습니다.</strong>
+              <p>
+                새로운 국내·해외 다이빙 일정이 확정되면
+                가장 가까운 출발일부터 이곳에 공개합니다.
+                카카오톡과 인스타그램에서도 소식을 확인해주세요.
+              </p>
+            </div>
+          </div>
+        `;
+
+        return;
+      }
+
+      grid.innerHTML = filteredTours
+        .map((tour, index) => {
+          const status = statusLabels[tour.status] || "일정 확인";
+
+          return `
+            <article class="trip-card">
+              <div
+                class="trip-image"
+                style="--trip-image: ${createImageStyle(tour.image)}"
+                role="img"
+                aria-label="${escapeHTML(tour.title)} 이미지"
+              >
+                <div class="trip-badges">
+                  <span class="trip-badge">
+                    ${tour.category === "korea" ? "DOMESTIC" : "OVERSEAS"}
+                  </span>
+
+                  <span class="trip-badge status-${escapeHTML(tour.status)}">
+                    ${escapeHTML(status)}
+                  </span>
+                </div>
+
+                <p class="trip-place">
+                  ${escapeHTML(tour.location)}
+                </p>
+              </div>
+
+              <div class="trip-content">
+                <p class="trip-number">
+                  ${String(index + 1).padStart(2, "0")} / DIVE TRIP
+                </p>
+
+                <h3>${escapeHTML(tour.title)}</h3>
+
+                <p class="trip-summary">
+                  ${escapeHTML(tour.summary)}
+                </p>
+
+                <dl class="trip-info">
+                  <div>
+                    <dt>일정</dt>
+                    <dd>
+                      ${formatDate(tour.start)}
+                      ${tour.end ? ` – ${formatDate(tour.end)}` : ""}
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt>기간</dt>
+                    <dd>${escapeHTML(tour.duration)}</dd>
+                  </div>
+
+                  <div>
+                    <dt>다이빙</dt>
+                    <dd>${escapeHTML(tour.dives)}</dd>
+                  </div>
+
+                  <div>
+                    <dt>참가 비용</dt>
+                    <dd>${escapeHTML(tour.price)}</dd>
+                  </div>
+
+                  <div>
+                    <dt>참가 조건</dt>
+                    <dd>${escapeHTML(tour.level)}</dd>
+                  </div>
+                </dl>
+
+                <div class="trip-actions">
+                  <a
+                    class="trip-link"
+                    href="https://pf.kakao.com/_bCxexaX"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    투어 문의
+                    <span aria-hidden="true">↗</span>
+                  </a>
+
+                  <a
+                    class="trip-link secondary"
+                    href="https://www.instagram.com/invited_diving/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="INVITED 인스타그램"
+                  >
+                    IG
+                  </a>
+                </div>
+              </div>
+            </article>
+          `;
+        })
+        .join("");
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        filterButtons.forEach((item) => {
+          item.setAttribute("aria-pressed", "false");
+        });
+
+        button.setAttribute("aria-pressed", "true");
+        renderTrips(button.dataset.filter);
+      });
+    });
+
+    renderTrips();
+  </script>
+</body>
+</html>
