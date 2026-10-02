@@ -1024,259 +1024,495 @@ button:focus-visible {
   </footer>
 
   <script>
-    /*
-      ============================================================
-      투어 일정 수정 영역
-      ============================================================
+(() => {
+  /*
+    ============================================================
+    투어 데이터 수정 영역
+    ============================================================
 
-      새로운 투어를 등록할 때 아래 TOURS 배열 안에 정보를 추가하세요.
+    새로운 투어는 TOURS 배열에 객체를 추가하세요.
 
-      start: 출발일을 YYYY-MM-DD 형식으로 입력
-      end: 종료일을 YYYY-MM-DD 형식으로 입력
-      category: 국내는 "korea", 해외는 "overseas"
-      status:
-        "open"   = 모집 중
-        "soon"   = 마감 임박
-        "closed" = 모집 마감
+    id        : 투어 고유 주소. 영문·숫자·하이픈 사용
+    category  : "korea" 또는 "overseas"
+    start/end : YYYY-MM-DD
+    published : true 공개 / false 숨김
+
+    status:
+      scheduled = 일정 공개
+      open      = 모집 중
+      soon      = 마감 임박
+      closed    = 모집 마감
+
+    참가 가격은 데이터에 넣지 않습니다.
+    카드와 상세 화면 모두 "가격 문의"로 표시합니다.
+  */
+
+  const CONTACT_URL = "https://pf.kakao.com/_bCxexaX";
+
+  const TOURS = [
+    {
+      id: "cebu-2026",
+      title: "INVITED CEBU DIVING TOUR",
+      location: "CEBU · PHILIPPINES",
+      category: "overseas",
+
+      start: "2026-12-22",
+      end: "2026-12-27",
+      duration: "5박 6일",
+      dives: "총 9회",
+
+      maximum: 6,
+      minimum: 4,
+      accommodation: "다이빙 리조트",
+      level: "참가 자격·경험 문의",
+
+      status: "scheduled",
+      published: true,
+
+      summary:
+        "이번 겨울, INVITED와 함께 세부의 바다로. " +
+        "3일간의 다이빙과 자유 관광으로 채우는 여행.",
+
       image:
-        이미지가 없다면 "" 유지
-        이미지가 있다면 "images/tour-파일명.jpg" 입력
-      published:
-        true  = 홈페이지 공개
-        false = 숨김
-    */
+        "https://images.unsplash.com/photo-1771905289172-5078b6ede205?auto=format&fit=crop&w=1600&q=85",
 
-    const TOURS = [
-      /*
-      {
-        id: "ulleungdo-2026-10",
-        title: "울릉도 가을 다이브 트립",
-        location: "ULLEUNGDO · KOREA",
-        category: "korea",
-        start: "2026-10-09",
-        end: "2026-10-11",
-        duration: "2박 3일",
-        dives: "일정별 안내",
-        price: "별도 안내",
-        level: "참가 자격 확인",
-        status: "open",
-        summary: "울릉도의 가을 바다와 섬의 일상을 함께 만나는 다이빙 여행.",
-        image: "images/tour-ulleungdo-autumn.jpg",
-        published: true
-      },
+      imageAlt:
+        "필리핀 세부 모알보알의 산호초와 물고기 — 여행지 참고 사진",
 
-      {
-        id: "overseas-sample",
-        title: "해외 다이브 트립",
-        location: "OVERSEAS",
-        category: "overseas",
-        start: "2026-12-01",
-        end: "2026-12-05",
-        duration: "4박 5일",
-        dives: "일정별 안내",
-        price: "별도 안내",
-        level: "참가 자격 확인",
-        status: "soon",
-        summary: "새로운 바다와 다이빙 문화를 함께 경험하는 해외 다이빙 여행.",
-        image: "",
-        published: true
-      }
-      */
-    ];
+      imageCredit: "Ken Suarez / Unsplash",
 
-    const grid = document.getElementById("trip-grid");
-    const count = document.getElementById("trip-count");
-    const filterButtons = document.querySelectorAll(".filter-button");
+      imageSource:
+        "https://unsplash.com/photos/school-of-fish-swims-above-colorful-coral-reef-iiYDgodFDP0",
 
-    const statusLabels = {
-      open: "모집 중",
-      soon: "마감 임박",
-      closed: "모집 마감"
+      itinerary: [
+        {
+          date: "2026-12-22",
+          title: "세부로 이동",
+          description: "필리핀 세부로 떠나는 날."
+        },
+        {
+          date: "2026-12-23",
+          title: "다이빙 3회",
+          description: "세부의 바다를 만나는 첫 다이빙."
+        },
+        {
+          date: "2026-12-24",
+          title: "다이빙 3회",
+          description: "버디와 함께 즐기는 수중 탐험."
+        },
+        {
+          date: "2026-12-25",
+          title: "다이빙 3회",
+          description: "바다에서 보내는 크리스마스."
+        },
+        {
+          date: "2026-12-26",
+          title: "자유 관광",
+          description: "각자의 속도로 세부를 즐기는 시간."
+        },
+        {
+          date: "2026-12-27",
+          title: "한국 귀국",
+          description: "여행을 마무리하고 한국으로 돌아옵니다."
+        }
+      ],
+
+      extras: [
+        "12월 26일 레이트 체크아웃은 선택 사항이며, 추가 비용은 $40입니다."
+      ],
+
+      note:
+        "항공편, 세부 진행 시간, 포함·불포함 사항과 준비물은 " +
+        "문의 시 안내합니다. 현지 상황에 따라 일정이 조정될 수 있습니다."
+    }
+  ];
+
+  /* ===== 공통 요소 ===== */
+
+  const grid = document.getElementById("trip-grid");
+  const count = document.getElementById("trip-count");
+  const filterButtons = document.querySelectorAll(".filter-button");
+
+  if (!grid || !count) return;
+
+  // 기존 카드 목록 바로 아래에 상세 일정 영역을 추가합니다.
+  const detailRoot = document.createElement("div");
+  detailRoot.id = "tour-details";
+  grid.insertAdjacentElement("afterend", detailRoot);
+
+  const statusLabels = {
+    scheduled: "일정 공개",
+    open: "모집 중",
+    soon: "마감 임박",
+    closed: "모집 마감"
+  };
+
+  function escapeHTML(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function formatDate(value) {
+    return value ? value.replaceAll("-", ".") : "일정 준비 중";
+  }
+
+  function dateRange(tour) {
+    return [
+      formatDate(tour.start),
+      tour.end ? formatDate(tour.end) : ""
+    ].filter(Boolean).join(" — ");
+  }
+
+  function detailHref(tour) {
+    return `#${encodeURIComponent(tour.id)}`;
+  }
+
+  function infoRow(label, value) {
+    return `
+      <div>
+        <dt>${escapeHTML(label)}</dt>
+        <dd>${escapeHTML(value)}</dd>
+      </div>
+    `;
+  }
+
+  function getPublishedTours() {
+    return TOURS
+      .filter(tour => tour.published)
+      .slice()
+      .sort((a, b) => {
+        return (a.start || "9999-12-31")
+          .localeCompare(b.start || "9999-12-31");
+      });
+  }
+
+  function getStatus(tour) {
+    // 종료된 투어를 모집 중으로 계속 표시하지 않습니다.
+    const today = new Intl.DateTimeFormat("sv-SE", {
+      timeZone: "Asia/Seoul",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit"
+    }).format(new Date());
+
+    if (tour.end && tour.end < today) {
+      return { key: "closed", label: "종료된 일정" };
+    }
+
+    return {
+      key: tour.status,
+      label: statusLabels[tour.status] || "일정 확인"
     };
+  }
 
-    function formatDate(dateString) {
-      if (!dateString) return "일정 준비 중";
+  /* ===== 카드 ===== */
 
-      const date = new Date(dateString + "T00:00:00");
+  function createCard(tour, index) {
+    const status = getStatus(tour);
+    const anchor = detailHref(tour);
 
-      return new Intl.DateTimeFormat("ko-KR", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      }).format(date);
-    }
+    return `
+      <article class="trip-card">
+        <a
+          class="trip-image"
+          href="${anchor}"
+          aria-label="${escapeHTML(tour.title)} 상세 일정 보기"
+        >
+          ${
+            tour.image
+              ? `
+                <img
+                  src="${escapeHTML(tour.image)}"
+                  alt="${escapeHTML(tour.imageAlt || tour.title)}"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="900"
+                >
+              `
+              : ""
+          }
 
-    function escapeHTML(value) {
-      return String(value ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
+          <div class="trip-badges">
+            <span class="trip-badge">
+              ${tour.category === "korea" ? "DOMESTIC" : "OVERSEAS"}
+            </span>
 
-    function createImageStyle(image) {
-      if (!image) {
-        return "linear-gradient(135deg, #668f91, #123d42)";
-      }
-
-      const safeURL = encodeURI(image)
-        .replaceAll('"', "%22")
-        .replaceAll("'", "%27");
-
-      return `url("${safeURL}")`;
-    }
-
-    function getPublishedTours() {
-      return TOURS
-        .filter((tour) => tour.published)
-        .sort((a, b) => {
-          const aDate = a.start
-            ? new Date(a.start + "T00:00:00").getTime()
-            : Number.MAX_SAFE_INTEGER;
-
-          const bDate = b.start
-            ? new Date(b.start + "T00:00:00").getTime()
-            : Number.MAX_SAFE_INTEGER;
-
-          return aDate - bDate;
-        });
-    }
-
-    function renderTrips(filter = "all") {
-      const publishedTours = getPublishedTours();
-
-      const filteredTours = publishedTours.filter((tour) => {
-        return filter === "all" || tour.category === filter;
-      });
-
-      count.textContent = `총 ${filteredTours.length}개의 공개 일정`;
-
-      if (filteredTours.length === 0) {
-        grid.innerHTML = `
-          <div class="empty-trip">
-            <div>
-              <strong>다음 투어를 준비하고 있습니다.</strong>
-              <p>
-                새로운 국내·해외 다이빙 일정이 확정되면
-                가장 가까운 출발일부터 이곳에 공개합니다.
-                카카오톡과 인스타그램에서도 소식을 확인해주세요.
-              </p>
-            </div>
+            <span class="trip-badge status-${escapeHTML(status.key)}">
+              ${escapeHTML(status.label)}
+            </span>
           </div>
-        `;
 
-        return;
-      }
+          <p class="trip-place">
+            ${escapeHTML(tour.location)}
+          </p>
+        </a>
 
-      grid.innerHTML = filteredTours
-        .map((tour, index) => {
-          const status = statusLabels[tour.status] || "일정 확인";
+        <div class="trip-content">
+          <p class="trip-number">
+            ${String(index + 1).padStart(2, "0")} / DIVE TRIP
+          </p>
 
-          return `
-            <article class="trip-card">
-              <div
-                class="trip-image"
-                style="--trip-image: ${createImageStyle(tour.image)}"
-                role="img"
-                aria-label="${escapeHTML(tour.title)} 이미지"
-              >
-                <div class="trip-badges">
-                  <span class="trip-badge">
-                    ${tour.category === "korea" ? "DOMESTIC" : "OVERSEAS"}
-                  </span>
+          <h3>
+            <a href="${anchor}">
+              ${escapeHTML(tour.title)}
+            </a>
+          </h3>
 
-                  <span class="trip-badge status-${escapeHTML(tour.status)}">
-                    ${escapeHTML(status)}
-                  </span>
-                </div>
+          <p class="trip-summary">
+            ${escapeHTML(tour.summary)}
+          </p>
 
-                <p class="trip-place">
-                  ${escapeHTML(tour.location)}
-                </p>
-              </div>
+          <dl class="trip-info">
+            ${infoRow("일정", dateRange(tour))}
+            ${infoRow("기간", tour.duration)}
+            ${infoRow("다이빙", tour.dives)}
+            ${infoRow(
+              "참가 인원",
+              `최대 ${tour.maximum}명 / 최소 출발 ${tour.minimum}명`
+            )}
+            ${infoRow("참가 비용", "가격 문의")}
+          </dl>
 
-              <div class="trip-content">
-                <p class="trip-number">
-                  ${String(index + 1).padStart(2, "0")} / DIVE TRIP
-                </p>
+          <div class="trip-actions">
+            <a class="trip-link" href="${anchor}">
+              상세 일정
+              <span aria-hidden="true">↗</span>
+            </a>
 
-                <h3>${escapeHTML(tour.title)}</h3>
+            <a
+              class="trip-link secondary"
+              href="${CONTACT_URL}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="${escapeHTML(tour.title)} 가격 문의, 카카오톡 새 창"
+            >
+              가격 문의
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
 
-                <p class="trip-summary">
-                  ${escapeHTML(tour.summary)}
-                </p>
-
-                <dl class="trip-info">
-                  <div>
-                    <dt>일정</dt>
-                    <dd>
-                      ${formatDate(tour.start)}
-                      ${tour.end ? ` – ${formatDate(tour.end)}` : ""}
-                    </dd>
-                  </div>
-
-                  <div>
-                    <dt>기간</dt>
-                    <dd>${escapeHTML(tour.duration)}</dd>
-                  </div>
-
-                  <div>
-                    <dt>다이빙</dt>
-                    <dd>${escapeHTML(tour.dives)}</dd>
-                  </div>
-
-                  <div>
-                    <dt>참가 비용</dt>
-                    <dd>${escapeHTML(tour.price)}</dd>
-                  </div>
-
-                  <div>
-                    <dt>참가 조건</dt>
-                    <dd>${escapeHTML(tour.level)}</dd>
-                  </div>
-                </dl>
-
-                <div class="trip-actions">
+          ${
+            tour.imageSource
+              ? `
+                <p class="trip-image-credit">
+                  여행지 참고 사진 ·
                   <a
-                    class="trip-link"
-                    href="https://pf.kakao.com/_bCxexaX"
+                    href="${escapeHTML(tour.imageSource)}"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    투어 문의
-                    <span aria-hidden="true">↗</span>
+                    ${escapeHTML(tour.imageCredit)}
                   </a>
+                </p>
+              `
+              : ""
+          }
+        </div>
+      </article>
+    `;
+  }
 
-                  <a
-                    class="trip-link secondary"
-                    href="https://www.instagram.com/invited_diving/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="INVITED 인스타그램"
-                  >
-                    IG
-                  </a>
-                </div>
-              </div>
-            </article>
-          `;
-        })
-        .join("");
-    }
-
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        filterButtons.forEach((item) => {
-          item.setAttribute("aria-pressed", "false");
-        });
-
-        button.setAttribute("aria-pressed", "true");
-        renderTrips(button.dataset.filter);
-      });
+  function renderTrips(filter = "all") {
+    const tours = getPublishedTours().filter(tour => {
+      return filter === "all" || tour.category === filter;
     });
 
-    renderTrips();
-  </script>
+    count.textContent = `총 ${tours.length}개의 공개 일정`;
+
+    if (tours.length === 0) {
+      grid.innerHTML = `
+        <div class="empty-trip">
+          <div>
+            <strong>다음 투어를 준비하고 있습니다.</strong>
+            <p>
+              선택한 지역의 공개 일정이 아직 없습니다.
+              새로운 소식은 카카오톡과 인스타그램으로 문의해주세요.
+            </p>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    grid.innerHTML = tours.map(createCard).join("");
+
+    // 외부 사진 오류 시 깨진 이미지 대신 기존 배경을 보여줍니다.
+    grid.querySelectorAll(".trip-image img").forEach(image => {
+      const hideBrokenImage = () => {
+        image.style.display = "none";
+      };
+
+      image.addEventListener("error", hideBrokenImage, { once: true });
+
+      if (image.complete && image.naturalWidth === 0) {
+        hideBrokenImage();
+      }
+    });
+  }
+
+  /* ===== 데이터 기반 상세 일정 ===== */
+
+  function createDetail(tour) {
+    const itinerary = tour.itinerary || [];
+    const extras = tour.extras || [];
+
+    return `
+      <section
+        class="tour-detail"
+        id="${escapeHTML(tour.id)}"
+        aria-labelledby="${escapeHTML(tour.id)}-title"
+        tabindex="-1"
+      >
+        <header class="tour-detail-header">
+          <p class="eyebrow">
+            ${escapeHTML(tour.location)} · DIVE TRIP
+          </p>
+
+          <h2 id="${escapeHTML(tour.id)}-title">
+            ${escapeHTML(tour.title)}
+          </h2>
+
+          <p>
+            ${escapeHTML(dateRange(tour))}
+            · ${escapeHTML(tour.duration)}
+          </p>
+        </header>
+
+        <div class="tour-detail-grid">
+          <ol class="tour-itinerary">
+            ${
+              itinerary.map((day, index) => `
+                <li>
+                  <div class="tour-day-label">
+                    <strong>DAY ${index + 1}</strong>
+                    <time datetime="${escapeHTML(day.date)}">
+                      ${escapeHTML(formatDate(day.date))}
+                    </time>
+                  </div>
+
+                  <div class="tour-day-copy">
+                    <h3>${escapeHTML(day.title)}</h3>
+                    <p>${escapeHTML(day.description)}</p>
+                  </div>
+                </li>
+              `).join("")
+            }
+          </ol>
+
+          <aside
+            class="tour-booking"
+            aria-label="${escapeHTML(tour.title)} 참여 안내"
+          >
+            <h3>함께 떠나기 전에</h3>
+
+            <dl class="trip-info">
+              ${infoRow("기간", tour.duration)}
+              ${infoRow("다이빙", tour.dives)}
+              ${infoRow("모집 인원", `최대 ${tour.maximum}명`)}
+              ${infoRow("최소 출발", `${tour.minimum}명`)}
+              ${infoRow("숙소", tour.accommodation)}
+              ${infoRow("참가 조건", tour.level)}
+              ${infoRow("참가 비용", "가격 문의")}
+            </dl>
+
+            ${
+              extras.map(extra => `
+                <p class="tour-extra">${escapeHTML(extra)}</p>
+              `).join("")
+            }
+
+            <p class="tour-note">${escapeHTML(tour.note)}</p>
+
+            <a
+              class="trip-link"
+              href="${CONTACT_URL}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              카카오톡으로 가격 문의
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <p class="trip-image-credit">
+              카드 사진은 여행지 참고 이미지입니다.<br>
+              사진 속 장소가 확정 다이빙 포인트를 의미하지는 않습니다.
+            </p>
+          </aside>
+        </div>
+
+        <a class="tour-back" href="#trips">
+          ↑ 투어 목록으로 돌아가기
+        </a>
+      </section>
+    `;
+  }
+
+  function setFilter(filter) {
+    filterButtons.forEach(button => {
+      button.setAttribute(
+        "aria-pressed",
+        String(button.dataset.filter === filter)
+      );
+    });
+
+    renderTrips(filter);
+
+    // 선택한 지역의 상세 일정만 함께 표시합니다.
+    detailRoot.querySelectorAll(".tour-detail").forEach(section => {
+      const tour = TOURS.find(item => item.id === section.id);
+      section.hidden =
+        filter !== "all" && tour?.category !== filter;
+    });
+  }
+
+  /* ===== 홈 팝업 → 세부 상세 일정 직접 연결 ===== */
+
+  function moveToLinkedTour() {
+    let id;
+
+    try {
+      id = decodeURIComponent(window.location.hash.slice(1));
+    } catch {
+      return;
+    }
+
+    const tour = getPublishedTours().find(item => item.id === id);
+
+    if (!tour) return;
+
+    const target = document.getElementById(tour.id);
+
+    if (!target) return;
+
+    // 국내 필터 상태에서도 해외 투어 직접 링크가 작동합니다.
+    if (target.hidden) setFilter(tour.category);
+
+    requestAnimationFrame(() => {
+      target.scrollIntoView({ block: "start" });
+      target.focus({ preventScroll: true });
+    });
+  }
+
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      setFilter(button.dataset.filter || "all");
+    });
+  });
+
+  detailRoot.innerHTML = getPublishedTours()
+    .map(createDetail)
+    .join("");
+
+  renderTrips();
+  moveToLinkedTour();
+
+  window.addEventListener("hashchange", moveToLinkedTour);
+})();
+</script>
 </body>
 </html>
