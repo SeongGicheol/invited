@@ -1092,7 +1092,7 @@ body.invited-trip-open {
       <nav class="desktop-nav" aria-label="주 메뉴">
         <a href="#story">Our story</a>
         <a href="#programs">Programs</a>
-        <a href="/tour.html">Dive trip</a>
+        <a href="/tour.html" onclick="trackDiveTripClick()">Dive trip</a>
         <a href="#community">Community</a>
       </nav>
 
@@ -1908,6 +1908,26 @@ const target = href.startsWith("#")
     }
   }, 300);
 })();
+</script>
+<script>
+  function trackDiveTripClick() {
+
+    // Google Analytics
+    if (typeof gtag === 'function') {
+      gtag('event', 'dive_trip_click', {
+        event_category: 'navigation',
+        event_label: 'home_to_dive_trip'
+      });
+    }
+
+    // Meta Pixel
+    if (typeof fbq === 'function') {
+      fbq('trackCustom', 'DiveTripClick', {
+        location: 'home'
+      });
+    }
+
+  }
 </script>
 </body>
 </html>
