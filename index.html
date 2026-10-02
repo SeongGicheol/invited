@@ -1544,7 +1544,11 @@ body.invited-trip-open {
       link.addEventListener("click", () => {
         closeMenu();
 
-        const target = document.querySelector(link.getAttribute("href"));
+        const href = link.getAttribute("href") || "";
+
+const target = href.startsWith("#")
+  ? document.getElementById(href.slice(1))
+  : null;
 
         if (target) {
           target.setAttribute("tabindex", "-1");
