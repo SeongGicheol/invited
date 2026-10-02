@@ -592,6 +592,248 @@
         flex-direction: column;
       }
     }
+    /* ===== 해외 투어 카드·상세 일정 추가 ===== */
+html {
+  scroll-padding-top: 110px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #83a948;
+  outline-offset: 5px;
+}
+
+/* 기존 배경 이미지 대신 실제 이미지 요소 사용 */
+.trip-image {
+  display: block;
+  text-decoration: none;
+  background: linear-gradient(135deg, #658e91, #123d42);
+}
+
+.trip-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+
+.trip-image:hover img {
+  transform: scale(1.04);
+}
+
+.trip-image::after {
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 35, 39, .05) 25%,
+    rgba(8, 35, 39, .75)
+  );
+}
+
+.trip-content h3 a {
+  text-decoration: none;
+}
+
+.trip-content h3 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.trip-image-credit {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.trip-image-credit a {
+  text-underline-offset: 3px;
+}
+
+.trip-actions {
+  grid-template-columns: 1fr 1fr;
+}
+
+.trip-link {
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.trip-info dt {
+  flex-shrink: 0;
+}
+
+.trip-info dd {
+  line-height: 1.8;
+}
+
+/* 상세 일정 */
+.tour-detail {
+  margin-top: 72px;
+  padding-top: 52px;
+  border-top: 1px solid var(--line);
+}
+
+.tour-detail-header {
+  margin-bottom: 32px;
+}
+
+.tour-detail-header .eyebrow {
+  margin-bottom: 16px;
+}
+
+.tour-detail-header h2 {
+  margin: 0 0 18px;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 500;
+  letter-spacing: -.04em;
+  line-height: 1.35;
+}
+
+.tour-detail-header > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.tour-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+  align-items: start;
+  gap: clamp(28px, 5vw, 70px);
+}
+
+.tour-itinerary {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.tour-itinerary li {
+  display: grid;
+  grid-template-columns: 125px minmax(0, 1fr);
+  gap: 24px;
+  padding: 25px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.tour-day-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tour-day-label strong {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.tour-day-label time {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.tour-day-copy h3 {
+  margin: 0 0 8px;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.tour-day-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.tour-booking {
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--soft);
+}
+
+.tour-booking h3 {
+  margin: 0 0 24px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.tour-booking .trip-info {
+  margin-bottom: 24px;
+}
+
+.tour-extra {
+  margin: 0 0 18px;
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--paper);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.tour-note {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.tour-back {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 12px;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 92px;
+  }
+
+  .tour-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tour-itinerary li {
+    grid-template-columns: 95px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .tour-booking {
+    padding: 24px;
+  }
+
+  .trip-content {
+    padding: 24px;
+  }
+
+  .trip-link {
+    padding-inline: 12px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .trip-image img {
+    transition: none;
+  }
+
+  .trip-image:hover img {
+    transform: none;
+  }
+}
   </style>
 </head>
 
