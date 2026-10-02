@@ -887,6 +887,144 @@
         transition: none !important;
       }
     }
+    /* ===== 해외 투어 안내 팝업 ===== */
+body.invited-trip-open {
+  overflow: hidden;
+}
+
+.invited-trip-popup {
+  position: fixed;
+  inset: 0;
+  width: min(460px, calc(100% - 32px));
+  max-height: calc(100vh - 32px);
+  max-height: calc(100svh - 32px);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--paper);
+  box-shadow: 0 24px 90px #06262c33;
+}
+
+.invited-trip-popup::backdrop {
+  background: #06262c88;
+  backdrop-filter: blur(4px);
+}
+
+.invited-trip-inner {
+  position: relative;
+}
+
+.invited-trip-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 4px;
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 12px;
+}
+
+.invited-trip-image {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  background: var(--ocean);
+}
+
+.invited-trip-copy {
+  padding: 30px 32px 18px;
+}
+
+.invited-trip-copy .eyebrow {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1.6px;
+}
+
+.invited-trip-copy h2 {
+  margin-bottom: 18px;
+  font-size: clamp(28px, 6vw, 36px);
+  font-weight: 500;
+  letter-spacing: -1.5px;
+  line-height: 1.4;
+}
+
+.invited-trip-name {
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .5px;
+}
+
+.invited-trip-dates {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.invited-trip-meta {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.invited-trip-copy .button {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.invited-trip-later {
+  display: block;
+  min-height: 44px;
+  margin: 10px auto 0;
+  padding: 10px 18px;
+  border: 0;
+  color: var(--muted);
+  background: transparent;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.invited-trip-credit {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+.invited-trip-credit a {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .invited-trip-image {
+    height: 165px;
+  }
+
+  .invited-trip-copy {
+    padding: 24px 24px 14px;
+  }
+}
+
+@media (max-height: 650px) {
+  .invited-trip-image {
+    height: 110px;
+  }
+
+  .invited-trip-copy {
+    padding-top: 20px;
+  }
+}
   </style>
 </head>
 
@@ -1519,5 +1657,202 @@
     document.getElementById("year").textContent =
       new Date().getFullYear();
   </script>
+  <!-- ===== 해외 투어 안내 ===== -->
+<dialog
+  class="invited-trip-popup"
+  id="invited-trip-popup"
+  aria-labelledby="invited-trip-title"
+>
+  <div class="invited-trip-inner">
+    <button
+      class="invited-trip-close"
+      type="button"
+      data-trip-close
+      aria-label="해외 투어 안내 닫기"
+      autofocus
+    >
+      닫기 ×
+    </button>
+
+    <img
+      class="invited-trip-image"
+      id="invited-trip-image"
+      alt=""
+      width="920"
+      height="420"
+    >
+
+    <div class="invited-trip-copy">
+      <p class="eyebrow">YOU ARE INVITED · OVERSEAS TRIP</p>
+
+      <h2 id="invited-trip-title">
+        이번 겨울,<br>
+        세부의 바다로.
+      </h2>
+
+      <p class="invited-trip-name" id="invited-trip-name"></p>
+      <p class="invited-trip-dates" id="invited-trip-dates"></p>
+      <p class="invited-trip-meta" id="invited-trip-meta"></p>
+
+      <a
+        class="button button-dark"
+        id="invited-trip-link"
+        href="/tour.html#cebu-2026"
+      >
+        해외 투어 일정 보기
+        <span aria-hidden="true">↗</span>
+      </a>
+
+      <button
+        class="invited-trip-later"
+        type="button"
+        data-trip-close
+      >
+        다음에 볼게요
+      </button>
+
+      <p class="invited-trip-credit">
+        여행지 참고 사진 ·
+        <a
+          id="invited-trip-credit"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ken Suarez / Unsplash
+        </a>
+      </p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  /* ===== 홈 팝업 정보: 수정할 때는 이 부분을 변경하세요 ===== */
+  const announcement = {
+    id: "cebu-2026",
+    name: "INVITED CEBU DIVING TOUR",
+    startDate: "2026-12-22",
+    endDate: "2026-12-27",
+    dives: 9,
+    maximum: 6,
+    minimum: 4,
+    href: "/tour.html#cebu-2026",
+    image:
+      "https://images.unsplash.com/photo-1771905289172-5078b6ede205?auto=format&fit=crop&w=1200&q=85",
+    imageAlt:
+      "필리핀 세부 모알보알의 산호초와 물고기 — 여행지 참고 사진",
+    imageSource:
+      "https://unsplash.com/photos/school-of-fish-swims-above-colorful-coral-reef-iiYDgodFDP0"
+  };
+
+  const popup = document.getElementById("invited-trip-popup");
+
+  if (!popup || typeof popup.showModal !== "function") return;
+
+  // 출발일 이후에는 자동으로 안내하지 않습니다.
+  const departure = Date.parse(
+    `${announcement.startDate}T00:00:00+09:00`
+  );
+
+  if (Date.now() >= departure) return;
+
+  // 특정 섹션으로 바로 들어온 방문자는 방해하지 않습니다.
+  if (window.location.hash) return;
+
+  const storageKey = `invited:tour-popup:${announcement.id}`;
+
+  try {
+    if (sessionStorage.getItem(storageKey) === "shown") return;
+  } catch {
+    // 저장소가 차단되어도 팝업의 닫기 기능은 정상 작동합니다.
+  }
+
+  const formatDate = value => value.replaceAll("-", ".");
+
+  document.getElementById("invited-trip-name").textContent =
+    announcement.name;
+
+  document.getElementById("invited-trip-dates").textContent =
+    `${formatDate(announcement.startDate)} — ` +
+    formatDate(announcement.endDate);
+
+  document.getElementById("invited-trip-meta").textContent =
+    `다이빙 ${announcement.dives}회 · ` +
+    `최대 ${announcement.maximum}명 · ` +
+    `최소 출발 ${announcement.minimum}명`;
+
+  document.getElementById("invited-trip-link").href =
+    announcement.href;
+
+  document.getElementById("invited-trip-credit").href =
+    announcement.imageSource;
+
+  let previousFocus = null;
+
+  function closePopup() {
+    popup.close();
+  }
+
+  popup.querySelectorAll("[data-trip-close]").forEach(button => {
+    button.addEventListener("click", closePopup);
+  });
+
+  // 팝업 바깥 배경 클릭으로 닫기
+  popup.addEventListener("click", event => {
+    if (event.target === popup) closePopup();
+  });
+
+  // Esc로 닫아도 스크롤 잠금과 포커스를 복원합니다.
+  popup.addEventListener("close", () => {
+    document.body.classList.remove("invited-trip-open");
+
+    if (previousFocus instanceof HTMLElement) {
+      previousFocus.focus({ preventScroll: true });
+    }
+  });
+
+  document.getElementById("invited-trip-link")
+    .addEventListener("click", closePopup);
+
+  // 첫 화면을 잠시 보여준 뒤 안내합니다.
+  window.setTimeout(() => {
+    const isUsingPage =
+      document.activeElement &&
+      document.activeElement !== document.body;
+
+    if (
+      document.hidden ||
+      window.location.hash ||
+      window.scrollY > 80 ||
+      isUsingPage ||
+      document.querySelector("dialog[open]")
+    ) {
+      return;
+    }
+
+    const image = document.getElementById("invited-trip-image");
+
+    image.alt = announcement.imageAlt;
+
+    // 외부 사진 로딩 실패 시 깨진 이미지 대신 본문만 표시합니다.
+    image.addEventListener("error", () => {
+      image.hidden = true;
+    }, { once: true });
+
+    image.src = announcement.image;
+
+    previousFocus = document.activeElement;
+    popup.showModal();
+    document.body.classList.add("invited-trip-open");
+
+    // 표시 즉시 저장하여 새로고침해도 반복하지 않습니다.
+    try {
+      sessionStorage.setItem(storageKey, "shown");
+    } catch {
+      // 저장소 차단 환경에서는 새로고침 시 재표시될 수 있습니다.
+    }
+  }, 1800);
+})();
+</script>
 </body>
 </html>
