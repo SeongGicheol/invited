@@ -1221,11 +1221,12 @@ button:focus-visible {
 
     return `
       <article class="trip-card">
-        <a
-          class="trip-image"
-          href="${anchor}"
-          aria-label="${escapeHTML(tour.title)} 상세 일정 보기"
-        >
+       <a
+  class="trip-image"
+  href="${anchor}"
+  onclick="trackTourDetail('${escapeHTML(tour.id)}')"
+  aria-label="${escapeHTML(tour.title)} 상세 일정 보기"
+>
           ${
             tour.image
               ? `
@@ -1283,18 +1284,23 @@ button:focus-visible {
           </dl>
 
           <div class="trip-actions">
-            <a class="trip-link" href="${anchor}">
-              상세 일정
-              <span aria-hidden="true">↗</span>
-            </a>
-
             <a
-              class="trip-link secondary"
-              href="${CONTACT_URL}"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="${escapeHTML(tour.title)} 가격 문의, 카카오톡 새 창"
-            >
+  class="trip-link"
+  href="${anchor}"
+  onclick="trackTourDetail('${escapeHTML(tour.id)}')"
+>
+  상세 일정
+  <span aria-hidden="true">↗</span>
+</a>
+
+           <a
+  class="trip-link secondary"
+  href="${CONTACT_URL}"
+  target="_blank"
+  rel="noopener noreferrer"
+  onclick="trackTripInquiry('${escapeHTML(tour.id)}')"
+  aria-label="${escapeHTML(tour.title)} 가격 문의, 카카오톡 새 창"
+>
               가격 문의
               <span aria-hidden="true">↗</span>
             </a>
@@ -1432,12 +1438,13 @@ button:focus-visible {
 
             <p class="tour-note">${escapeHTML(tour.note)}</p>
 
-            <a
-              class="trip-link"
-              href="${CONTACT_URL}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+           <a
+  class="trip-link"
+  href="${CONTACT_URL}"
+  target="_blank"
+  rel="noopener noreferrer"
+  onclick="trackTripInquiry('${escapeHTML(tour.id)}')"
+>
               카카오톡으로 가격 문의
               <span aria-hidden="true">↗</span>
             </a>
@@ -1516,6 +1523,42 @@ button:focus-visible {
   moveToLinkedTour();
 
   window.addEventListener("hashchange", moveToLinkedTour);
+  /* ===== Analytics Tracking ===== */
+
+window.trackTourDetail = function(tourId) {
+
+  // Google Analytics
+  if (typeof gtag === "function") {
+    gtag("event", "dive_trip_detail_click", {
+      trip_id: tourId
+    });
+  }
+
+  // Meta Pixel
+  if (typeof fbq === "function") {
+    fbq("trackCustom", "DiveTripDetailClick", {
+      trip_id: tourId
+    });
+  }
+};
+
+
+window.trackTripInquiry = function(tourId) {
+
+  // Google Analytics
+  if (typeof gtag === "function") {
+    gtag("event", "trip_price_inquiry", {
+      trip_id: tourId
+    });
+  }
+
+  // Meta Pixel
+  if (typeof fbq === "function") {
+    fbq("track", "Contact", {
+      content_name: tourId
+    });
+  }
+};
 })();
 </script>
 </body>
