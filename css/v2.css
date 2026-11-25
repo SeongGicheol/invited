@@ -1,0 +1,947 @@
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css');
+
+/* ========================================
+   INVITED WEBSITE V2.0
+   Global Design System
+======================================== */
+
+:root {
+    --color-primary: #3977B9;
+    --color-white: #FFFFFF;
+    --color-black: #222222;
+    --color-gray: #777777;
+    --color-light: #F7F8FA;
+    --color-border: #E8E8E8;
+
+    --font-primary: "Pretendard Variable",
+        Pretendard, -apple-system,
+        BlinkMacSystemFont, sans-serif;
+
+    --container-width: 1440px;
+    --page-padding: 48px;
+    --section-spacing: 100px;
+    --header-height: 76px;
+}
+
+/* ========================================
+   01. RESET
+======================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-white);
+    color: var(--color-black);
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.025em;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+}
+
+/* ========================================
+   02. LAYOUT
+======================================== */
+
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding-inline: var(--page-padding);
+}
+
+.section {
+    padding-block: var(--section-spacing);
+}
+
+.section-light {
+    background: var(--color-light);
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.section-title {
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.045em;
+}
+
+.section-description {
+    margin-top: 10px;
+    color: var(--color-gray);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.section-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    font-size: 14px;
+    font-weight: 400;
+    min-height: 44px;
+}
+
+.section-link:hover {
+    color: var(--color-primary);
+}
+
+/* ========================================
+   03. HEADER
+======================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    height: var(--header-height);
+}
+
+.brand-logo {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    min-height: 44px;
+}
+
+.brand-logo img {
+    width: 128px;
+    max-height: 46px;
+    object-fit: contain;
+}
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+.desktop-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 15px;
+    font-weight: 400;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.desktop-nav a:hover,
+.desktop-nav a[aria-current="page"] {
+    color: var(--color-primary);
+}
+
+.header-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: var(--color-black);
+}
+
+.menu-toggle svg {
+    width: 24px;
+    height: 24px;
+}
+
+.mobile-nav {
+    display: none;
+}
+
+/* ========================================
+   04. MAIN HERO
+======================================== */
+
+.hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: var(--color-light);
+}
+
+.hero-media {
+    position: relative;
+    width: 100%;
+    height: clamp(380px, 65vh, 720px);
+    overflow: hidden;
+    background: #17485F;
+}
+
+.hero-media img,
+.hero-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-content {
+    padding-block: 36px 40px;
+}
+
+.hero-title {
+    font-size: clamp(30px, 3.5vw, 48px);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.045em;
+}
+
+.hero-description {
+    margin-top: 12px;
+    font-size: 16px;
+    color: var(--color-gray);
+    font-weight: 400;
+}
+
+.hero-video-toggle {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,0.6);
+    color: var(--color-white);
+    background: rgba(0,0,0,0.4);
+}
+
+/* ========================================
+   05. QUICK MENU
+======================================== */
+
+.quick-menu {
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.quick-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.quick-menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 104px;
+    padding: 24px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease,
+                background 0.2s ease;
+}
+
+.quick-menu-item + .quick-menu-item {
+    border-left: 1px solid var(--color-border);
+}
+
+.quick-menu-item svg {
+    width: 26px;
+    height: 26px;
+    stroke-width: 1.5;
+}
+
+.quick-menu-item:hover {
+    color: var(--color-primary);
+    background: var(--color-light);
+}
+
+/* ========================================
+   06. BUTTONS
+======================================== */
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    text-align: center;
+    transition: background 0.2s ease,
+                color 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background: #2E6299;
+}
+
+.btn-dark {
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+.btn-dark:hover {
+    background: #444444;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--color-black);
+    border-color: var(--color-border);
+}
+
+.btn-outline:hover {
+    border-color: var(--color-black);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* ========================================
+   07. PROMOTION BANNER
+======================================== */
+
+.promotion-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 32px 36px;
+    background: var(--color-light);
+}
+
+.promotion-label {
+    font-size: 12px;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.promotion-title {
+    margin-top: 8px;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.promotion-description {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--color-gray);
+}
+
+/* ========================================
+   08. CARD GRID
+======================================== */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.card-grid.two-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card-grid.four-columns {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.content-card {
+    display: block;
+    min-width: 0;
+}
+
+.card-image {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--color-light);
+}
+
+.card-image.landscape {
+    aspect-ratio: 4 / 3;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+@media (hover: hover) {
+    .content-card:hover .card-image img {
+        transform: scale(1.035);
+    }
+}
+
+.card-body {
+    padding-top: 16px;
+}
+
+.card-category {
+    font-size: 12px;
+    color: var(--color-gray);
+    font-weight: 400;
+}
+
+.card-title {
+    margin-top: 5px;
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.035em;
+}
+
+.card-description {
+    margin-top: 6px;
+    color: var(--color-gray);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.card-price {
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ========================================
+   09. SCHEDULE CALENDAR
+======================================== */
+
+.calendar {
+    width: 100%;
+    border-top: 1px solid var(--color-border);
+}
+
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 0;
+}
+
+.calendar-month {
+    font-size: 23px;
+    font-weight: 500;
+}
+
+.calendar-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.calendar-controls button {
+    width: 44px;
+    height: 44px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    color: var(--color-black);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    border-left: 1px solid var(--color-border);
+    border-top: 1px solid var(--color-border);
+}
+
+.calendar-weekday,
+.calendar-day {
+    min-width: 0;
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.calendar-weekday {
+    padding: 14px 4px;
+    font-size: 13px;
+    color: var(--color-gray);
+    text-align: center;
+}
+
+.calendar-day {
+    min-height: 112px;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.calendar-day.is-today {
+    background: #EDF6FC;
+}
+
+.calendar-day.is-outside {
+    color: #AAAAAA;
+}
+
+.calendar-event {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 5px 7px;
+    background: #EDF6FC;
+    color: #245D91;
+    font-size: 12px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* ========================================
+   10. INSTRUCTORS
+======================================== */
+
+.instructor-card .card-image {
+    aspect-ratio: 4 / 5;
+}
+
+.instructor-name {
+    font-size: 22px;
+    font-weight: 500;
+    margin-top: 16px;
+}
+
+.instructor-role {
+    margin-top: 4px;
+    color: var(--color-gray);
+    font-size: 14px;
+}
+
+/* ========================================
+   11. CONTACT
+======================================== */
+
+.contact-section {
+    background: var(--color-light);
+    text-align: center;
+}
+
+.contact-title {
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+}
+
+.contact-description {
+    margin-top: 12px;
+    color: var(--color-gray);
+    font-size: 15px;
+}
+
+.contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+/* ========================================
+   12. FOOTER
+======================================== */
+
+.site-footer {
+    padding-block: 48px;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-white);
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+.footer-logo img {
+    width: 120px;
+    margin-bottom: 24px;
+}
+
+.footer-info {
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--color-gray);
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 13px;
+}
+
+.footer-copyright {
+    margin-top: 32px;
+    font-size: 12px;
+    color: var(--color-gray);
+}
+
+/* ========================================
+   13. TABLET
+======================================== */
+
+@media (max-width: 1023px) {
+
+    :root {
+        --page-padding: 32px;
+        --section-spacing: 72px;
+        --header-height: 68px;
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .header-contact {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+    }
+
+    .mobile-nav.is-open {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-height: calc(100vh - var(--header-height));
+        overflow-y: auto;
+        padding: 16px var(--page-padding) 24px;
+        background: var(--color-white);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .mobile-nav a {
+        display: block;
+        padding: 16px 0;
+        font-size: 17px;
+        font-weight: 400;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .card-grid,
+    .card-grid.four-columns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .calendar-day {
+        min-height: 90px;
+        padding: 8px;
+    }
+}
+
+/* ========================================
+   14. MOBILE
+======================================== */
+
+@media (max-width: 767px) {
+
+    :root {
+        --page-padding: 20px;
+        --section-spacing: 56px;
+        --header-height: 60px;
+    }
+
+    .brand-logo img {
+        width: 108px;
+        max-height: 38px;
+    }
+
+    .header-inner {
+        gap: 12px;
+    }
+
+    .hero-media {
+        height: 50vh;
+        height: clamp(280px, 50svh, 520px);
+    }
+
+    .hero-content {
+        padding-block: 24px 28px;
+    }
+
+    .hero-title {
+        font-size: 30px;
+        line-height: 1.35;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        margin-top: 8px;
+    }
+
+    .hero-video-toggle {
+        bottom: 12px;
+        right: 12px;
+    }
+
+    .quick-menu-item {
+        min-height: 84px;
+        padding: 16px 4px;
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .quick-menu-item svg {
+        width: 23px;
+        height: 23px;
+    }
+
+    .section-heading {
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .section-description {
+        font-size: 13px;
+    }
+
+    .section-link {
+        font-size: 12px;
+    }
+
+    .card-grid,
+    .card-grid.two-columns,
+    .card-grid.four-columns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 14px;
+    }
+
+    .card-title {
+        font-size: 17px;
+    }
+
+    .card-description {
+        font-size: 13px;
+    }
+
+    .card-price {
+        font-size: 14px;
+        margin-top: 8px;
+    }
+
+    .card-body {
+        padding-top: 12px;
+    }
+
+    .promotion-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+        gap: 20px;
+    }
+
+    .promotion-banner .btn {
+        width: 100%;
+    }
+
+    .calendar-header {
+        padding: 16px 0;
+    }
+
+    .calendar-month {
+        font-size: 20px;
+    }
+
+    .calendar-weekday {
+        font-size: 11px;
+        padding: 10px 2px;
+    }
+
+    .calendar-day {
+        min-height: 72px;
+        padding: 4px;
+        font-size: 11px;
+    }
+
+    .calendar-event {
+        font-size: 10px;
+        padding: 4px 2px;
+    }
+
+    .instructor-name {
+        font-size: 18px;
+    }
+
+    .instructor-role {
+        font-size: 12px;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+    }
+
+    .contact-buttons .btn {
+        width: 100%;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .site-footer {
+        padding-block: 36px;
+    }
+
+    .footer-links {
+        gap: 14px;
+    }
+}
+
+/* ========================================
+   15. SMALL MOBILE
+======================================== */
+
+@media (max-width: 374px) {
+
+    :root {
+        --page-padding: 16px;
+    }
+
+    .hero-title {
+        font-size: 26px;
+    }
+
+    .section-title {
+        font-size: 25px;
+    }
+
+    .card-title {
+        font-size: 15px;
+    }
+
+    .section-link {
+        font-size: 11px;
+    }
+}
+
+/* ========================================
+   16. ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
