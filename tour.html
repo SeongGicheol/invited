@@ -1,1620 +1,1778 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 
-  <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-85FT1JRDGG"></script>
-
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-    gtag('config', 'G-85FT1JRDGG');
-  </script>
-
-
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {
-      if(f.fbq)return;
-
-      n=f.fbq=function(){
-        n.callMethod
-          ? n.callMethod.apply(n,arguments)
-          : n.queue.push(arguments);
-      };
-
-      if(!f._fbq)f._fbq=n;
-
-      n.push=n;
-      n.loaded=!0;
-      n.version='2.0';
-      n.queue=[];
-
-      t=b.createElement(e);
-      t.async=!0;
-      t.src=v;
-
-      s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s);
-
-    }(
-      window,
-      document,
-      'script',
-      'https://connect.facebook.net/en_US/fbevents.js'
-    );
-
-    fbq('init', '857530677382410');
-    fbq('track', 'PageView');
-  </script>
-  <!-- End Meta Pixel Code -->
-
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta
-    name="description"
-    content="INVITED가 울릉도와 세계의 바다에서 진행하는 다이빙 투어 일정을 확인하세요."
-  >
-
-  <title>다이브 트립 | INVITED</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-    :root {
-      --paper: #f7f7f2;
-      --ink: #173e42;
-      --ocean: #123d42;
-      --muted: #637570;
-      --line: #d7ded6;
-      --lime: #d6eba9;
-      --soft: #e9eee5;
-      --white: #ffffff;
-      --gutter: clamp(22px, 6vw, 96px);
-      --section: clamp(72px, 9vw, 130px);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: "DM Sans", "Noto Sans KR", sans-serif;
-      word-break: keep-all;
-    }
-
-    button,
-    a {
-      font: inherit;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .skip-link {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      z-index: 2000;
-      padding: 12px 16px;
-      background: var(--white);
-      transform: translateY(-150%);
-    }
-
-    .skip-link:focus {
-      transform: translateY(0);
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1500px;
-      margin-inline: auto;
-      padding-inline: var(--gutter);
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid var(--line);
-      background: rgba(247, 247, 242, 0.94);
-      backdrop-filter: blur(14px);
-    }
-
-    .header-inner {
-      min-height: 84px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      color: var(--ink);
-      font-size: 28px;
-      font-weight: 600;
-      letter-spacing: -1.4px;
-      text-decoration: none;
-    }
-
-    .main-nav {
-      display: flex;
-      align-items: center;
-      gap: clamp(20px, 4vw, 52px);
-    }
-
-    .main-nav a {
-      color: var(--ink);
-      font-size: 13px;
-      text-decoration: none;
-    }
-
-    .main-nav a:hover,
-    .main-nav a:focus-visible {
-      text-decoration: underline;
-      text-underline-offset: 6px;
-    }
-
-    .hero {
-      min-height: 680px;
-      display: flex;
-      align-items: flex-end;
-      padding-block: clamp(110px, 15vw, 190px) clamp(72px, 9vw, 120px);
-      background:
-        linear-gradient(90deg, rgba(18, 61, 66, 0.97), rgba(18, 61, 66, 0.68)),
-        radial-gradient(circle at 80% 20%, #4d7b7d, var(--ocean));
-      color: var(--white);
-    }
-
-    .breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 54px;
-      color: rgba(255, 255, 255, 0.68);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-    }
-
-    .breadcrumb a {
-      text-decoration: none;
-    }
-
-    .eyebrow {
-      margin: 0 0 24px;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-    }
-
-    .hero h1 {
-      max-width: 980px;
-      margin: 0;
-      font-size: clamp(44px, 7.4vw, 106px);
-      font-weight: 500;
-      letter-spacing: -0.055em;
-      line-height: 1.08;
-    }
-
-    .hero-description {
-      max-width: 620px;
-      margin: 38px 0 0;
-      color: rgba(255, 255, 255, 0.76);
-      font-size: 15px;
-      line-height: 2;
-    }
-
-    .trip-section {
-      padding-block: var(--section);
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.6fr);
-      gap: 48px;
-      align-items: end;
-      margin-bottom: 54px;
-    }
-
-    .section-head h2 {
-      max-width: 850px;
-      margin: 0;
-      font-size: clamp(34px, 5vw, 68px);
-      font-weight: 500;
-      letter-spacing: -0.045em;
-      line-height: 1.2;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 2;
-    }
-
-    .trip-toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 34px;
-      padding-block: 18px;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .trip-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .filter-button {
-      min-height: 42px;
-      padding: 10px 18px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: transparent;
-      color: var(--ink);
-      font-size: 13px;
-      cursor: pointer;
-    }
-
-    .filter-button[aria-pressed="true"] {
-      border-color: var(--ocean);
-      background: var(--ocean);
-      color: var(--white);
-    }
-
-    .trip-count {
-      margin: 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .trip-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .trip-card {
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: var(--white);
-    }
-
-    .trip-card[hidden] {
-      display: none;
-    }
-
-    .trip-image {
-      position: relative;
-      min-height: 330px;
-      overflow: hidden;
-      background:
-        linear-gradient(180deg, transparent 28%, rgba(8, 35, 39, 0.7)),
-        var(--trip-image, linear-gradient(135deg, #658e91, #123d42));
-      background-position: center;
-      background-size: cover;
-    }
-
-    .trip-image::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.08), transparent 55%);
-    }
-
-    .trip-badges {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      z-index: 1;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-
-    .trip-badge {
-      padding: 8px 11px;
-      border-radius: 999px;
-      background: rgba(247, 247, 242, 0.92);
-      color: var(--ink);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-    }
-
-    .trip-badge.status-soon {
-      background: var(--lime);
-    }
-
-    .trip-badge.status-closed {
-      background: #d7d7d2;
-      color: #666;
-    }
-
-    .trip-place {
-      position: absolute;
-      right: 20px;
-      bottom: 18px;
-      left: 20px;
-      z-index: 1;
-      margin: 0;
-      color: var(--white);
-      font-size: 12px;
-      letter-spacing: 0.12em;
-    }
-
-    .trip-content {
-      padding: 26px;
-    }
-
-    .trip-number {
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-    }
-
-    .trip-content h3 {
-      min-height: 2.7em;
-      margin: 0;
-      font-size: clamp(24px, 2.3vw, 32px);
-      font-weight: 500;
-      letter-spacing: -0.04em;
-      line-height: 1.35;
-    }
-
-    .trip-summary {
-      min-height: 4.2em;
-      margin: 18px 0 24px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .trip-info {
-      margin: 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .trip-info div {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding-block: 13px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .trip-info dt {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .trip-info dd {
-      margin: 0;
-      text-align: right;
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    .trip-actions {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 8px;
-      margin-top: 26px;
-    }
-
-    .trip-link {
-      min-height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 13px 17px;
-      border: 1px solid var(--ocean);
-      border-radius: 12px;
-      background: var(--ocean);
-      color: var(--white);
-      font-size: 13px;
-      text-decoration: none;
-    }
-
-    .trip-link.secondary {
-      min-width: 50px;
-      justify-content: center;
-      background: transparent;
-      color: var(--ink);
-    }
-
-    .empty-trip {
-      grid-column: 1 / -1;
-      min-height: 390px;
-      display: grid;
-      place-items: center;
-      padding: 50px 24px;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: var(--soft);
-      text-align: center;
-    }
-
-    .empty-trip strong {
-      display: block;
-      margin-bottom: 18px;
-      font-size: clamp(27px, 4vw, 42px);
-      font-weight: 500;
-    }
-
-    .empty-trip p {
-      max-width: 520px;
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 2;
-    }
-
-    .trip-philosophy {
-      padding-block: var(--section);
-      background: var(--ocean);
-      color: var(--white);
-    }
-
-    .philosophy-grid {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: clamp(48px, 10vw, 150px);
-    }
-
-    .philosophy-grid h2 {
-      margin: 0;
-      font-size: clamp(34px, 5vw, 66px);
-      font-weight: 500;
-      letter-spacing: -0.045em;
-      line-height: 1.25;
-    }
-
-    .philosophy-list {
-      border-top: 1px solid rgba(255, 255, 255, 0.22);
-    }
-
-    .philosophy-item {
-      display: grid;
-      grid-template-columns: 55px 1fr;
-      gap: 20px;
-      padding-block: 28px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-    }
-
-    .philosophy-item span {
-      color: var(--lime);
-      font-size: 11px;
-    }
-
-    .philosophy-item h3 {
-      margin: 0 0 12px;
-      font-size: 21px;
-      font-weight: 500;
-    }
-
-    .philosophy-item p {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 13px;
-      line-height: 1.9;
-    }
-
-    .contact {
-      padding-block: var(--section);
-      text-align: center;
-    }
-
-    .contact h2 {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: clamp(36px, 6vw, 76px);
-      font-weight: 500;
-      letter-spacing: -0.05em;
-      line-height: 1.2;
-    }
-
-    .contact p {
-      margin: 30px auto 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 2;
-    }
-
-    .contact-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 38px;
-    }
-
-    .contact-actions a {
-      min-height: 54px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      padding: 15px 22px;
-      border: 1px solid var(--ocean);
-      background: var(--ocean);
-      color: var(--white);
-      font-size: 13px;
-      text-decoration: none;
-    }
-
-    .contact-actions a:last-child {
-      background: transparent;
-      color: var(--ink);
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding-block: 34px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    @media (max-width: 1050px) {
-      .trip-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 760px) {
-      .header-inner {
-        min-height: 72px;
-      }
-
-      .logo {
-        font-size: 24px;
-      }
-
-      .main-nav {
-        gap: 18px;
-      }
-
-      .main-nav a:nth-child(2) {
-        display: none;
-      }
-
-      .hero {
-        min-height: 620px;
-      }
-
-      .section-head,
-      .philosophy-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .trip-toolbar {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .trip-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .trip-image {
-        min-height: 310px;
-      }
-
-      .trip-content h3,
-      .trip-summary {
-        min-height: 0;
-      }
-
-      .footer-inner {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-    /* ===== 해외 투어 카드·상세 일정 추가 ===== */
-html {
-  scroll-padding-top: 110px;
-}
-
-a:focus-visible,
-button:focus-visible {
-  outline: 3px solid #83a948;
-  outline-offset: 5px;
-}
-
-/* 기존 배경 이미지 대신 실제 이미지 요소 사용 */
-.trip-image {
-  display: block;
-  text-decoration: none;
-  background: linear-gradient(135deg, #658e91, #123d42);
-}
-
-.trip-image img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .4s ease;
-}
-
-.trip-image:hover img {
-  transform: scale(1.04);
-}
-
-.trip-image::after {
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    rgba(8, 35, 39, .05) 25%,
-    rgba(8, 35, 39, .75)
-  );
-}
-
-.trip-content h3 a {
-  text-decoration: none;
-}
-
-.trip-content h3 a:hover {
-  text-decoration: underline;
-  text-underline-offset: 5px;
-}
-
-.trip-image-credit {
-  margin: 14px 0 0;
-  color: var(--muted);
-  font-size: 10px;
-  line-height: 1.8;
-}
-
-.trip-image-credit a {
-  text-underline-offset: 3px;
-}
-
-.trip-actions {
-  grid-template-columns: 1fr 1fr;
-}
-
-.trip-link {
-  justify-content: center;
-  gap: 10px;
-  text-align: center;
-}
-
-.trip-info dt {
-  flex-shrink: 0;
-}
-
-.trip-info dd {
-  line-height: 1.8;
-}
-
-/* 상세 일정 */
-.tour-detail {
-  margin-top: 72px;
-  padding-top: 52px;
-  border-top: 1px solid var(--line);
-}
-
-.tour-detail-header {
-  margin-bottom: 32px;
-}
-
-.tour-detail-header .eyebrow {
-  margin-bottom: 16px;
-}
-
-.tour-detail-header h2 {
-  margin: 0 0 18px;
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 500;
-  letter-spacing: -.04em;
-  line-height: 1.35;
-}
-
-.tour-detail-header > p:last-child {
-  margin: 0;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.9;
-}
-
-.tour-detail-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
-  align-items: start;
-  gap: clamp(28px, 5vw, 70px);
-}
-
-.tour-itinerary {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--line);
-}
-
-.tour-itinerary li {
-  display: grid;
-  grid-template-columns: 125px minmax(0, 1fr);
-  gap: 24px;
-  padding: 25px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.tour-day-label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.tour-day-label strong {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-.tour-day-label time {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.tour-day-copy h3 {
-  margin: 0 0 8px;
-  font-size: 19px;
-  font-weight: 500;
-}
-
-.tour-day-copy p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.9;
-}
-
-.tour-booking {
-  padding: 30px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: var(--soft);
-}
-
-.tour-booking h3 {
-  margin: 0 0 24px;
-  font-size: 22px;
-  font-weight: 500;
-}
-
-.tour-booking .trip-info {
-  margin-bottom: 24px;
-}
-
-.tour-extra {
-  margin: 0 0 18px;
-  padding: 16px;
-  border-radius: 10px;
-  background: var(--paper);
-  font-size: 13px;
-  line-height: 1.9;
-}
-
-.tour-note {
-  margin: 0 0 24px;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.9;
-}
-
-.tour-back {
-  display: inline-block;
-  margin-top: 24px;
-  color: var(--muted);
-  font-size: 12px;
-  text-underline-offset: 4px;
-}
-
-@media (max-width: 760px) {
-  html {
-    scroll-padding-top: 92px;
-  }
-
-  .tour-detail-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .tour-itinerary li {
-    grid-template-columns: 95px minmax(0, 1fr);
-    gap: 16px;
-  }
-
-  .tour-booking {
-    padding: 24px;
-  }
-
-  .trip-content {
-    padding: 24px;
-  }
-
-  .trip-link {
-    padding-inline: 12px;
-    font-size: 12px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .trip-image img {
-    transition: none;
-  }
-
-  .trip-image:hover img {
-    transform: none;
-  }
-}
-    /* 상세 일정으로 이동할 때 생기는 파란 테두리 제거 */
-.tour-detail:focus {
-  outline: none;
-}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>다이빙 투어 | INVITED</title>
+
+    <meta name="description"
+          content="INVITED와 함께 떠나는 국내외 다이빙 투어. 새로운 바다와 다이빙 여행을 만나보세요.">
+
+    <meta name="theme-color" content="#FFFFFF">
+
+    <link rel="canonical"
+          href="https://www.invitedkorea.com/tour.html">
+
+    <link rel="stylesheet" href="css/v2.css">
+
+    <style>
+
+        /* HEADER */
+
+        .brand-logo img {
+            width: 205px;
+            max-height: 62px;
+            object-fit: contain;
+            margin-left: -35px;
+        }
+
+        .footer-logo img {
+            width: 210px;
+            margin-left: -35px;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 1024px) {
+
+            .header-inner {
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
+                height: 80px;
+            }
+
+            .brand-logo {
+                justify-self: start;
+            }
+
+            .desktop-nav {
+                justify-self: center;
+            }
+
+            .header-contact {
+                justify-self: end;
+            }
+
+        }
+
+        /* HERO */
+
+        .tour-hero {
+            position: relative;
+            min-height: 340px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: #17485F;
+            color: #FFFFFF;
+        }
+
+        .tour-hero-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tour-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(0,0,0,.55),
+                rgba(0,0,0,.10)
+            );
+        }
+
+        .tour-hero-content {
+            position: relative;
+            z-index: 1;
+            padding-block: 64px;
+        }
+
+        .tour-eyebrow {
+            font-size: 12px;
+            letter-spacing: .18em;
+            margin-bottom: 16px;
+        }
+
+        .tour-hero-title {
+            font-size: clamp(32px, 4vw, 52px);
+            font-weight: 500;
+            letter-spacing: -.04em;
+            line-height: 1.3;
+        }
+
+        .tour-hero-description {
+            margin-top: 16px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* FILTER */
+
+        .tour-filter {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 32px;
+        }
+
+        .filter-button {
+            min-height: 48px;
+            border: 0;
+            border-bottom: 2px solid transparent;
+            background: transparent;
+            color: var(--color-gray);
+            font-size: 15px;
+            font-weight: 400;
+            padding: 12px 2px;
+        }
+
+        .filter-button.is-active {
+            color: var(--color-black);
+            border-bottom-color: var(--color-black);
+            font-weight: 500;
+        }
+
+        .tour-count {
+            color: var(--color-gray);
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        /* TRIP GRID */
+
+        .trip-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            align-items: start;
+            gap: 28px;
+        }
+
+        .trip-card {
+            min-width: 0;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--color-border);
+            scroll-margin-top: 110px;
+        }
+
+        .trip-image-wrap {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: var(--color-light);
+        }
+
+        .trip-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .4s ease;
+        }
+
+        @media (hover: hover) {
+            .trip-card:hover .trip-image {
+                transform: scale(1.025);
+            }
+        }
+
+        .trip-status {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            padding: 6px 12px;
+            background: #FFFFFF;
+            color: #333333;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .trip-status.open,
+        .trip-status.soon {
+            background: #3977B9;
+            color: #FFFFFF;
+        }
+
+        .trip-status.closed,
+        .trip-status.completed {
+            background: #444444;
+            color: #FFFFFF;
+        }
+
+        .trip-body {
+            padding-top: 18px;
+        }
+
+        .trip-location {
+            color: var(--color-gray);
+            font-size: 11px;
+            letter-spacing: .08em;
+        }
+
+        .trip-title {
+            margin-top: 6px;
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .trip-date {
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--color-gray);
+        }
+
+        .trip-description {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-top: 16px;
+        }
+
+        .trip-meta {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0,1fr));
+            gap: 14px;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            padding-block: 18px;
+            margin-block: 20px;
+        }
+
+        .trip-meta span {
+            display: block;
+            color: var(--color-gray);
+            font-size: 12px;
+        }
+
+        .trip-meta strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .trip-credit {
+            margin-top: 6px;
+            font-size: 10px;
+            color: var(--color-gray);
+        }
+
+        /* TRIP DETAILS */
+
+        .trip-details summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 16px;
+            border: 1px solid var(--color-border);
+            min-height: 48px;
+            font-size: 14px;
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .trip-details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .trip-details summary::after {
+            content: "+";
+            font-size: 20px;
+        }
+
+        .trip-details[open] summary::after {
+            content: "−";
+        }
+
+        .trip-details-content {
+            padding: 20px 0;
+        }
+
+        .trip-details-content h4 {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .trip-detail-info {
+            font-size: 13px;
+            line-height: 1.9;
+            color: var(--color-gray);
+            margin-bottom: 24px;
+        }
+
+        .itinerary-item {
+            display: grid;
+            grid-template-columns: 58px minmax(0,1fr);
+            gap: 14px;
+            padding-block: 14px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .itinerary-date {
+            color: var(--color-primary);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .itinerary-title {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .itinerary-description {
+            margin-top: 4px;
+            color: var(--color-gray);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .trip-note {
+            color: var(--color-gray);
+            font-size: 12px;
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        .trip-card .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .trip-unavailable {
+            background: #F2F2F2;
+            color: #777777;
+            border: 1px solid var(--color-border);
+        }
+
+        .empty-trips {
+            grid-column: 1 / -1;
+            padding: 52px 20px;
+            background: var(--color-light);
+            color: var(--color-gray);
+            font-size: 14px;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* DESTINATIONS */
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(2,minmax(0,1fr));
+            gap: 24px;
+        }
+
+        .destination-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        .destination-title {
+            font-size: 23px;
+            font-weight: 500;
+            margin-top: 18px;
+        }
+
+        .destination-description {
+            font-size: 14px;
+            color: var(--color-gray);
+            margin-top: 8px;
+            line-height: 1.8;
+        }
+
+        /* INFORMATION */
+
+        .tour-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2,minmax(0,1fr));
+            gap: 32px;
+        }
+
+        .tour-info-item {
+            padding-top: 20px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .tour-info-item h3 {
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .tour-info-item p {
+            color: var(--color-gray);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        /* FAQ */
+
+        .tour-faq {
+            border-top: 1px solid var(--color-border);
+        }
+
+        .tour-faq details {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .tour-faq summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 22px 0;
+            cursor: pointer;
+            list-style: none;
+            font-size: 16px;
+        }
+
+        .tour-faq summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .tour-faq summary::after {
+            content: "+";
+            font-size: 22px;
+        }
+
+        .tour-faq details[open] summary::after {
+            content: "−";
+        }
+
+        .tour-faq details p {
+            font-size: 14px;
+            color: var(--color-gray);
+            line-height: 1.9;
+            padding-bottom: 24px;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 1023px) {
+
+            .trip-grid {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+            }
+
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 767px) {
+
+            .brand-logo img {
+                width: 165px;
+                max-height: 50px;
+                margin-left: -28px;
+            }
+
+            .tour-hero {
+                min-height: 260px;
+            }
+
+            .tour-hero-content {
+                padding-block: 40px;
+            }
+
+            .tour-eyebrow {
+                font-size: 10px;
+                margin-bottom: 12px;
+            }
+
+            .tour-hero-title {
+                font-size: 30px;
+            }
+
+            .tour-hero-description {
+                font-size: 14px;
+                margin-top: 12px;
+            }
+
+            .tour-filter {
+                gap: 22px;
+                margin-bottom: 20px;
+            }
+
+            .filter-button {
+                font-size: 14px;
+            }
+
+            .trip-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .trip-image-wrap {
+                aspect-ratio: 4 / 3;
+            }
+
+            .trip-title {
+                font-size: 23px;
+            }
+
+            .trip-description {
+                font-size: 13px;
+            }
+
+            .destination-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .destination-title {
+                font-size: 21px;
+            }
+
+            .tour-info-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .tour-faq summary {
+                font-size: 14px;
+                padding-block: 18px;
+            }
+
+            .tour-faq details p {
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 <body>
-  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
-  <header class="site-header">
+<!-- HEADER -->
+
+<header class="site-header">
+
     <div class="container header-inner">
-      <a class="logo" href="/" aria-label="INVITED 홈페이지">
-        INVITED
-      </a>
 
-      <nav class="main-nav" aria-label="투어 페이지 메뉴">
-        <a href="#trips">투어 일정</a>
-        <a href="#about">투어 이야기</a>
-        <a href="#contact">문의</a>
-      </nav>
+        <a href="index.html" class="brand-logo">
+            <img src="images/INVITED_small.png" alt="INVITED">
+        </a>
+
+        <nav class="desktop-nav" aria-label="주 메뉴">
+
+            <a href="index.html#schedule">일정</a>
+            <a href="learn.html">교육</a>
+            <a href="tour.html" aria-current="page">투어</a>
+            <a href="index.html#story">브랜드</a>
+            <a href="index.html#community">커뮤니티</a>
+            <a href="index.html#magazine">매거진</a>
+
+        </nav>
+
+        <a class="header-contact"
+           href="https://pf.kakao.com/_bCxexaX"
+           target="_blank"
+           rel="noopener noreferrer">
+            상담하기 ↗
+        </a>
+
+        <button class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="메뉴 열기"
+                aria-expanded="false"
+                aria-controls="mobileNav">
+
+            <svg viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.5"
+                 aria-hidden="true">
+                <path d="M3 6h18 M3 12h18 M3 18h18"/>
+            </svg>
+
+        </button>
+
     </div>
-  </header>
 
-  <main id="main">
-    <section class="hero" aria-labelledby="tour-title">
-      <div class="container">
-        <p class="breadcrumb">
-          <a href="/">HOME</a>
-          <span>/</span>
-          <span>DIVE TRIP</span>
+    <nav class="mobile-nav" id="mobileNav" aria-label="모바일 메뉴">
+
+        <a href="index.html#schedule">일정</a>
+        <a href="learn.html">교육</a>
+        <a href="tour.html" aria-current="page">투어</a>
+        <a href="index.html#story">브랜드</a>
+        <a href="index.html#community">커뮤니티</a>
+        <a href="index.html#magazine">매거진</a>
+        <a href="#contact">상담 및 문의</a>
+
+    </nav>
+
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="tour-hero">
+
+    <img class="tour-hero-image"
+         src="images/ocean/ssangjungcho.jpg"
+         alt="푸른 바다의 수중 풍경"
+         fetchpriority="high">
+
+    <div class="container tour-hero-content">
+
+        <p class="tour-eyebrow">
+            DIVE TRIP WITH INVITED
         </p>
 
-        <p class="eyebrow">INVITED DIVE TRIP · KOREA & OVERSEAS</p>
-
-        <h1 id="tour-title">
-          다음 바다는,<br>
-          어디에서 만날까요?
+        <h1 class="tour-hero-title">
+            새로운 바다로.
         </h1>
 
-        <p class="hero-description">
-          울릉도에서 시작해 세계의 바다로 이어지는 다이빙 여행.
-          가장 가까운 일정부터 확인하고, 함께할 다음 바다를 선택해보세요.
+        <p class="tour-hero-description">
+            익숙한 일상을 벗어나,<br>
+            우리가 함께 만나는 새로운 바다.
         </p>
-      </div>
-    </section>
 
-    <section class="trip-section" id="trips" aria-labelledby="trip-list-title">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">UPCOMING TRIPS</p>
-            <h2 id="trip-list-title">
-              가장 가까운 바다부터<br>
-              차례로 소개합니다.
-            </h2>
-          </div>
+    </div>
 
-          <p>
-            출발일을 기준으로 가까운 일정이 먼저 표시됩니다.
-            모집 상태와 참가 조건을 확인하고 궁금한 점은 카카오톡으로 문의해주세요.
-          </p>
+</section>
+
+
+<!-- UPCOMING TRIPS -->
+
+<section class="section" id="upcoming">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+                <h2 class="section-title">Upcoming Trips</h2>
+                <p class="section-description">
+                    INVITED와 함께 떠나는 다이빙 투어
+                </p>
+            </div>
+
         </div>
 
-        <div class="trip-toolbar">
-          <div class="trip-filters" role="group" aria-label="투어 지역 필터">
-            <button
-              class="filter-button"
-              type="button"
-              data-filter="all"
-              aria-pressed="true"
-            >
-              전체
+        <div class="tour-filter" aria-label="투어 지역 선택">
+
+            <button type="button"
+                    class="filter-button is-active"
+                    data-filter="all"
+                    aria-pressed="true">
+                전체
             </button>
 
-            <button
-              class="filter-button"
-              type="button"
-              data-filter="korea"
-              aria-pressed="false"
-            >
-              국내 투어
+            <button type="button"
+                    class="filter-button"
+                    data-filter="korea"
+                    aria-pressed="false">
+                국내
             </button>
 
-            <button
-              class="filter-button"
-              type="button"
-              data-filter="overseas"
-              aria-pressed="false"
-            >
-              해외 투어
+            <button type="button"
+                    class="filter-button"
+                    data-filter="overseas"
+                    aria-pressed="false">
+                해외
             </button>
-          </div>
 
-          <p class="trip-count" id="trip-count" aria-live="polite"></p>
         </div>
 
-        <div class="trip-grid" id="trip-grid"></div>
-      </div>
-    </section>
+        <p class="tour-count"
+           id="tripCount"
+           aria-live="polite"></p>
 
-    <section class="trip-philosophy" id="about" aria-labelledby="about-title">
-      <div class="container philosophy-grid">
-        <div>
-          <p class="eyebrow">TRAVEL WITH INVITED</p>
-          <h2 id="about-title">
-            다이빙과 여행,<br>
-            그 사이의 모든 시간.
-          </h2>
+        <div class="trip-grid" id="tripGrid"></div>
+
+        <noscript>
+            투어 목록을 보려면 JavaScript를 활성화해 주세요.
+            투어 일정은 카카오톡으로도 문의할 수 있습니다.
+        </noscript>
+
+    </div>
+
+</section>
+
+
+<!-- DESTINATIONS -->
+
+<section class="section section-light" id="destinations">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+                <h2 class="section-title">Destinations</h2>
+                <p class="section-description">
+                    국내에서 해외까지, 더 넓은 바다로.
+                </p>
+            </div>
+
         </div>
 
-        <div class="philosophy-list">
-          <article class="philosophy-item">
-            <span>01</span>
-            <div>
-              <h3>안전하게 만나는 새로운 바다</h3>
-              <p>
-                참가자의 자격과 경험, 현지 환경을 함께 고려해
-                투어와 다이빙을 준비합니다.
-              </p>
-            </div>
-          </article>
+        <div class="destination-grid">
 
-          <article class="philosophy-item">
-            <span>02</span>
-            <div>
-              <h3>다이빙 뒤에도 이어지는 여행</h3>
-              <p>
-                입수와 출수 사이만이 여행의 전부는 아닙니다.
-                함께 먹고 걷고 쉬는 시간까지 소중하게 생각합니다.
-              </p>
-            </div>
-          </article>
+            <article>
 
-          <article class="philosophy-item">
-            <span>03</span>
-            <div>
-              <h3>같은 바다를 좋아하는 사람들</h3>
-              <p>
-                버디로 만나 서로를 배려하고, 새로운 장소에서
-                함께한 경험을 오래 이어갑니다.
-              </p>
-            </div>
-          </article>
+                <img class="destination-image"
+                     src="images/ocean/ssangjungcho.jpg"
+                     alt="울릉도 수중 풍경"
+                     loading="lazy">
+
+                <h3 class="destination-title">
+                    Domestic
+                </h3>
+
+                <p class="destination-description">
+                    울릉도를 비롯한 대한민국의 다양한 바다.
+                    국내 다이빙 포인트에서 새로운 경험을 만나보세요.
+                </p>
+
+                <button type="button"
+                        class="btn btn-outline"
+                        data-destination="korea"
+                        style="margin-top:20px;">
+
+                    국내 투어 보기 ↗
+
+                </button>
+
+            </article>
+
+            <article>
+
+                <img class="destination-image"
+                     src="images/ocean/soragae.jpg"
+                     alt="다이빙 투어 소개용 수중 사진"
+                     loading="lazy">
+
+                <h3 class="destination-title">
+                    Overseas
+                </h3>
+
+                <p class="destination-description">
+                    세계 곳곳의 아름다운 바다.
+                    새로운 환경에서 다이빙과 여행을 함께 즐겨보세요.
+                </p>
+
+                <button type="button"
+                        class="btn btn-outline"
+                        data-destination="overseas"
+                        style="margin-top:20px;">
+
+                    해외 투어 보기 ↗
+
+                </button>
+
+            </article>
+
         </div>
-      </div>
-    </section>
 
-    <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div class="container">
-        <p class="eyebrow">JOIN THE NEXT TRIP</p>
+    </div>
 
-        <h2 id="contact-title">
-          우리의 다음 바다에,<br>
-          당신도 함께할래요?
+</section>
+
+
+<!-- PAST TRIPS -->
+
+<section class="section" id="past-trips">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+                <h2 class="section-title">Past Trips</h2>
+                <p class="section-description">
+                    INVITED와 함께했던 바다의 기록.
+                </p>
+            </div>
+
+            <a href="https://www.instagram.com/invited_diving/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="section-link">
+
+                Instagram ↗
+
+            </a>
+
+        </div>
+
+        <div class="trip-grid" id="pastTripGrid"></div>
+
+    </div>
+
+</section>
+
+
+<!-- TRIP INFORMATION -->
+
+<section class="section section-light" id="information">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+                <h2 class="section-title">Information</h2>
+                <p class="section-description">
+                    투어 신청 전 확인해 주세요.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="tour-info-grid">
+
+            <div class="tour-info-item">
+
+                <h3>참가 자격</h3>
+
+                <p>
+                    투어별 다이빙 환경과 난이도에 따라
+                    필요한 자격 및 경험이 달라질 수 있습니다.
+                    신청 전 담당 강사와 상담합니다.
+                </p>
+
+            </div>
+
+            <div class="tour-info-item">
+
+                <h3>투어 비용</h3>
+
+                <p>
+                    투어별 참가 비용과 포함·불포함 사항을
+                    개별적으로 안내합니다.
+                    신청 전 전체 비용을 확인해 주세요.
+                </p>
+
+            </div>
+
+            <div class="tour-info-item">
+
+                <h3>교육 과정</h3>
+
+                <p>
+                    투어 중 다이빙 자격증 교육을 희망하는 경우
+                    해당 과정의 운영 가능 여부를
+                    사전에 상담할 수 있습니다.
+                </p>
+
+            </div>
+
+            <div class="tour-info-item">
+
+                <h3>안전 및 일정 변경</h3>
+
+                <p>
+                    기상 상황과 해양 환경에 따라
+                    다이빙 포인트 및 일정이 변경될 수 있습니다.
+                    모든 활동은 안전을 최우선으로 진행합니다.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section class="section" id="faq">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+                <h2 class="section-title">FAQ</h2>
+                <p class="section-description">
+                    자주 묻는 질문
+                </p>
+            </div>
+
+        </div>
+
+        <div class="tour-faq">
+
+            <details>
+                <summary>혼자서도 투어에 참가할 수 있나요?</summary>
+                <p>
+                    개인 신청도 가능합니다.
+                    투어별 모집 조건과 최소 출발 인원은
+                    신청 전에 확인해 주세요.
+                </p>
+            </details>
+
+            <details>
+                <summary>초보 다이버도 참가할 수 있나요?</summary>
+                <p>
+                    투어별 다이빙 환경과 난이도가 다르므로
+                    보유 자격증과 다이빙 경험을 바탕으로
+                    참가 가능 여부를 상담합니다.
+                </p>
+            </details>
+
+            <details>
+                <summary>투어 중 자격증 교육도 가능한가요?</summary>
+                <p>
+                    교육 환경, 일정 및 교육단체 표준에 따라
+                    교육 진행 가능 여부를 확인합니다.
+                    희망하는 교육 과정은 사전에 문의해 주세요.
+                </p>
+            </details>
+
+            <details>
+                <summary>투어 가격은 어떻게 확인하나요?</summary>
+                <p>
+                    카카오톡 또는 인스타그램 DM을 통해
+                    투어 비용, 포함 사항, 별도 비용 및
+                    예약 조건을 안내받을 수 있습니다.
+                </p>
+            </details>
+
+            <details>
+                <summary>개인 다이빙 장비가 없어도 되나요?</summary>
+                <p>
+                    투어별 장비 렌탈 가능 여부와 비용을
+                    사전에 확인해 드립니다.
+                </p>
+            </details>
+
+            <details>
+                <summary>투어 취소 및 환불은 어떻게 진행되나요?</summary>
+                <p>
+                    투어별 예약 조건과 취소·환불 기준을
+                    예약 확정 전에 안내합니다.
+                    관련 법령 및 적용되는 소비자 보호 기준을 준수합니다.
+                </p>
+            </details>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="section contact-section" id="contact">
+
+    <div class="container">
+
+        <h2 class="contact-title">
+            다음 바다에서 만나요.
         </h2>
 
-        <p>
-          관심 있는 지역과 보유 자격, 최근 다이빙 경험을 알려주세요.<br>
-          아직 공개되지 않은 투어 소식도 상담할 수 있습니다.
+        <p class="contact-description">
+            INVITED와 함께할 다이빙 여행을 시작해 보세요.
         </p>
 
-        <div class="contact-actions">
-          <a
-            href="https://pf.kakao.com/_bCxexaX"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            카카오톡으로 문의
-            <span aria-hidden="true">↗</span>
-          </a>
+        <div class="contact-buttons">
 
-          <a
-            href="https://www.instagram.com/invited_diving/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            인스타그램으로 문의
-            <span aria-hidden="true">↗</span>
-          </a>
+            <a href="https://pf.kakao.com/_bCxexaX"
+               class="btn btn-dark"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                카카오톡 투어 상담 ↗
+
+            </a>
+
+            <a href="https://www.instagram.com/invited_diving/"
+               class="btn btn-outline"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                인스타그램 DM ↗
+
+            </a>
+
         </div>
-      </div>
-    </section>
-  </main>
 
-  <footer>
-    <div class="container footer-inner">
-      <span>© 2026 INVITED</span>
-      <span>SAFETY / SUSTAINABLITY / SILENCE</span>
-      <a href="/">메인으로 돌아가기 ↑</a>
     </div>
-  </footer>
 
-  <script>
-(() => {
-  /*
-    ============================================================
-    투어 데이터 수정 영역
-    ============================================================
+</section>
 
-    새로운 투어는 TOURS 배열에 객체를 추가하세요.
+</main>
 
-    id        : 투어 고유 주소. 영문·숫자·하이픈 사용
-    category  : "korea" 또는 "overseas"
-    start/end : YYYY-MM-DD
-    published : true 공개 / false 숨김
 
-    status:
-      scheduled = 일정 공개
-      open      = 모집 중
-      soon      = 마감 임박
-      closed    = 모집 마감
+<!-- FOOTER -->
 
-    참가 가격은 데이터에 넣지 않습니다.
-    카드와 상세 화면 모두 "가격 문의"로 표시합니다.
-  */
+<footer class="site-footer">
 
-  const CONTACT_URL = "https://pf.kakao.com/_bCxexaX";
+    <div class="container">
 
-  const TOURS = [
-    {
-      id: "cebu-2026",
-      title: "세부, 필리핀",
-      location: "CEBU · PHILIPPINES",
-      category: "overseas",
+        <div class="footer-inner">
 
-      start: "2026-12-22",
-      end: "2026-12-27",
-      duration: "5박 6일",
-      dives: "총 9회",
+            <div>
 
-      maximum: 6,
-      minimum: 4,
-      accommodation: "팀맥스 다이브 리조트",
-      level: "참가 자격·경험 문의",
+                <a href="index.html" class="footer-logo">
 
-      status: "open",
-      published: true,
+                    <img src="images/INVITED_small.png"
+                         alt="INVITED"
+                         loading="lazy">
 
-      summary:
-        "이번 겨울, INVITED와 함께 세부의 바다로. " +
-        "3일간의 다이빙과 자유 관광으로 채우는 여행.",
+                </a>
 
-      image:
-        "https://images.unsplash.com/photo-1771905289172-5078b6ede205?auto=format&fit=crop&w=1600&q=85",
+                <div class="footer-info">
 
-      imageAlt:
-        "필리핀 세부 모알보알의 산호초와 물고기 — 여행지 참고 사진",
+                    <p>INVITED, 바다에 초대받은 사람들.</p>
 
-      imageCredit: "Ken Suarez / Unsplash",
+                    <p>
+                        Email.
+                        <a href="mailto:invited.hq@gmail.com">
+                            invited.hq@gmail.com
+                        </a>
+                    </p>
 
-      imageSource:
-        "https://unsplash.com/photos/school-of-fish-swims-above-colorful-coral-reef-iiYDgodFDP0",
+                    <p>Slow / Safe / Standard</p>
 
-      itinerary: [
-        {
-          date: "2026-12-22",
-          title: "세부로 이동",
-          description: "필리핀 세부로 떠나는 날."
-        },
-        {
-          date: "2026-12-23",
-          title: "다이빙 3회",
-          description: "세부의 바다를 만나는 첫 다이빙."
-        },
-        {
-          date: "2026-12-24",
-          title: "다이빙 3회",
-          description: "버디와 함께 즐기는 수중 탐험."
-        },
-        {
-          date: "2026-12-25",
-          title: "다이빙 3회",
-          description: "바다에서 보내는 크리스마스."
-        },
-        {
-          date: "2026-12-26",
-          title: "자유 관광",
-          description: "각자의 속도로 세부를 즐기는 시간."
-        },
-        {
-          date: "2026-12-27",
-          title: "한국 귀국",
-          description: "여행을 마무리하고 한국으로 돌아옵니다."
+                </div>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="index.html#story">About</a>
+                <a href="learn.html">Courses</a>
+                <a href="tour.html">Dive Trip</a>
+
+                <a href="https://www.instagram.com/invited_diving/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    Instagram
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <p class="footer-copyright">
+            © 2026 INVITED. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    /* =====================================
+       MOBILE MENU
+    ===================================== */
+
+    const menuToggle =
+        document.getElementById('menuToggle');
+
+    const mobileNav =
+        document.getElementById('mobileNav');
+
+    function closeMenu() {
+
+        mobileNav.classList.remove('is-open');
+
+        menuToggle.setAttribute('aria-expanded','false');
+        menuToggle.setAttribute('aria-label','메뉴 열기');
+
+    }
+
+    menuToggle.addEventListener('click', () => {
+
+        const isOpen =
+            mobileNav.classList.toggle('is-open');
+
+        menuToggle.setAttribute(
+            'aria-expanded',
+            String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+            'aria-label',
+            isOpen ? '메뉴 닫기' : '메뉴 열기'
+        );
+
+    });
+
+    mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', event => {
+
+        if (event.key === 'Escape') {
+            closeMenu();
         }
-      ],
 
-      extras: [
-        "12월 26일 레이트 체크아웃은 선택 사항이며, 추가 비용은 $40입니다."
-      ],
+    });
 
-      note:
-        "항공편, 세부 진행 시간, 포함·불포함 사항과 준비물은 " +
-        "문의 시 안내합니다. 현지 상황에 따라 일정이 조정될 수 있습니다."
-    }
-  ];
+    const desktopQuery =
+        window.matchMedia('(min-width: 1024px)');
 
-  /* ===== 공통 요소 ===== */
-
-  const grid = document.getElementById("trip-grid");
-  const count = document.getElementById("trip-count");
-  const filterButtons = document.querySelectorAll(".filter-button");
-
-  if (!grid || !count) return;
-
-  // 기존 카드 목록 바로 아래에 상세 일정 영역을 추가합니다.
-  const detailRoot = document.createElement("div");
-  detailRoot.id = "tour-details";
-  grid.insertAdjacentElement("afterend", detailRoot);
-
-  const statusLabels = {
-    scheduled: "일정 공개",
-    open: "모집 중",
-    soon: "마감 임박",
-    closed: "모집 마감"
-  };
-
-  function escapeHTML(value) {
-    return String(value ?? "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-  }
-
-  function formatDate(value) {
-    return value ? value.replaceAll("-", ".") : "일정 준비 중";
-  }
-
-  function dateRange(tour) {
-    return [
-      formatDate(tour.start),
-      tour.end ? formatDate(tour.end) : ""
-    ].filter(Boolean).join(" — ");
-  }
-
-  function detailHref(tour) {
-    return `#${encodeURIComponent(tour.id)}`;
-  }
-
-  function infoRow(label, value) {
-    return `
-      <div>
-        <dt>${escapeHTML(label)}</dt>
-        <dd>${escapeHTML(value)}</dd>
-      </div>
-    `;
-  }
-
-  function getPublishedTours() {
-    return TOURS
-      .filter(tour => tour.published)
-      .slice()
-      .sort((a, b) => {
-        return (a.start || "9999-12-31")
-          .localeCompare(b.start || "9999-12-31");
-      });
-  }
-
-  function getStatus(tour) {
-    // 종료된 투어를 모집 중으로 계속 표시하지 않습니다.
-    const today = new Intl.DateTimeFormat("sv-SE", {
-      timeZone: "Asia/Seoul",
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit"
-    }).format(new Date());
-
-    if (tour.end && tour.end < today) {
-      return { key: "closed", label: "종료된 일정" };
+    if (desktopQuery.addEventListener) {
+        desktopQuery.addEventListener('change', closeMenu);
     }
 
-    return {
-      key: tour.status,
-      label: statusLabels[tour.status] || "일정 확인"
+
+    /* =====================================
+       TOUR DATA MANAGEMENT
+
+       category:
+       korea / overseas
+
+       status:
+       scheduled = 모집 예정
+       open      = 모집 중
+       soon      = 마감 임박
+       closed    = 모집 마감
+       completed = 투어 종료
+
+       published:
+       true  = 홈페이지 공개
+       false = 홈페이지 숨김
+
+    ===================================== */
+
+    const CONTACT_URL =
+        'https://pf.kakao.com/_bCxexaX';
+
+    const TOURS = [
+
+        {
+            id: 'cebu-2026',
+
+            title: 'Christmas in Cebu',
+
+            subtitle: '세부 크리스마스 다이빙 투어',
+
+            location: 'CEBU · PHILIPPINES',
+
+            category: 'overseas',
+
+            start: '2026-12-22',
+
+            end: '2026-12-27',
+
+            duration: '5박 6일',
+
+            dives: '총 9회',
+
+            minimum: 4,
+
+            maximum: 6,
+
+            accommodation: '팀맥스 다이브 리조트',
+
+            level: '참가 자격 및 다이빙 경험 문의',
+
+            status: 'open',
+
+            published: true,
+
+            image:
+                'https://images.unsplash.com/photo-1771905289172-5078b6ede205?auto=format&fit=crop&w=1600&q=85',
+
+            imageAlt:
+                '필리핀 세부 모알보알 수중 풍경 참고 사진',
+
+            imageCredit:
+                'Ken Suarez / Unsplash',
+
+            imageSource:
+                'https://unsplash.com/photos/school-of-fish-swims-above-colorful-coral-reef-iiYDgodFDP0',
+
+            description:
+                '이번 겨울, INVITED와 함께 세부의 바다로. ' +
+                '다이빙과 자유 관광으로 채우는 크리스마스 여행.',
+
+            itinerary: [
+
+                {
+                    date: '2026-12-22',
+                    title: '세부로 이동',
+                    description: '필리핀 세부로 떠나는 날.'
+                },
+
+                {
+                    date: '2026-12-23',
+                    title: '다이빙 3회',
+                    description: '세부에서 만나는 첫 다이빙.'
+                },
+
+                {
+                    date: '2026-12-24',
+                    title: '다이빙 3회',
+                    description: '버디와 함께 즐기는 수중 탐험.'
+                },
+
+                {
+                    date: '2026-12-25',
+                    title: '다이빙 3회',
+                    description: '바다에서 보내는 크리스마스.'
+                },
+
+                {
+                    date: '2026-12-26',
+                    title: '자유 관광',
+                    description: '각자의 속도로 세부를 즐기는 시간.'
+                },
+
+                {
+                    date: '2026-12-27',
+                    title: '한국 귀국',
+                    description: '여행을 마무리하고 한국으로 돌아옵니다.'
+                }
+
+            ],
+
+            note:
+                '12월 26일 레이트 체크아웃은 선택 사항이며 ' +
+                '추가 비용은 USD 40입니다. ' +
+                '항공편, 세부 일정, 포함·불포함 사항 및 준비물은 ' +
+                '문의 시 안내합니다. ' +
+                '자격증 교육은 사전 상담을 통해 가능 여부를 확인합니다.'
+
+        }
+
+    ];
+
+
+    /* =====================================
+       TOUR DISPLAY SETTINGS
+    ===================================== */
+
+    const STATUS_LABELS = {
+
+        scheduled: '모집 예정',
+
+        open: '모집 중',
+
+        soon: '마감 임박',
+
+        closed: '모집 마감',
+
+        completed: '투어 종료'
+
     };
-  }
 
-  /* ===== 카드 ===== */
+    const dateParts = new Intl.DateTimeFormat(
+        'en-US',
+        {
+            timeZone: 'Asia/Seoul',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+        }
+    ).formatToParts(new Date());
 
-  function createCard(tour, index) {
-    const status = getStatus(tour);
-    const anchor = detailHref(tour);
+    function getDatePart(type) {
 
-    return `
-      <article class="trip-card">
-       <a
-  class="trip-image"
-  href="${anchor}"
-  onclick="trackTourDetail('${escapeHTML(tour.id)}')"
-  aria-label="${escapeHTML(tour.title)} 상세 일정 보기"
->
-          ${
-            tour.image
-              ? `
-                <img
-                  src="${escapeHTML(tour.image)}"
-                  alt="${escapeHTML(tour.imageAlt || tour.title)}"
-                  loading="lazy"
-                  decoding="async"
-                  width="1200"
-                  height="900"
-                >
-              `
-              : ""
-          }
+        return dateParts.find(
+            part => part.type === type
+        ).value;
 
-          <div class="trip-badges">
-            <span class="trip-badge">
-              ${tour.category === "korea" ? "DOMESTIC" : "OVERSEAS"}
-            </span>
+    }
 
-            <span class="trip-badge status-${escapeHTML(status.key)}">
-              ${escapeHTML(status.label)}
-            </span>
-          </div>
+    const today =
+        `${getDatePart('year')}-${getDatePart('month')}-${getDatePart('day')}`;
 
-          <p class="trip-place">
-            ${escapeHTML(tour.location)}
-          </p>
-        </a>
+    function getStatus(tour) {
 
-        <div class="trip-content">
-          <p class="trip-number">
-            ${String(index + 1).padStart(2, "0")} / DIVE TRIP
-          </p>
+        if (
+            tour.status === 'completed' ||
+            tour.end < today
+        ) {
+            return 'completed';
+        }
 
-          <h3>
-            <a href="${anchor}">
-              ${escapeHTML(tour.title)}
-            </a>
-          </h3>
+        if (tour.start <= today) {
+            return 'closed';
+        }
 
-          <p class="trip-summary">
-            ${escapeHTML(tour.summary)}
-          </p>
+        return tour.status;
 
-          <dl class="trip-info">
-            ${infoRow("일정", dateRange(tour))}
-            ${infoRow("기간", tour.duration)}
-            ${infoRow("다이빙", tour.dives)}
-            ${infoRow(
-              "참가 인원",
-              `최대 ${tour.maximum}명 / 최소 출발 ${tour.minimum}명`
-            )}
-            ${infoRow("참가 비용", "가격 문의")}
-          </dl>
+    }
 
-          <div class="trip-actions">
-            <a
-  class="trip-link"
-  href="${anchor}"
-  onclick="trackTourDetail('${escapeHTML(tour.id)}')"
->
-  상세 일정
-  <span aria-hidden="true">↗</span>
-</a>
+    function formatDate(date) {
 
-           <a
-  class="trip-link secondary"
-  href="${CONTACT_URL}"
-  target="_blank"
-  rel="noopener noreferrer"
-  onclick="trackTripInquiry('${escapeHTML(tour.id)}')"
-  aria-label="${escapeHTML(tour.title)} 가격 문의, 카카오톡 새 창"
->
-              가격 문의
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
+        return date.replaceAll('-', '.');
 
-          ${
-            tour.imageSource
-              ? `
-                <p class="trip-image-credit">
-                  여행지 참고 사진 ·
-                  <a
-                    href="${escapeHTML(tour.imageSource)}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ${escapeHTML(tour.imageCredit)}
-                  </a>
+    }
+
+    function escapeHTML(value) {
+
+        return String(value ?? '').replace(
+            /[&<>"']/g,
+            char => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            })[char]
+        );
+
+    }
+
+    let currentFilter = 'all';
+
+    const tripGrid =
+        document.getElementById('tripGrid');
+
+    const pastTripGrid =
+        document.getElementById('pastTripGrid');
+
+    const tripCount =
+        document.getElementById('tripCount');
+
+
+    /* =====================================
+       TOUR CARD TEMPLATE
+    ===================================== */
+
+    function createTourCard(tour) {
+
+        const status = getStatus(tour);
+
+        const canApply =
+            status === 'open' || status === 'soon';
+
+        const itinerary = (tour.itinerary || [])
+            .map(item => `
+
+                <div class="itinerary-item">
+
+                    <div class="itinerary-date">
+                        ${escapeHTML(
+                            item.date.slice(5).replace('-', '.')
+                        )}
+                    </div>
+
+                    <div>
+
+                        <p class="itinerary-title">
+                            ${escapeHTML(item.title)}
+                        </p>
+
+                        <p class="itinerary-description">
+                            ${escapeHTML(item.description)}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            `).join('');
+
+        let action;
+
+        if (canApply) {
+
+            action = `
+
+                <a href="${CONTACT_URL}"
+                   class="btn btn-dark"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    투어 신청 및 가격 문의 ↗
+
+                </a>
+
+            `;
+
+        } else if (status === 'scheduled') {
+
+            action = `
+
+                <a href="${CONTACT_URL}"
+                   class="btn btn-outline"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    모집 일정 문의 ↗
+
+                </a>
+
+            `;
+
+        } else {
+
+            action = `
+
+                <button type="button"
+                        class="btn trip-unavailable"
+                        disabled>
+
+                    ${STATUS_LABELS[status]}
+
+                </button>
+
+            `;
+
+        }
+
+        const credit = tour.imageCredit
+            ? `
+
+                <p class="trip-credit">
+
+                    Photo:
+                    <a href="${escapeHTML(tour.imageSource)}"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        ${escapeHTML(tour.imageCredit)}
+
+                    </a>
+
                 </p>
-              `
-              : ""
-          }
-        </div>
-      </article>
-    `;
-  }
 
-  function renderTrips(filter = "all") {
-    const tours = getPublishedTours().filter(tour => {
-      return filter === "all" || tour.category === filter;
-    });
+            `
+            : '';
 
-    count.textContent = `총 ${tours.length}개의 공개 일정`;
+        return `
 
-    if (tours.length === 0) {
-      grid.innerHTML = `
-        <div class="empty-trip">
-          <div>
-            <strong>다음 투어를 준비하고 있습니다.</strong>
-            <p>
-              선택한 지역의 공개 일정이 아직 없습니다.
-              새로운 소식은 카카오톡과 인스타그램으로 문의해주세요.
-            </p>
-          </div>
-        </div>
-      `;
-      return;
+            <article class="trip-card"
+                     id="${escapeHTML(tour.id)}">
+
+                <div class="trip-image-wrap">
+
+                    <img class="trip-image"
+                         src="${escapeHTML(tour.image)}"
+                         alt="${escapeHTML(tour.imageAlt)}"
+                         loading="lazy"
+                         decoding="async">
+
+                    <span class="trip-status ${status}">
+
+                        ${STATUS_LABELS[status]}
+
+                    </span>
+
+                </div>
+
+                ${credit}
+
+                <div class="trip-body">
+
+                    <p class="trip-location">
+
+                        ${escapeHTML(tour.location)}
+
+                    </p>
+
+                    <h3 class="trip-title">
+
+                        ${escapeHTML(tour.title)}
+
+                    </h3>
+
+                    <p class="trip-date">
+
+                        ${escapeHTML(tour.subtitle)}
+
+                    </p>
+
+                    <p class="trip-date">
+
+                        ${formatDate(tour.start)}
+                        —
+                        ${formatDate(tour.end)}
+
+                    </p>
+
+                    <p class="trip-description">
+
+                        ${escapeHTML(tour.description)}
+
+                    </p>
+
+                    <div class="trip-meta">
+
+                        <div>
+
+                            <span>여행 기간</span>
+
+                            <strong>
+                                ${escapeHTML(tour.duration)}
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>다이빙</span>
+
+                            <strong>
+                                ${escapeHTML(tour.dives)}
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>모집 인원</span>
+
+                            <strong>
+                                ${escapeHTML(tour.minimum)}
+                                ~
+                                ${escapeHTML(tour.maximum)}명
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>참가 비용</span>
+
+                            <strong>가격 문의</strong>
+
+                        </div>
+
+                    </div>
+
+                    <details class="trip-details">
+
+                        <summary>투어 상세 일정</summary>
+
+                        <div class="trip-details-content">
+
+                            <h4>투어 정보</h4>
+
+                            <div class="trip-detail-info">
+
+                                숙소 :
+                                ${escapeHTML(tour.accommodation)}
+
+                                <br>
+
+                                참가 조건 :
+                                ${escapeHTML(tour.level)}
+
+                            </div>
+
+                            <h4>여행 일정</h4>
+
+                            ${itinerary}
+
+                            <p class="trip-note">
+
+                                ${escapeHTML(tour.note)}
+
+                            </p>
+
+                        </div>
+
+                    </details>
+
+                    ${action}
+
+                </div>
+
+            </article>
+
+        `;
+
     }
 
-    grid.innerHTML = tours.map(createCard).join("");
 
-    // 외부 사진 오류 시 깨진 이미지 대신 기존 배경을 보여줍니다.
-    grid.querySelectorAll(".trip-image img").forEach(image => {
-      const hideBrokenImage = () => {
-        image.style.display = "none";
-      };
+    /* =====================================
+       RENDER TOURS
+    ===================================== */
 
-      image.addEventListener("error", hideBrokenImage, { once: true });
+    function renderTours() {
 
-      if (image.complete && image.naturalWidth === 0) {
-        hideBrokenImage();
-      }
-    });
-  }
+        const publishedTours = TOURS.filter(
+            tour => tour.published
+        );
 
-  /* ===== 데이터 기반 상세 일정 ===== */
+        const upcoming = publishedTours
 
-  function createDetail(tour) {
-    const itinerary = tour.itinerary || [];
-    const extras = tour.extras || [];
+            .filter(tour =>
+                getStatus(tour) !== 'completed'
+            )
 
-    return `
-      <section
-        class="tour-detail"
-        id="${escapeHTML(tour.id)}"
-        aria-labelledby="${escapeHTML(tour.id)}-title"
-        tabindex="-1"
-      >
-        <header class="tour-detail-header">
-          <p class="eyebrow">
-            ${escapeHTML(tour.location)} · DIVE TRIP
-          </p>
+            .filter(tour =>
+                currentFilter === 'all' ||
+                tour.category === currentFilter
+            )
 
-          <h2 id="${escapeHTML(tour.id)}-title">
-            ${escapeHTML(tour.title)}
-          </h2>
+            .sort((a,b) =>
+                a.start.localeCompare(b.start)
+            );
 
-          <p>
-            ${escapeHTML(dateRange(tour))}
-            · ${escapeHTML(tour.duration)}
-          </p>
-        </header>
+        const past = publishedTours
 
-        <div class="tour-detail-grid">
-          <ol class="tour-itinerary">
-            ${
-              itinerary.map((day, index) => `
-                <li>
-                  <div class="tour-day-label">
-                    <strong>DAY ${index + 1}</strong>
-                    <time datetime="${escapeHTML(day.date)}">
-                      ${escapeHTML(formatDate(day.date))}
-                    </time>
-                  </div>
+            .filter(tour =>
+                getStatus(tour) === 'completed'
+            )
 
-                  <div class="tour-day-copy">
-                    <h3>${escapeHTML(day.title)}</h3>
-                    <p>${escapeHTML(day.description)}</p>
-                  </div>
-                </li>
-              `).join("")
-            }
-          </ol>
+            .sort((a,b) =>
+                b.end.localeCompare(a.end)
+            );
 
-          <aside
-            class="tour-booking"
-            aria-label="${escapeHTML(tour.title)} 참여 안내"
-          >
-            <h3>함께 떠나기 전에</h3>
+        tripCount.textContent =
+            `총 ${upcoming.length}개의 투어`;
 
-            <dl class="trip-info">
-              ${infoRow("기간", tour.duration)}
-              ${infoRow("다이빙", tour.dives)}
-              ${infoRow("모집 인원", `최대 ${tour.maximum}명`)}
-              ${infoRow("최소 출발", `${tour.minimum}명`)}
-              ${infoRow("숙소", tour.accommodation)}
-              ${infoRow("참가 조건", tour.level)}
-              ${infoRow("참가 비용", "가격 문의")}
-            </dl>
+        tripGrid.innerHTML = upcoming.length
 
-            ${
-              extras.map(extra => `
-                <p class="tour-extra">${escapeHTML(extra)}</p>
-              `).join("")
-            }
+            ? upcoming.map(createTourCard).join('')
 
-            <p class="tour-note">${escapeHTML(tour.note)}</p>
+            : `
 
-           <a
-  class="trip-link"
-  href="${CONTACT_URL}"
-  target="_blank"
-  rel="noopener noreferrer"
-  onclick="trackTripInquiry('${escapeHTML(tour.id)}')"
->
-              카카오톡으로 가격 문의
-              <span aria-hidden="true">↗</span>
-            </a>
+                <div class="empty-trips">
 
-            <p class="trip-image-credit">
-              카드 사진은 여행지 참고 이미지입니다.<br>
-              사진 속 장소가 확정 다이빙 포인트를 의미하지는 않습니다.
-            </p>
-          </aside>
-        </div>
+                    현재 등록된 투어 일정이 없습니다.<br>
+                    새로운 투어 소식을 기대해 주세요.
 
-        <a class="tour-back" href="#trips">
-          ↑ 투어 목록으로 돌아가기
-        </a>
-      </section>
-    `;
-  }
+                </div>
 
-  function setFilter(filter) {
+            `;
+
+        pastTripGrid.innerHTML = past.length
+
+            ? past.map(createTourCard).join('')
+
+            : `
+
+                <div class="empty-trips">
+
+                    지난 투어 기록을 준비하고 있습니다.<br>
+                    인스타그램에서 INVITED의 활동을 만나보세요.
+
+                </div>
+
+            `;
+
+    }
+
+
+    /* =====================================
+       CATEGORY FILTER
+    ===================================== */
+
+    const filterButtons =
+        document.querySelectorAll('.filter-button');
+
+    function setFilter(filter) {
+
+        currentFilter = filter;
+
+        filterButtons.forEach(button => {
+
+            const isActive =
+                button.dataset.filter === filter;
+
+            button.classList.toggle(
+                'is-active',
+                isActive
+            );
+
+            button.setAttribute(
+                'aria-pressed',
+                String(isActive)
+            );
+
+        });
+
+        renderTours();
+
+    }
+
     filterButtons.forEach(button => {
-      button.setAttribute(
-        "aria-pressed",
-        String(button.dataset.filter === filter)
-      );
+
+        button.addEventListener('click', () => {
+
+            setFilter(button.dataset.filter);
+
+        });
+
     });
 
-    renderTrips(filter);
+    document.querySelectorAll('[data-destination]')
+        .forEach(button => {
 
-    // 선택한 지역의 상세 일정만 함께 표시합니다.
-    detailRoot.querySelectorAll(".tour-detail").forEach(section => {
-      const tour = TOURS.find(item => item.id === section.id);
-      section.hidden =
-        filter !== "all" && tour?.category !== filter;
-    });
-  }
+            button.addEventListener('click', () => {
 
-  /* ===== 홈 팝업 → 세부 상세 일정 직접 연결 ===== */
+                setFilter(button.dataset.destination);
 
-  function moveToLinkedTour() {
-    let id;
+                document.getElementById('upcoming')
+                    .scrollIntoView();
 
-    try {
-      id = decodeURIComponent(window.location.hash.slice(1));
-    } catch {
-      return;
+            });
+
+        });
+
+
+    /* =====================================
+       DIRECT TOUR LINK
+
+       Example:
+       tour.html#cebu-2026
+    ===================================== */
+
+    function openLinkedTour() {
+
+        const id = location.hash.slice(1);
+
+        if (!id) return;
+
+        const target = document.getElementById(id);
+
+        if (
+            target &&
+            target.classList.contains('trip-card')
+        ) {
+
+            const details =
+                target.querySelector('details');
+
+            if (details) {
+                details.open = true;
+            }
+
+            requestAnimationFrame(() => {
+
+                target.scrollIntoView({
+                    block: 'start'
+                });
+
+            });
+
+        }
+
     }
 
-    const tour = getPublishedTours().find(item => item.id === id);
+    renderTours();
 
-    if (!tour) return;
+    openLinkedTour();
 
-    const target = document.getElementById(tour.id);
+    window.addEventListener(
+        'hashchange',
+        openLinkedTour
+    );
 
-    if (!target) return;
-
-    // 국내 필터 상태에서도 해외 투어 직접 링크가 작동합니다.
-    if (target.hidden) setFilter(tour.category);
-
-    requestAnimationFrame(() => {
-      target.scrollIntoView({ block: "start" });
-      target.focus({ preventScroll: true });
-    });
-  }
-
-  filterButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      setFilter(button.dataset.filter || "all");
-    });
-  });
-
-  detailRoot.innerHTML = getPublishedTours()
-    .map(createDetail)
-    .join("");
-
-  renderTrips();
-  moveToLinkedTour();
-
-  window.addEventListener("hashchange", moveToLinkedTour);
-  /* ===== Analytics Tracking ===== */
-
-window.trackTourDetail = function(tourId) {
-
-  // Google Analytics
-  if (typeof gtag === "function") {
-    gtag("event", "dive_trip_detail_click", {
-      trip_id: tourId
-    });
-  }
-
-  // Meta Pixel
-  if (typeof fbq === "function") {
-    fbq("trackCustom", "DiveTripDetailClick", {
-      trip_id: tourId
-    });
-  }
-};
-
-
-window.trackTripInquiry = function(tourId) {
-
-  // Google Analytics
-  if (typeof gtag === "function") {
-    gtag("event", "trip_price_inquiry", {
-      trip_id: tourId
-    });
-  }
-
-  // Meta Pixel
-  if (typeof fbq === "function") {
-    fbq("track", "Contact", {
-      content_name: tourId
-    });
-  }
-};
-})();
 </script>
+
 </body>
 </html>
