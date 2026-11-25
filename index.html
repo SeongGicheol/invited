@@ -1,2158 +1,1574 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 
-  <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-85FT1JRDGG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-    gtag('config', 'G-85FT1JRDGG');
-  </script>
-
-
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {
-      if(f.fbq)return;
-
-      n=f.fbq=function(){
-        n.callMethod ?
-        n.callMethod.apply(n,arguments) :
-        n.queue.push(arguments)
-      };
-
-      if(!f._fbq)f._fbq=n;
-
-      n.push=n;
-      n.loaded=!0;
-      n.version='2.0';
-      n.queue=[];
-
-      t=b.createElement(e);
-      t.async=!0;
-      t.src=v;
-
-      s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s);
-
-    }(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js'
-    );
-
-    fbq('init', '857530677382410');
-    fbq('track', 'PageView');
-  </script>
-  <!-- End Meta Pixel Code -->
-
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta
-    name="description"
-    content="INVITED, 바다에 초대받은 사람들. 울릉도를 기반으로 스쿠버다이빙, 프리다이빙, 그리고 함께하는 여행을 이야기합니다."
-  >
-  <meta name="theme-color" content="#123d42">
-  <title>INVITED | 바다에 초대받은 사람들.</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-    /* ===== 색상과 기본 설정 ===== */
-    :root {
-      --paper: #f7f7f2;
-      --ink: #173e42;
-      --muted: #637570;
-      --line: #d7ded6;
-      --ocean: #123d42;
-      --lime: #d6eba9;
-      --gutter: clamp(22px, 6vw, 96px);
-      --section-space: clamp(76px, 9vw, 140px);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 100px;
-    }
-
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font-family: "DM Sans", "Noto Sans KR", sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    h1, h2, h3, p {
-      margin: 0;
-    }
-
-    h1, h2, h3, p {
-      word-break: keep-all;
-      overflow-wrap: break-word;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-      cursor: pointer;
-    }
-
-    a, button, summary {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    a:focus-visible,
-    button:focus-visible,
-    summary:focus-visible {
-      outline: 3px solid #83a948;
-      outline-offset: 5px;
-    }
-
-    ::selection {
-      color: var(--ocean);
-      background: var(--lime);
-    }
-
-    [hidden] {
-      display: none !important;
-    }
-
-    .skip-link {
-      position: fixed;
-      top: -100px;
-      left: 20px;
-      z-index: 100;
-      padding: 14px 20px;
-      color: var(--ink);
-      background: var(--lime);
-    }
-
-    .skip-link:focus {
-      top: 16px;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1600px;
-      margin: auto;
-      padding-inline: var(--gutter);
-    }
-
-    .section {
-      padding-block: var(--section-space);
-    }
-
-    .eyebrow {
-      margin-bottom: 24px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      line-height: 1.7;
-    }
-
-    .section-title {
-      font-size: clamp(30px, 3.5vw, 52px);
-      font-weight: 500;
-      letter-spacing: -1.8px;
-      line-height: 1.5;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 34px;
-      min-height: 54px;
-      padding: 16px 24px;
-      border: 1px solid transparent;
-      font-size: 13px;
-      font-weight: 500;
-      transition: background .2s, transform .2s;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .button span {
-      font-size: 23px;
-      line-height: 1;
-    }
-
-    .button-light {
-      color: var(--ink);
-      background: var(--paper);
-    }
-
-    .button-light:hover {
-      background: var(--lime);
-    }
-
-    .button-dark {
-      color: white;
-      background: var(--ocean);
-    }
-
-    .button-dark:hover {
-      background: #21585b;
-    }
-
-    .button-lime {
-      color: var(--ink);
-      background: var(--lime);
-    }
-
-    .button-lime:hover {
-      background: #e6f4c9;
-    }
-
-    /* ===== 상단 메뉴 ===== */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: var(--paper);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      min-height: 84px;
-    }
-
-    .logo {
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: -1.5px;
-      white-space: nowrap;
-    }
-
-    .desktop-nav {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .desktop-nav a {
-      padding-block: 12px;
-      font-size: 13px;
-    }
-
-    .desktop-nav a:hover {
-      color: #658340;
-    }
-
-    .header-contact {
-      padding-bottom: 8px;
-      border-bottom: 1px solid currentColor;
-      font-size: 12px;
-    }
-
-    .menu-toggle {
-      display: none;
-      min-height: 44px;
-      padding: 8px 0 8px 16px;
-      border: 0;
-      color: var(--ink);
-      background: transparent;
-    }
-
-    .mobile-nav {
-      padding: 0 var(--gutter) 22px;
-    }
-
-    .mobile-nav a {
-      display: flex;
-      justify-content: space-between;
-      padding: 15px 0;
-      border-top: 1px solid var(--line);
-      font-size: 15px;
-    }
-
-    /* ===== 첫 화면 ===== */
-    .hero {
-      position: relative;
-      isolation: isolate;
-      display: flex;
-      flex-direction: column;
-      min-height: 660px;
-      min-height: max(660px, calc(100svh - 84px));
-      color: white;
-      background: #15434b;
-    }
-
-    .hero-video,
-    .hero-shade {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .hero-video {
-      z-index: -3;
-      object-fit: cover;
-    }
-
-    .hero-shade {
-      z-index: -2;
-      background:
-        linear-gradient(90deg, #06262cbf, #06262c38),
-        linear-gradient(0deg, #06262c80, transparent 60%);
-    }
-
-    .hero-inner {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      padding-top: 30px;
-      padding-bottom: 26px;
-    }
-
-    .hero-top,
-    .hero-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      line-height: 1.7;
-    }
-
-    .hero-content {
-      padding-block: 100px;
-      margin-block: auto;
-    }
-
-    .hero-content .eyebrow {
-      color: #e0eace;
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 6vw, 86px);
-      font-weight: 500;
-      letter-spacing: -3px;
-      line-height: 1.3;
-    }
-
-    .hero-description {
-      margin-top: 26px;
-      margin-bottom: 34px;
-      color: #e0e8e5;
-      font-size: 14px;
-      line-height: 2;
-    }
-
-    .video-toggle {
-      min-height: 44px;
-      padding: 8px 12px;
-      border: 1px solid #ffffff66;
-      color: white;
-      background: #06262c40;
-      font-size: 11px;
-    }
-
-    .intro-strip {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding-block: 26px;
-      border-bottom: 1px solid var(--line);
-      font-size: 10px;
-      letter-spacing: 1.2px;
-    }
-
-    .intro-strip p {
-      font-size: 12px;
-      letter-spacing: 0;
-    }
-
-    /* ===== 철학 ===== */
-    .story-intro {
-      text-align: center;
-    }
-
-    .story-description {
-      margin-top: 26px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 2;
-    }
-
-    .values {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin-top: 72px;
-    }
-
-    .value {
-      padding-inline: 34px;
-      border-left: 1px solid var(--line);
-    }
-
-    .value:first-child {
-      padding-left: 0;
-      border-left: 0;
-    }
-
-    .value:last-child {
-      padding-right: 0;
-    }
-
-    .number {
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 1px;
-    }
-
-    .value h3 {
-      margin: 20px 0 24px;
-      font-size: clamp(40px, 4vw, 60px);
-      font-weight: 400;
-      letter-spacing: -2px;
-    }
-
-    .value h3 span {
-      color: #88a665;
-    }
-
-    .value strong {
-      display: block;
-      margin-bottom: 14px;
-      font-size: 17px;
-      font-weight: 500;
-    }
-
-    .value p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 2;
-    }
-
-    /* ===== 프로그램 ===== */
-    .program-section {
-      border-top: 1px solid var(--line);
-      background: #edf0e8;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 30px;
-      margin-bottom: 42px;
-    }
-
-    .section-heading > p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 2;
-    }
-
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 30px;
-    }
-
-    .filters button {
-      min-height: 44px;
-      padding: 10px 20px;
-      border: 1px solid #bccbbd;
-      border-radius: 30px;
-      color: var(--ink);
-      background: transparent;
-      font-size: 12px;
-    }
-
-    .filters button[aria-pressed="true"] {
-      border-color: var(--ink);
-      color: white;
-      background: var(--ink);
-    }
-
-    .program-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .program-card {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      padding: 30px;
-      border-top: 2px solid var(--ink);
-      background: var(--paper);
-    }
-
-    .program-card .english {
-      margin-top: 50px;
-      margin-bottom: 12px;
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 1px;
-    }
-
-    .program-card h3 {
-      margin-bottom: 20px;
-      font-size: 27px;
-      font-weight: 500;
-      letter-spacing: -1px;
-    }
-
-    .program-card > p:not(.english) {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 2;
-    }
-
-    .program-card details {
-      margin-top: 28px;
-      margin-bottom: 28px;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding-block: 18px;
-      list-style: none;
-      cursor: pointer;
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    summary::after {
-      content: "+";
-      flex-shrink: 0;
-      font-size: 23px;
-      font-weight: 400;
-    }
-
-    details[open] > summary::after {
-      content: "−";
-    }
-
-    .program-card summary {
-      font-size: 12px;
-    }
-
-    .program-card details p {
-      padding-bottom: 18px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.9;
-    }
-
-    .program-card .text-link {
-      margin-top: auto;
-    }
-
-    .text-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      min-height: 44px;
-      font-size: 13px;
-    }
-
-    .text-link span {
-      font-size: 24px;
-    }
-
-    .program-note {
-      margin-top: 24px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.9;
-    }
-
-    /* ===== 울릉도 ===== */
-    .island-section {
-      color: var(--paper);
-      background: var(--ocean);
-    }
-
-    .island-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .island-word {
-      margin-top: 30px;
-      color: var(--lime);
-      font-size: clamp(48px, 6vw, 90px);
-      font-weight: 400;
-      letter-spacing: -3px;
-    }
-
-    .island-copy p {
-      margin-bottom: 24px;
-      color: #d0dcd5;
-      font-size: 14px;
-      line-height: 2.1;
-    }
-
-    .island-copy .text-link {
-      width: fit-content;
-      gap: 50px;
-      margin-top: 32px;
-      border-bottom: 1px solid #a3bbb0;
-    }
-
-    /* ===== 커뮤니티 ===== */
-    .community-list {
-      margin-top: 46px;
-      border-top: 1px solid var(--line);
-    }
-
-    .community-item {
-      display: grid;
-      grid-template-columns: 45px 1fr 1.2fr;
-      align-items: start;
-      gap: 25px;
-      padding-block: 32px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .community-item h3 {
-      font-size: 23px;
-      font-weight: 500;
-      letter-spacing: -.7px;
-    }
-
-    .community-item p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 2;
-    }
-
-    .schedule-note {
-      margin-top: 30px;
-      padding: 24px;
-      background: #e8eddf;
-      font-size: 13px;
-      line-height: 1.9;
-    }
-
-    /* ===== 자주 묻는 질문 ===== */
-    .faq-section {
-      padding-top: 0;
-    }
-
-    .faq-grid {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 70px;
-    }
-
-    .faq-list {
-      border-top: 1px solid var(--line);
-    }
-
-    .faq-list details {
-      border-bottom: 1px solid var(--line);
-    }
-
-    .faq-list summary {
-      min-height: 76px;
-      font-size: 14px;
-    }
-
-    .faq-list details p {
-      padding: 0 20px 24px 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 2;
-    }
-
-    /* ===== 문의와 푸터 ===== */
-    .contact-section {
-      padding-block: var(--section-space);
-      text-align: center;
-      background: #e3ead9;
-    }
-
-    .contact-section > .container > p:not(.eyebrow) {
-      margin: 25px 0 32px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 2;
-    }
-
-    .contact-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .contact-email {
-      display: inline-block;
-      margin-top: 25px;
-      font-size: 13px;
-      overflow-wrap: anywhere;
-    }
-
-    .footer {
-      padding-block: 40px 28px;
-    }
-
-    .footer-top,
-    .footer-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .footer-top {
-      padding-bottom: 30px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .footer-top p {
-      font-size: 12px;
-    }
-
-    .footer-top > a:last-child {
-      font-size: 10px;
-      letter-spacing: 1px;
-    }
-
-    .footer-bottom {
-      padding-top: 24px;
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: .8px;
-    }
-
-    /* ===== 모바일 ===== */
-    @media (max-width: 1000px) {
-      .desktop-nav {
-        gap: 18px;
-      }
-
-      .header-contact {
-        display: none;
-      }
-
-      .value {
-        padding-inline: 22px;
-      }
-
-      .program-card {
-        padding: 24px;
-      }
-
-      .program-card h3 {
-        font-size: 23px;
-      }
-
-      .island-grid {
-        gap: 40px;
-      }
-    }
-
-    @media (max-width: 760px) {
-      html {
-        scroll-padding-top: 90px;
-      }
-
-      .header-inner {
-        min-height: 72px;
-      }
-
-      .logo {
-        font-size: 27px;
-      }
-
-      .desktop-nav {
-        display: none;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .hero {
-        min-height: max(620px, calc(100svh - 72px));
-      }
-
-      .hero-top {
-        font-size: 8px;
-        letter-spacing: .8px;
-      }
-
-      .hero-content {
-        padding-block: 80px;
-      }
-
-      .hero h1 {
-        font-size: clamp(36px, 7.8vw, 58px);
-        letter-spacing: -1.8px;
-      }
-
-      .hero-content .eyebrow {
-        font-size: 9px;
-        letter-spacing: 1.3px;
-      }
-
-      .hero-description {
-        font-size: 13px;
-      }
-
-      .hero-bottom {
-        font-size: 8px;
-        letter-spacing: .8px;
-      }
-
-      .intro-strip p {
-        display: none;
-      }
-
-      .intro-strip {
-        font-size: 8px;
-      }
-
-      .story-intro {
-        text-align: left;
-      }
-
-      .values {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        margin-top: 45px;
-      }
-
-      .value,
-      .value:first-child,
-      .value:last-child {
-        padding: 0 0 28px;
-        border-left: 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .value h3 {
-        margin-top: 10px;
-        margin-bottom: 20px;
-        font-size: 48px;
-      }
-
-      .section-heading {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 22px;
-      }
-
-      .program-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .program-card {
-        padding: 28px;
-      }
-
-      .program-card .english {
-        margin-top: 30px;
-      }
-
-      .program-card h3 {
-        font-size: 28px;
-      }
-
-      .island-grid,
-      .faq-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
-      }
-
-      .community-item {
-        grid-template-columns: 25px 1fr;
-        gap: 12px 18px;
-      }
-
-      .community-item p {
-        grid-column: 2;
-      }
-
-      .community-item h3 {
-        font-size: 21px;
-      }
-
-      .footer-top p {
-        width: 100%;
-        order: 3;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-    /* ===== 해외 투어 안내 팝업 ===== */
-body.invited-trip-open {
-  overflow: hidden;
-}
-
-.invited-trip-popup {
-  position: fixed;
-  inset: 0;
-  width: min(460px, calc(100% - 32px));
-  max-height: calc(100vh - 32px);
-  max-height: calc(100svh - 32px);
-  margin: auto;
-  padding: 0;
-  overflow-y: auto;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  color: var(--ink);
-  background: var(--paper);
-  box-shadow: 0 24px 90px #06262c33;
-}
-
-.invited-trip-popup::backdrop {
-  background: #06262c88;
-  backdrop-filter: blur(4px);
-}
-
-.invited-trip-inner {
-  position: relative;
-}
-
-.invited-trip-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 1;
-  min-height: 44px;
-  padding: 10px 16px;
-  border: 0;
-  border-radius: 4px;
-  color: var(--ink);
-  background: var(--paper);
-  font-size: 12px;
-}
-
-.invited-trip-image {
-  display: block;
-  width: 100%;
-  height: 210px;
-  object-fit: cover;
-  background: var(--ocean);
-}
-
-.invited-trip-copy {
-  padding: 30px 32px 18px;
-}
-
-.invited-trip-copy .eyebrow {
-  margin-bottom: 14px;
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 1.6px;
-}
-
-.invited-trip-copy h2 {
-  margin-bottom: 18px;
-  font-size: clamp(28px, 6vw, 36px);
-  font-weight: 500;
-  letter-spacing: -1.5px;
-  line-height: 1.4;
-}
-
-.invited-trip-name {
-  margin-bottom: 8px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .5px;
-}
-
-.invited-trip-dates {
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.invited-trip-meta {
-  margin-top: 10px;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.9;
-}
-
-.invited-trip-copy .button {
-  width: 100%;
-  margin-top: 24px;
-}
-
-.invited-trip-later {
-  display: block;
-  min-height: 44px;
-  margin: 10px auto 0;
-  padding: 10px 18px;
-  border: 0;
-  color: var(--muted);
-  background: transparent;
-  font-size: 12px;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.invited-trip-credit {
-  margin-top: 12px;
-  color: var(--muted);
-  font-size: 9px;
-  line-height: 1.7;
-}
-
-.invited-trip-credit a {
-  text-decoration: underline;
-}
-
-@media (max-width: 480px) {
-  .invited-trip-image {
-    height: 165px;
-  }
-
-  .invited-trip-copy {
-    padding: 24px 24px 14px;
-  }
-}
-
-@media (max-height: 650px) {
-  .invited-trip-image {
-    height: 110px;
-  }
-
-  .invited-trip-copy {
-    padding-top: 20px;
-  }
-}
-  </style>
-  
-<style id="invited-v2-design">
-
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css');
-
-:root {
-  --v2-blue: #3977B9;
-  --v2-black: #222222;
-  --v2-white: #FFFFFF;
-}
-
-body {
-  font-family: "Pretendard Variable", Pretendard,
-    -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #FFFFFF;
-  color: #222222;
-  letter-spacing: -0.025em;
-}
-
-/* HEADER */
-
-.header {
-  background: #FFFFFF;
-  color: #222222;
-  border-bottom: 1px solid #EEEEEE;
-  backdrop-filter: none;
-  box-shadow: none;
-}
-
-.header-inner {
-  max-width: 1440px;
-  min-height: 76px;
-  padding: 0 48px;
-  margin: 0 auto;
-}
-
-.header .logo {
-  color: var(--v2-blue);
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: -0.06em;
-}
-
-.desktop-nav {
-  gap: 36px;
-}
-
-.desktop-nav a {
-  color: #333333;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-}
-
-.header-contact {
-  background: transparent;
-  color: #222222;
-  border: 0;
-  border-radius: 0;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.menu-toggle {
-  color: #222222;
-  background: transparent;
-  border: 0;
-  font-size: 14px;
-}
-
-.mobile-nav {
-  background: #FFFFFF;
-  color: #222222;
-}
-
-.mobile-nav a {
-  color: #222222;
-  border-color: #EEEEEE;
-  font-weight: 400;
-}
-
-/* MAIN VISUAL */
-
-.hero {
-  min-height: 680px;
-  min-height: clamp(520px, 78svh, 900px);
-  background: #17384C;
-  border-radius: 0;
-  overflow: hidden;
-}
-
-.hero-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-shade {
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.28),
-    rgba(0, 0, 0, 0.04)
-  );
-}
-
-.hero-inner {
-  max-width: 1440px;
-  min-height: inherit;
-  padding: 60px 48px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.hero-top,
-.hero-content .eyebrow {
-  display: none;
-}
-
-.hero-content {
-  max-width: 850px;
-  margin: 0;
-  text-align: left;
-  color: #FFFFFF;
-}
-
-.hero h1 {
-  color: #FFFFFF;
-  font-size: clamp(38px, 5vw, 72px);
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.055em;
-}
-
-.hero-description {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 1.7;
-}
-
-.hero .button-light {
-  background: #FFFFFF;
-  color: #222222;
-  border: 0;
-  border-radius: 2px;
-  padding: 15px 24px;
-  font-size: 14px;
-  font-weight: 500;
-  box-shadow: none;
-}
-
-.hero-bottom {
-  position: absolute;
-  bottom: 24px;
-  right: 48px;
-  left: auto;
-  width: auto;
-}
-
-.hero-bottom > a {
-  display: none;
-}
-
-/* MOBILE & TABLET */
-
-@media (max-width: 1023px) {
-  .header-inner {
-    min-height: 68px;
-    padding: 0 24px;
-  }
-
-  .hero-inner {
-    padding: 40px 32px;
-  }
-}
-
-@media (max-width: 767px) {
-  .header-inner {
-    min-height: 60px;
-    padding: 0 20px;
-  }
-
-  .header .logo {
-    font-size: 23px;
-  }
-
-  .hero {
-    min-height: 480px;
-    min-height: 72svh;
-  }
-
-  .hero-inner {
-    padding: 32px 24px;
-    justify-content: center;
-  }
-
-  .hero-content {
-    width: 100%;
-  }
-
-  .hero h1 {
-    font-size: clamp(32px, 9vw, 46px);
-    line-height: 1.25;
-    font-weight: 400;
-  }
-
-  .hero-description {
-    font-size: 14px;
-    line-height: 1.7;
-  }
-
-  .hero-bottom {
-    bottom: 16px;
-    right: 20px;
-  }
-
-  .hero .button-light {
-    min-height: 48px;
-  }
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>INVITED — 바다에 초대받은 사람들.</title>
+
+    <meta name="description"
+          content="INVITED와 함께 시작하는 새로운 바다. 스쿠버다이빙 교육, 국내외 다이빙 투어, 해양 라이프스타일 커뮤니티.">
+
+    <meta name="theme-color" content="#FFFFFF">
+
+    <link rel="canonical"
+          href="https://www.invitedkorea.com/">
+
+    <link rel="stylesheet" href="css/v2.css">
+
+    <style>
+        .brand-logo img {
+            width: 116px;
+        }
+
+        .hero {
+            background: #FFFFFF;
+        }
+
+        .hero-media {
+            height: clamp(340px, 55vh, 640px);
+        }
+
+        .hero-content {
+            text-align: center;
+            padding-block: 40px;
+        }
+
+        .hero-title {
+            font-weight: 400;
+            letter-spacing: -0.035em;
+        }
+
+        .hero-description {
+            letter-spacing: -0.015em;
+        }
+
+        .quick-menu-item {
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-weight: 500;
+            letter-spacing: -0.035em;
+        }
+
+        .card-title {
+            font-weight: 500;
+        }
+
+        .calendar-day {
+            min-height: 86px;
+        }
+
+        .schedule-note {
+            color: #777777;
+            font-size: 13px;
+            margin-top: 18px;
+        }
+
+        .schedule-list {
+            margin-top: 24px;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .schedule-item p {
+            font-size: 13px;
+            color: #777777;
+            margin-top: 4px;
+        }
+
+        .community-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 64px;
+        }
+
+        .community-photo {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .community-copy p {
+            color: #777777;
+            margin-top: 20px;
+            line-height: 1.9;
+        }
+
+        .community-copy .btn {
+            margin-top: 28px;
+        }
+
+        .skip-link {
+            position: fixed;
+            left: 16px;
+            top: -100px;
+            z-index: 2000;
+            padding: 12px 20px;
+            color: #FFFFFF;
+            background: #222222;
+        }
+
+        .skip-link:focus {
+            top: 12px;
+        }
+
+        @media (max-width: 767px) {
+
+            .brand-logo img {
+                width: 100px;
+            }
+
+            .hero-media {
+                height: clamp(270px, 42svh, 420px);
+            }
+
+            .hero-content {
+                padding-block: 28px 32px;
+            }
+
+            .hero-title {
+                font-size: 27px;
+            }
+
+            .hero-description {
+                font-size: 13px;
+            }
+
+            .calendar-day {
+                min-height: 48px;
+            }
+
+            .calendar-event {
+                height: 5px;
+                padding: 0;
+                margin-top: 5px;
+                border-radius: 1px;
+                background: #3977B9;
+                font-size: 0;
+            }
+
+            .community-layout {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .schedule-item {
+                align-items: flex-start;
+            }
+
+            .community-copy p {
+                font-size: 14px;
+            }
+        }
+    </style>
 
 </head>
-  
 
 <body>
-  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
-  <!-- ===== 상단 메뉴 ===== -->
-  <header class="header">
+<a href="#main" class="skip-link">
+    본문으로 건너뛰기
+</a>
+
+<!-- ==============================
+     HEADER
+============================== -->
+
+<header class="site-header" id="siteHeader">
+
     <div class="container header-inner">
-      <a class="logo" href="/" aria-label="INVITED 처음으로">
-        INVITED
-      </a>
 
-      <nav class="desktop-nav" aria-label="주 메뉴">
-        <a href="#story">Our story</a>
-        <a href="#programs">Programs</a>
-        <a href="/tour.html" onclick="trackDiveTripClick()">Dive trip</a>
-        <a href="#community">Community</a>
-      </nav>
+        <a href="/" class="brand-logo"
+           aria-label="INVITED 홈">
 
-      <a class="header-contact" href="#contact">
-        함께 시작하기 ↗
-      </a>
+            <img src="images/INVITED-JPG.jpg"
+                 alt="INVITED">
 
-      <button
-        class="menu-toggle"
-        id="menu-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="mobile-nav"
-        hidden
-      >
-        메뉴 +
-      </button>
+        </a>
+
+        <nav class="desktop-nav"
+             aria-label="주 메뉴">
+
+            <a href="#schedule">일정</a>
+            <a href="#programs">교육</a>
+            <a href="#trips">투어</a>
+            <a href="#story">브랜드</a>
+            <a href="#community">커뮤니티</a>
+            <a href="#magazine">매거진</a>
+
+        </nav>
+
+        <a class="header-contact"
+           href="https://pf.kakao.com/_bCxexaX"
+           target="_blank"
+           rel="noopener noreferrer">
+
+            상담하기 ↗
+
+        </a>
+
+        <button type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="메뉴 열기"
+                aria-expanded="false"
+                aria-controls="mobileNav">
+
+            <svg viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.5"
+                 aria-hidden="true">
+
+                <path d="M3 6h18 M3 12h18 M3 18h18"/>
+
+            </svg>
+
+        </button>
+
     </div>
 
-    <nav
-      class="mobile-nav"
-      id="mobile-nav"
-      aria-label="모바일 메뉴"
-    >
-      <a href="#story">우리의 이야기 <span aria-hidden="true">↗</span></a>
-      <a href="#programs">다이빙 프로그램 <span aria-hidden="true">↗</span></a>
-      <a href="/tour.html">다이브 트립 <span aria-hidden="true">↗</span></a>
-      <a href="#community">커뮤니티 <span aria-hidden="true">↗</span></a>
-      <a href="#contact">문의하기 <span aria-hidden="true">↗</span></a>
+    <nav class="mobile-nav"
+         id="mobileNav"
+         aria-label="모바일 메뉴">
+
+        <a href="#schedule">일정</a>
+        <a href="#programs">교육</a>
+        <a href="#trips">투어</a>
+        <a href="#story">브랜드</a>
+        <a href="#community">커뮤니티</a>
+        <a href="#magazine">매거진</a>
+        <a href="#contact">상담 및 문의</a>
+
     </nav>
-  </header>
 
-  <main id="main">
-    <!-- ===== 첫 화면 ===== -->
-    <section class="hero" id="home" aria-labelledby="hero-title">
-      <video
-        class="hero-video"
-        id="hero-video"
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        aria-hidden="true"
-      >
-        <source src="videos/hero.mp4" type="video/mp4">
-      </video>
+</header>
 
-      <div class="hero-shade" aria-hidden="true"></div>
 
-      <div class="container hero-inner">
-        <div class="hero-top">
-          <span>SCUBA · FREEDIVING · ISLAND LIFE</span>
-          <span>ULLEUNGDO, KOREA</span>
-        </div>
+<main id="main">
 
-        <div class="hero-content">
-          <p class="eyebrow">AN INVITATION TO THE OCEAN</p>
+<!-- ==============================
+     MAIN VISUAL
+============================== -->
 
-          <h1 id="hero-title">
-            바다에<br>
-            초대받은 사람들.
-          </h1>
+<section class="hero">
 
-          <p class="hero-description">
-            조금 느리게, 더 아름답게 연결되는 시간.<br>
-            INVITED와 함께 우리의 바다가 시작됩니다.
-          </p>
+    <div class="hero-media">
 
-          <a class="button button-light" href="#programs">
-            우리의 다이빙 만나보기
-            <span aria-hidden="true">↗</span>
-          </a>
-        </div>
+        <video id="heroVideo"
+               muted
+               loop
+               playsinline
+               preload="none"
+               poster="images/ocean/ssangjungcho.jpg"
+               aria-hidden="true">
 
-        <div class="hero-bottom">
-          <a href="#story">SLOW DOWN. DIVE IN. ↓</a>
+            <source src="videos/hero.mp4"
+                    type="video/mp4">
 
-          <button
-            class="video-toggle"
-            id="video-toggle"
-            type="button"
-            hidden
-          >
-            배경 영상 재생
-          </button>
-        </div>
-      </div>
-    </section>
+        </video>
 
-    <div class="container intro-strip">
-      <span>THE OCEAN IS CALLING.</span>
-      <p>바다를 만나는 우리만의 방식</p>
-      <span>YOU ARE INVITED. ↗</span>
+        <button type="button"
+                class="hero-video-toggle"
+                id="videoToggle"
+                aria-label="배경 영상 재생">
+
+            <span id="videoToggleIcon"
+                  aria-hidden="true">▶</span>
+
+        </button>
+
     </div>
 
-    <!-- ===== Slow / Safe / Standard ===== -->
-    <section class="section" id="story" aria-labelledby="story-title">
-      <div class="container">
-        <div class="story-intro">
-          <p class="eyebrow">01 — OUR PHILOSOPHY</p>
+    <div class="container hero-content">
 
-          <h2 class="section-title" id="story-title">
-            잘하는 것보다,<br>
-            <span class="muted">오래 좋아할 수 있도록.</span>
-          </h2>
+        <h1 class="hero-title">
+            바다에 초대받은 사람들.
+        </h1>
 
-          <p class="story-description">
-            우리는 기록보다 경험을, 속도보다 호흡을 생각합니다.<br>
-            누구나 자신의 속도로 바다와 가까워질 수 있도록.<br>
-            INVITED가 바다를 만나는 세 가지 기준입니다.
-          </p>
-        </div>
-
-        <div class="values">
-          <article class="value">
-            <span class="number">01 /</span>
-            <h3>Safety<span>.</span></h3>
-            <strong>타협하지 않는 안전</strong>
-            <p>
-              어떠한 상황에서도 타협하지 않는 안전의 원칙. 인바이티드가 당신의 가장 든든한 조력자가 되어 그 여정을 함께합니다.
-            </p>
-          </article>
-
-          <article class="value">
-            <span class="number">02 /</span>
-            <h3>Sustainblity<span>.</span></h3>
-            <strong>존중과 공존의 가치</strong>
-            <p>
-              바다의 생태계를 존중하고 공존의 가치를 지키겠다는 우리의 약속입니다.
-            </p>
-          </article>
-
-          <article class="value">
-            <span class="number">03 /</span>
-            <h3>Silence<span>.</span></h3>
-            <strong>바다에서 찾는 평온함</strong>
-            <p>
-              우리가 초대받은 바다에서, 당신만의 평온을 발견하십시오.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== 프로그램 ===== -->
-    <section
-      class="section program-section"
-      id="programs"
-      aria-labelledby="programs-title"
-    >
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">02 — FIND YOUR DIVE</p>
-            <h2 class="section-title" id="programs-title">
-              당신의 바다는<br>
-              어디에서 시작되나요?
-            </h2>
-          </div>
-
-          <p>
-            처음의 설렘도, 다음의 도전도.<br>
-            지금의 나에게 맞는 다이빙을 만나보세요.
-          </p>
-        </div>
-
-        <div
-          class="filters"
-          id="program-filters"
-          role="group"
-          aria-label="프로그램 종류"
-          hidden
-        >
-          <button type="button" data-filter="all" aria-pressed="true">
-            전체
-          </button>
-          <button type="button" data-filter="scuba" aria-pressed="false">
-            스쿠버다이빙
-          </button>
-          <button type="button" data-filter="free" aria-pressed="false">
-            프리다이빙
-          </button>
-          <button type="button" data-filter="tour" aria-pressed="false">
-            투어
-          </button>
-        </div>
-
-        <div class="program-grid">
-          <article class="program-card" data-category="scuba">
-            <span class="number">01 / LEARN & EXPLORE</span>
-            <p class="english">SCUBA DIVING</p>
-            <h3>스쿠버다이빙</h3>
-            <p>
-              물속에서 맞이하는 첫 호흡.<br>
-              새로운 풍경을 만나는 다이빙의 시작.
-            </p>
-
-            <details>
-              <summary>프로그램 알아보기</summary>
-              <p>
-                처음 시작하는 분부터 자격을 갖춘 다이버까지,
-                경험과 목표에 맞는 교육과 다이빙을 상담합니다.
-                세부 과정과 참여 조건은 문의 시 안내합니다.
-              </p>
-            </details>
-
-            <a class="text-link" href="learn.html#scuba">
-  스쿠버다이빙 자세히 보기
-  <span aria-hidden="true">↗</span>
-</a>
-          </article>
-
-          <article class="program-card" data-category="free">
-            <span class="number">02 / BREATHE & CONNECT</span>
-            <p class="english">FREEDIVING</p>
-            <h3>프리다이빙</h3>
-            <p>
-              한 번의 호흡, 고요한 바다.<br>
-              오롯이 나에게 집중하는 시간.
-            </p>
-
-            <details>
-              <summary>프로그램 알아보기</summary>
-              <p>
-                자신의 호흡과 편안함을 알아가며 기본을 익힙니다.
-                경험과 희망하는 활동을 알려주시면 적합한 과정을
-                상담합니다. 버디와 함께하는 안전을 중요하게 생각합니다.
-              </p>
-            </details>
-
-           <a class="text-link" href="learn.html#freediving">
-  프리다이빙 자세히 보기
-  <span aria-hidden="true">↗</span>
-</a>
-          </article>
-
-          <article class="program-card" data-category="tour">
-            <span class="number">03 / DIVE & STAY SLOW</span>
-            <p class="english">ULLEUNGDO DIVE TRIP</p>
-            <h3>국내 · 해외 다이브 트립</h3>
-            <p>
-  국내 바다부터 해외 바다까지.<br>
-  바다가 있는 곳이라면 어디든 함께합니다.
-</p>
-
-            <details>
-              <summary>프로그램 알아보기</summary>
-              <p>
-                다이빙 경험과 여행 일정에 맞춰 참여 가능 여부를
-                상담합니다. 해상 상황과 현장 조건에 따라
-                다이빙 계획이 달라질 수 있습니다.
-              </p>
-            </details>
-
-            <a class="text-link" href="/tour.html">
-              울릉도 트립 문의
-              <span aria-hidden="true">↗</span>
-            </a>
-          </article>
-        </div>
-
-        <p class="program-note" id="program-status" aria-live="polite">
-          총 3개의 프로그램 · 세부 일정과 요금은 문의 시 안내합니다.
+        <p class="hero-description">
+            당신의 첫 바다부터, 다음 바다까지.
         </p>
-      </div>
-    </section>
 
-    <!-- ===== 울릉도 ===== -->
-    <section
-      class="section island-section"
-      id="ulleungdo"
-      aria-labelledby="island-title"
-    >
-      <div class="container island-grid">
-        <div>
-          <p class="eyebrow">03 — BASED IN ULLEUNGDO</p>
-          <h2 class="section-title" id="island-title">
-            조금 멀리 와서,<br>
-            조금 더 가까워지는.
-          </h2>
-          <p class="island-word" lang="en">Ulleungdo.</p>
-        </div>
+    </div>
 
-        <div class="island-copy">
-          <p>
-            육지의 일상에서 한 걸음 떨어진 섬.<br>
-            바다를 만나러 온 우리는 이곳에서<br>
-            자연과, 서로와, 나 자신과 가까워집니다.
-          </p>
+</section>
 
-          <p>
-            다이빙을 하고, 섬을 걷고,<br>
-            함께 식탁에 둘러앉는 일.<br>
-            울릉도에서 보내는 모든 시간이 우리의 여행입니다.
-          </p>
 
-          <a class="text-link" href="#community">
-            섬에서 함께하는 시간
-            <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </div>
-    </section>
+<!-- ==============================
+     QUICK MENU
+============================== -->
 
-    <!-- ===== 커뮤니티 ===== -->
-    <section
-      class="section"
-      id="community"
-      aria-labelledby="community-title"
-    >
-      <div class="container">
+<nav class="quick-menu"
+     aria-label="빠른 메뉴">
+
+    <div class="container quick-menu-grid">
+
+        <a href="#schedule"
+           class="quick-menu-item">
+
+            <svg viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 aria-hidden="true">
+
+                <rect x="3" y="5"
+                      width="18" height="16"
+                      rx="1"/>
+
+                <path d="M7 2v6 M17 2v6 M3 10h18"/>
+
+            </svg>
+
+            <span>일정</span>
+
+        </a>
+
+        <a href="#programs"
+           class="quick-menu-item">
+
+            <svg viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 aria-hidden="true">
+
+                <path d="M2 6c3-4 6 4 10 0s7-4 10 0
+                         M2 12c3-4 6 4 10 0s7-4 10 0
+                         M2 18c3-4 6 4 10 0s7-4 10 0"/>
+
+            </svg>
+
+            <span>교육</span>
+
+        </a>
+
+        <a href="#trips"
+           class="quick-menu-item">
+
+            <svg viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 aria-hidden="true">
+
+                <circle cx="12" cy="12" r="9"/>
+
+                <path d="M3 12h18
+                         M12 3c-6 5-6 13 0 18
+                         M12 3c6 5 6 13 0 18"/>
+
+            </svg>
+
+            <span>투어</span>
+
+        </a>
+
+        <a href="#contact"
+           class="quick-menu-item">
+
+            <svg viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 aria-hidden="true">
+
+                <path d="M21 11a9 8 0 0 1-9 8
+                         H8l-5 3 1-6
+                         a9 8 0 1 1 17-5Z"/>
+
+            </svg>
+
+            <span>문의</span>
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ==============================
+     SCHEDULE
+============================== -->
+
+<section class="section" id="schedule">
+
+    <div class="container">
+
         <div class="section-heading">
-          <div>
-            <p class="eyebrow">04 — BETTER TOGETHER</p>
-            <h2 class="section-title" id="community-title">
-              같은 바다를 좋아하는<br>
-              사람들이 모이면.
-            </h2>
-          </div>
 
-          <p>
-            버디로 만나 일상의 친구가 되는 곳.<br>
-            다이빙 이후의 이야기도 함께합니다.
-          </p>
+            <div>
+
+                <h2 class="section-title">Schedule</h2>
+
+                <p class="section-description">
+                    INVITED의 교육과 투어 일정
+                </p>
+
+            </div>
+
+            <a href="tour.html" class="section-link">
+                투어 일정 ↗
+            </a>
+
         </div>
 
-        <div class="community-list">
-          <article class="community-item">
-            <span class="number">01</span>
-            <h3>함께 연습하는 시간</h3>
-            <p>
-              배움이 끝나도 다이빙은 계속됩니다.
-              서로의 버디가 되어 차근차근 경험을 쌓아갑니다.
-            </p>
-          </article>
+        <div class="calendar">
 
-          <article class="community-item">
-            <span class="number">02</span>
-            <h3>바다를 아끼는 마음</h3>
-            <p>
-              우리가 좋아하는 바다가 오래도록 아름답기를.
-              머문 자리를 돌아보고 작은 실천을 함께합니다.
-            </p>
-          </article>
+            <div class="calendar-header">
 
-          <article class="community-item">
-            <span class="number">03</span>
-            <h3>다이빙 그 이상의 여행</h3>
-            <p>
-              다이빙을 마친 뒤 나누는 한 끼, 섬을 걷는 오후.
-              바다에서 시작한 인연을 일상으로 이어갑니다.
-            </p>
-          </article>
+                <h3 class="calendar-month"
+                    id="calendarMonth"
+                    aria-live="polite"></h3>
+
+                <div class="calendar-controls">
+
+                    <button type="button"
+                            id="prevMonth"
+                            aria-label="이전 달">‹</button>
+
+                    <button type="button"
+                            id="nextMonth"
+                            aria-label="다음 달">›</button>
+
+                </div>
+
+            </div>
+
+            <div class="calendar-grid"
+                 id="calendarGrid"></div>
+
+        </div>
+
+        <div class="schedule-list"
+             id="scheduleList"></div>
+
+        <p class="schedule-note">
+            교육 일정은 교육생과 담당 강사가
+            협의하여 진행합니다.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     PROMOTION
+============================== -->
+
+<section class="section section-light"
+         id="promotion"
+         hidden>
+
+    <div class="container">
+
+        <div class="promotion-banner"
+             style="padding: 0;">
+
+            <div>
+
+                <p class="promotion-label">
+                    DECEMBER PROMOTION
+                </p>
+
+                <h2 class="promotion-title">
+                    둘이서 함께 시작하는 첫 바다.
+                </h2>
+
+                <p class="promotion-description">
+                    오픈워터 1+1 · 2인 교육비 500,000원
+                </p>
+
+                <p class="promotion-description">
+                    12.01 – 12.31 · 선착순 10팀
+                </p>
+
+                <p class="promotion-description">
+                    자격증 발급비, 시설 이용료,
+                    장비 렌탈비 별도
+                </p>
+
+            </div>
+
+            <a href="https://pf.kakao.com/_bCxexaX"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn btn-dark"
+               id="promotionButton">
+
+                자세히 문의하기 ↗
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     COURSES
+============================== -->
+
+<section class="section" id="programs">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2 class="section-title">Courses</h2>
+
+                <p class="section-description">
+                    나의 속도로 시작하는 다이빙.
+                </p>
+
+            </div>
+
+            <a href="learn.html"
+               class="section-link">
+
+                전체 교육 ↗
+
+            </a>
+
+        </div>
+
+        <div class="card-grid">
+
+            <!-- OPEN WATER -->
+
+            <a class="content-card"
+               href="learn.html#scuba">
+
+                <div class="card-image">
+
+                    <img src="images/ocean/ssangjungcho.jpg"
+                         alt="울릉도 수중 풍경"
+                         loading="lazy"
+                         decoding="async">
+
+                </div>
+
+                <div class="card-body">
+
+                    <p class="card-category">
+                        SCUBA DIVING
+                    </p>
+
+                    <h3 class="card-title">
+                        Open Water
+                    </h3>
+
+                    <p class="card-description">
+                        오픈워터 · 스쿠버다이빙 입문
+                    </p>
+
+                    <p class="card-price">
+                        500,000원
+                    </p>
+
+                </div>
+
+            </a>
+
+
+            <!-- ADVANCED -->
+
+            <a class="content-card"
+               href="learn.html#advanced">
+
+                <div class="card-image">
+
+                    <img src="images/ocean/soragae.jpg"
+                         alt="푸른 바다의 수중 풍경"
+                         loading="lazy"
+                         decoding="async">
+
+                </div>
+
+                <div class="card-body">
+
+                    <p class="card-category">
+                        SCUBA DIVING
+                    </p>
+
+                    <h3 class="card-title">
+                        Advanced
+                    </h3>
+
+                    <p class="card-description">
+                        어드밴스드 · 새로운 다이빙 경험
+                    </p>
+
+                    <p class="card-price">
+                        400,000원
+                    </p>
+
+                </div>
+
+            </a>
+
+
+            <!-- RESCUE -->
+
+            <a class="content-card"
+               href="learn.html#rescue">
+
+                <div class="card-image">
+
+                    <img src="images/ocean/getjirung.jpg"
+                         alt="바다 생태계 수중 사진"
+                         loading="lazy"
+                         decoding="async">
+
+                </div>
+
+                <div class="card-body">
+
+                    <p class="card-category">
+                        SCUBA DIVING
+                    </p>
+
+                    <h3 class="card-title">
+                        Rescue
+                    </h3>
+
+                    <p class="card-description">
+                        레스큐 · 안전과 구조 능력
+                    </p>
+
+                    <p class="card-price">
+                        600,000원
+                    </p>
+
+                </div>
+
+            </a>
+
         </div>
 
         <p class="schedule-note">
-          함께할 수 있는 교육·투어·모임 일정은 문의해주세요.
-          확정되지 않은 일정은 예약 가능한 상품으로 표시하지 않습니다.
+            교재비 및 강사 교육비 포함.
+            자격증 발급비, 시설 이용료, 장비 렌탈비 별도.
+            교육은 1~3명으로 진행하며
+            1인 신청 시 별도 교육비 할증은 없습니다.
         </p>
-      </div>
-    </section>
 
-    <!-- ===== FAQ ===== -->
-    <section class="section faq-section" aria-labelledby="faq-title">
-      <div class="container faq-grid">
-        <div>
-          <p class="eyebrow">BEFORE WE DIVE</p>
-          <h2 class="section-title" id="faq-title">
-            바다에 가기 전,<br>
-            궁금한 것들.
-          </h2>
+        <div style="margin-top: 28px;">
+
+            <a href="learn.html#freediving"
+               class="btn btn-outline">
+
+                프리다이빙 알아보기 ↗
+
+            </a>
+
         </div>
 
-        <div class="faq-list">
-          <details>
-            <summary>다이빙이 처음이어도 괜찮나요?</summary>
-            <p>
-              처음 시작하는 분도 상담할 수 있습니다.
-              수영 경험과 물에 대한 편안함, 원하는 경험을 알려주세요.
-              프로그램별 참여 조건을 함께 확인합니다.
-            </p>
-          </details>
+    </div>
 
-          <details>
-            <summary>교육과 투어는 어떻게 문의하나요?</summary>
-            <p>
-              아래 이메일 또는 인스타그램으로 관심 있는 프로그램과
-              희망 날짜, 다이빙 경험을 알려주세요.
-              참여 가능 여부와 세부 내용을 확인한 뒤 안내합니다.
-            </p>
-          </details>
+</section>
 
-          <details>
-            <summary>장비가 없어도 참여할 수 있나요?</summary>
-            <p>
-              필요한 장비와 대여 가능 여부는 프로그램마다 다를 수 있습니다.
-              보유 장비와 필요한 장비를 문의할 때 함께 알려주세요.
-              준비 사항을 확인한 후 방문해주세요.
-            </p>
-          </details>
 
-          <details>
-            <summary>울릉도 방문 전에 무엇을 확인해야 하나요?</summary>
-            <p>
-              선박 운항과 해상 상황에 따라 방문 및 다이빙 계획이
-              달라질 수 있습니다. 출발 전 운항 여부를 확인하고,
-              일정 변경 가능성을 고려해 여행을 준비해주세요.
-            </p>
-          </details>
+<!-- ==============================
+     DIVE TRIP
+============================== -->
+
+<section class="section section-light"
+         id="trips">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2 class="section-title">
+                    Dive Trip
+                </h2>
+
+                <p class="section-description">
+                    함께 떠나는 새로운 바다.
+                </p>
+
+            </div>
+
+            <a href="tour.html" class="section-link">
+                전체 투어 ↗
+            </a>
+
         </div>
-      </div>
-    </section>
 
-    <!-- ===== 문의 ===== -->
-    <section
-      class="contact-section"
-      id="contact"
-      aria-labelledby="contact-title"
-    >
-      <div class="container">
-        <p class="eyebrow">YOU ARE INVITED</p>
+        <div class="card-grid two-columns">
 
-        <h2 class="section-title" id="contact-title">
-          우리의 다음 바다에,<br>
-          당신을 초대합니다.
+            <a class="content-card"
+               href="tour.html">
+
+                <div class="card-image landscape">
+
+                    <img src="images/ocean/ssangjungcho.jpg"
+                         alt="울릉도 다이빙 포인트"
+                         loading="lazy"
+                         decoding="async">
+
+                </div>
+
+                <div class="card-body">
+
+                    <p class="card-category">
+                        DOMESTIC
+                    </p>
+
+                    <h3 class="card-title">
+                        국내 다이빙
+                    </h3>
+
+                    <p class="card-description">
+                        울릉도와 대한민국의 다양한 바다.
+                    </p>
+
+                </div>
+
+            </a>
+
+            <a class="content-card"
+               href="tour.html#cebu-2026">
+
+                <div class="card-image landscape">
+
+                    <img src="images/ocean/soragae.jpg"
+                         alt="다이빙 투어를 소개하는 수중 사진"
+                         loading="lazy"
+                         decoding="async">
+
+                </div>
+
+                <div class="card-body">
+
+                    <p class="card-category">
+                        OVERSEAS
+                    </p>
+
+                    <h3 class="card-title">
+                        해외 다이빙
+                    </h3>
+
+                    <p class="card-description">
+                        세계의 바다를 함께 만나보세요.
+                    </p>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     BRAND STORY
+============================== -->
+
+<section class="section" id="story">
+
+    <div class="container community-layout">
+
+        <img class="community-photo"
+             src="images/ocean/nudi.jpg"
+             alt="바닷속 해양생물"
+             loading="lazy"
+             decoding="async">
+
+        <div class="community-copy">
+
+            <p class="card-category">
+                ABOUT INVITED
+            </p>
+
+            <h2 class="section-title"
+                style="margin-top: 12px;">
+
+                바다를 만나는<br>
+                우리만의 방식.
+
+            </h2>
+
+            <p>
+                조금 느리게, 조금 더 안전하게.<br>
+                기본을 지키며 바다를 즐기는 사람들.
+            </p>
+
+            <p>
+                Slow. Safe. Standard.
+            </p>
+
+            <a href="#contact"
+               class="btn btn-outline">
+
+                INVITED와 함께하기 ↗
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     COMMUNITY
+============================== -->
+
+<section class="section section-light"
+         id="community">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2 class="section-title">
+                    Community
+                </h2>
+
+                <p class="section-description">
+                    바다를 좋아하는 사람들이 모이는 곳.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="card-grid two-columns">
+
+            <a class="content-card"
+               href="https://www.instagram.com/invited_diving/"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                <div class="card-image landscape">
+
+                    <img src="images/ocean/getjirung.jpg"
+                         alt="함께 탐험하는 바다"
+                         loading="lazy"
+                         decoding="async">
+
+                </div>
+
+                <div class="card-body">
+
+                    <h3 class="card-title">
+                        Dive Together
+                    </h3>
+
+                    <p class="card-description">
+                        다이빙을 좋아하는 사람들과
+                        함께하는 시간.
+                    </p>
+
+                </div>
+
+            </a>
+
+            <a class="content-card"
+               href="https://www.instagram.com/invited_diving/"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                <div class="card-image landscape">
+
+                    <img src="images/ocean/nudi.jpg"
+                         alt="보호해야 할 바다 생태계"
+                         loading="lazy"
+                         decoding="async">
+
+                </div>
+
+                <div class="card-body">
+
+                    <h3 class="card-title">
+                        바다쓰담
+                    </h3>
+
+                    <p class="card-description">
+                        우리가 사랑하는 바다를 위한
+                        작은 실천.
+                    </p>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     MAGAZINE
+============================== -->
+
+<section class="section" id="magazine">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2 class="section-title">
+                    Magazine
+                </h2>
+
+                <p class="section-description">
+                    바다에서 발견한 흥미로운 이야기.
+                </p>
+
+            </div>
+
+            <a href="https://www.instagram.com/invited_diving/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="section-link">
+
+                Instagram ↗
+
+            </a>
+
+        </div>
+
+        <div class="community-layout">
+
+            <img class="community-photo"
+                 src="images/ocean/nudi.jpg"
+                 alt="INVITED 매거진 수중 생물 사진"
+                 loading="lazy"
+                 decoding="async">
+
+            <div class="community-copy">
+
+                <h3 class="section-title">
+                    INVITED MAGAZINE
+                </h3>
+
+                <p>
+                    다이빙, 해양생물, 여행.<br>
+                    우리가 사랑하는 바다의 이야기를
+                    소개합니다.
+                </p>
+
+                <a href="https://www.instagram.com/invited_diving/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-outline">
+
+                    매거진 만나보기 ↗
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     CONTACT
+============================== -->
+
+<section class="section contact-section"
+         id="contact">
+
+    <div class="container">
+
+        <h2 class="contact-title">
+            당신의 다음 바다.
         </h2>
 
-        <p>
-          어떤 바다를 만나고 싶은가요?<br>
-          INVITED와 함께, 당신의 속도로 시작해요.
+        <p class="contact-description">
+            INVITED와 함께 시작해 보세요.
         </p>
 
         <div class="contact-buttons">
-          <a
-  href="https://pf.kakao.com/_bCxexaX"
-  class="button button-light"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  카카오톡 문의
-  <span aria-hidden="true">↗</span>
-</a>
 
-<a
-  href="https://www.instagram.com/invited_diving/"
-  class="button button-light"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  인스타그램 문의
-  <span aria-hidden="true">↗</span>
-</a>
+            <a href="https://pf.kakao.com/_bCxexaX"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn btn-dark">
+
+                카카오톡 상담 ↗
+
+            </a>
+
+            <a href="https://www.instagram.com/invited_diving/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn btn-outline">
+
+                인스타그램 DM ↗
+
+            </a>
+
         </div>
 
-        <a class="contact-email" href="mailto:invited.hq@gmail.com">
-          invited.hq@gmail.com
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===== 푸터 ===== -->
-  <footer class="container footer">
-    <div class="footer-top">
-      <a class="logo" href="/">INVITED</a>
-      <p>INVITED, 바다에 초대받은 사람들.</p>
-      <a href="/">BACK TO TOP ↑</a>
     </div>
 
-    <div class="footer-bottom">
-      <span>© <span id="year">2026</span> INVITED</span>
-      <span>SLOW / SAFE / STANDARD</span>
+</section>
+
+</main>
+
+
+<!-- ==============================
+     FOOTER
+============================== -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <div>
+
+                <a href="/" class="footer-logo">
+
+                    <img src="images/INVITED-JPG.jpg"
+                         alt="INVITED"
+                         loading="lazy">
+
+                </a>
+
+                <div class="footer-info">
+
+                    <p>
+                        INVITED, 바다에 초대받은 사람들.
+                    </p>
+
+                    <p>
+                        Email.
+                        <a href="mailto:invited.hq@gmail.com">
+                            invited.hq@gmail.com
+                        </a>
+                    </p>
+
+                    <p>
+                        Slow / Safe / Standard
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="#story">About</a>
+
+                <a href="learn.html">Courses</a>
+
+                <a href="tour.html">Dive Trip</a>
+
+                <a href="https://www.instagram.com/invited_diving/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    Instagram
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <p class="footer-copyright">
+            © 2026 INVITED. All rights reserved.
+        </p>
+
     </div>
-  </footer>
 
-  <script>
-    /* ===== 모바일 메뉴 ===== */
-    const menuToggle = document.getElementById("menu-toggle");
-    const mobileNav = document.getElementById("mobile-nav");
-    const mobileScreen = window.matchMedia("(max-width: 760px)");
+</footer>
 
-    menuToggle.hidden = false;
-    mobileNav.hidden = true;
+
+<!-- ==============================
+     JAVASCRIPT
+============================== -->
+
+<script>
+
+    /* MOBILE MENU */
+
+    const menuToggle =
+        document.getElementById('menuToggle');
+
+    const mobileNav =
+        document.getElementById('mobileNav');
 
     function closeMenu() {
-      mobileNav.hidden = true;
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.textContent = "메뉴 +";
+
+        mobileNav.classList.remove('is-open');
+
+        menuToggle.setAttribute(
+            'aria-expanded', 'false'
+        );
+
+        menuToggle.setAttribute(
+            'aria-label', '메뉴 열기'
+        );
+
     }
 
-    menuToggle.addEventListener("click", () => {
-      const opening = mobileNav.hidden;
+    menuToggle.addEventListener('click', () => {
 
-      mobileNav.hidden = !opening;
-      menuToggle.setAttribute("aria-expanded", String(opening));
-      menuToggle.textContent = opening ? "닫기 −" : "메뉴 +";
+        const isOpen =
+            mobileNav.classList.toggle('is-open');
+
+        menuToggle.setAttribute(
+            'aria-expanded', String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+            'aria-label',
+            isOpen ? '메뉴 닫기' : '메뉴 열기'
+        );
+
     });
 
-    mobileNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        closeMenu();
+    mobileNav.querySelectorAll('a')
+        .forEach(link => {
 
-        const href = link.getAttribute("href") || "";
+            link.addEventListener(
+                'click', closeMenu
+            );
 
-const target = href.startsWith("#")
-  ? document.getElementById(href.slice(1))
-  : null;
+        });
 
-        if (target) {
-          target.setAttribute("tabindex", "-1");
-          target.focus({ preventScroll: true });
-          target.addEventListener(
-            "blur",
-            () => target.removeAttribute("tabindex"),
-            { once: true }
-          );
+    document.addEventListener('keydown', event => {
+
+        if (event.key === 'Escape') {
+            closeMenu();
         }
-      });
+
     });
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && !mobileNav.hidden) {
-        closeMenu();
-        menuToggle.focus();
-      }
-    });
+    window.matchMedia('(min-width: 1024px)')
+        .addEventListener('change', closeMenu);
 
-    mobileScreen.addEventListener("change", closeMenu);
 
-    /* ===== 프로그램 필터 ===== */
-    const filterGroup = document.getElementById("program-filters");
-    const filterButtons = filterGroup.querySelectorAll("button");
-    const programCards = document.querySelectorAll("[data-category]");
-    const programStatus = document.getElementById("program-status");
+    /* VIDEO CONTROL */
 
-    filterGroup.hidden = false;
+    const video =
+        document.getElementById('heroVideo');
 
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const selected = button.dataset.filter;
-        let visibleCount = 0;
+    const videoToggle =
+        document.getElementById('videoToggle');
 
-        filterButtons.forEach((item) => {
-          item.setAttribute(
-            "aria-pressed",
-            String(item === button)
-          );
-        });
+    const videoIcon =
+        document.getElementById('videoToggleIcon');
 
-        programCards.forEach((card) => {
-          const visible =
-            selected === "all" || card.dataset.category === selected;
+    function updateVideoControl() {
 
-          card.hidden = !visible;
+        videoIcon.textContent =
+            video.paused ? '▶' : 'Ⅱ';
 
-          if (visible) visibleCount++;
-        });
+        videoToggle.setAttribute(
+            'aria-label',
+            video.paused
+                ? '배경 영상 재생'
+                : '배경 영상 일시정지'
+        );
 
-        programStatus.textContent =
-          `총 ${visibleCount}개의 프로그램 · 세부 일정과 요금은 문의 시 안내합니다.`;
-      });
-    });
+    }
 
-    /* ===== 배경 영상 ===== */
-    const video = document.getElementById("hero-video");
-    const videoToggle = document.getElementById("video-toggle");
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+    video.addEventListener(
+        'play', updateVideoControl
     );
 
-    videoToggle.hidden = false;
+    video.addEventListener(
+        'pause', updateVideoControl
+    );
 
-    function updateVideoButton() {
-      videoToggle.textContent = video.paused
-        ? "배경 영상 재생"
-        : "배경 영상 일시정지";
-    }
+    videoToggle.addEventListener('click', async () => {
 
-    async function playVideo() {
-      try {
-        await video.play();
-      } catch {
-        /* 자동 재생이 차단되어도 본문과 메뉴는 정상 표시됩니다. */
-      }
+        if (video.paused) {
 
-      updateVideoButton();
-    }
+            try {
+                await video.play();
+            } catch (error) {
+                updateVideoControl();
+            }
 
-    videoToggle.addEventListener("click", () => {
-      if (video.paused) {
-        playVideo();
-      } else {
-        video.pause();
-      }
+        } else {
+
+            video.pause();
+
+        }
+
     });
 
-    video.addEventListener("play", updateVideoButton);
-    video.addEventListener("pause", updateVideoButton);
+    const reduceMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+    ).matches;
 
-    video.addEventListener("error", () => {
-      videoToggle.hidden = true;
-    });
+    const isDesktop = window.matchMedia(
+        '(min-width: 1024px)'
+    ).matches;
 
-    video.querySelector("source").addEventListener("error", () => {
-      videoToggle.hidden = true;
-    });
+    const saveData =
+        navigator.connection?.saveData === true;
 
-    reducedMotion.addEventListener("change", (event) => {
-      if (event.matches) video.pause();
-    });
+    if (isDesktop && !reduceMotion && !saveData) {
 
-    if (!reducedMotion.matches) {
-      playVideo();
+        video.play().catch(() => {
+            updateVideoControl();
+        });
+
     }
 
-    /* ===== 연도 ===== */
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
-  <!-- ===== 해외 투어 안내 ===== -->
-<dialog
-  class="invited-trip-popup"
-  id="invited-trip-popup"
-  aria-labelledby="invited-trip-title"
->
-  <div class="invited-trip-inner">
-    <button
-      class="invited-trip-close"
-      type="button"
-      data-trip-close
-      aria-label="해외 투어 안내 닫기"
-      autofocus
-    >
-      닫기 ×
-    </button>
 
-    <img
-      class="invited-trip-image"
-      id="invited-trip-image"
-      alt=""
-      width="920"
-      height="420"
-    >
+    /* SCHEDULE DATA */
 
-    <div class="invited-trip-copy">
-      <p class="eyebrow">YOU ARE INVITED · OVERSEAS TRIP</p>
+    const events = [
 
-      <h2 id="invited-trip-title">
-        이번 겨울,<br>
-        세부의 바다로.
-      </h2>
+        {
+            start: '2026-12-01',
+            end: '2026-12-31',
+            title: '오픈워터 1+1 모집',
+            description: '선착순 10팀 · 2인 교육비 500,000원',
+            link: '#promotion'
+        }
 
-      <p class="invited-trip-name" id="invited-trip-name"></p>
-      <p class="invited-trip-dates" id="invited-trip-dates"></p>
-      <p class="invited-trip-meta" id="invited-trip-meta"></p>
+    ];
 
-      <a
-        class="button button-dark"
-        id="invited-trip-link"
-        href="/tour.html#cebu-2026"
-      >
-        해외 투어 일정 보기
-        <span aria-hidden="true">↗</span>
-      </a>
 
-      <button
-        class="invited-trip-later"
-        type="button"
-        data-trip-close
-      >
-        다음에 볼게요
-      </button>
+    /* CALENDAR */
 
-      <p class="invited-trip-credit">
-        여행지 참고 사진 ·
-        <a
-          id="invited-trip-credit"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Ken Suarez / Unsplash
-        </a>
-      </p>
-    </div>
-  </div>
-</dialog>
+    function getKoreaDate() {
 
-<script>
-(() => {
-  /* ===== 홈 팝업 정보: 수정할 때는 이 부분을 변경하세요 ===== */
-  const announcement = {
-    id: "cebu-2026",
-    name: "INVITED CEBU DIVING TOUR",
-    startDate: "2026-12-22",
-    endDate: "2026-12-27",
-    dives: 9,
-    maximum: 6,
-    minimum: 4,
-    href: "/tour.html#cebu-2026",
-    image:
-      "https://images.unsplash.com/photo-1771905289172-5078b6ede205?auto=format&fit=crop&w=1200&q=85",
-    imageAlt:
-      "필리핀 세부 모알보알의 산호초와 물고기 — 여행지 참고 사진",
-    imageSource:
-      "https://unsplash.com/photos/school-of-fish-swims-above-colorful-coral-reef-iiYDgodFDP0"
-  };
+        return new Intl.DateTimeFormat('en-CA', {
 
-  const popup = document.getElementById("invited-trip-popup");
+            timeZone: 'Asia/Seoul',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
 
-  if (!popup || typeof popup.showModal !== "function") return;
+        }).format(new Date());
 
-  // 출발일 이후에는 자동으로 안내하지 않습니다.
-  const departure = Date.parse(
-    `${announcement.startDate}T00:00:00+09:00`
-  );
-
-  if (Date.now() >= departure) return;
-
-  // 특정 섹션으로 바로 들어온 방문자는 방해하지 않습니다.
-  if (window.location.hash) return;
-
-  const storageKey = `invited:tour-popup:${announcement.id}`;
-
-  try {
-    if (sessionStorage.getItem(storageKey) === "shown") return;
-  } catch {
-    // 저장소가 차단되어도 팝업의 닫기 기능은 정상 작동합니다.
-  }
-
-  const formatDate = value => value.replaceAll("-", ".");
-
-  document.getElementById("invited-trip-name").textContent =
-    announcement.name;
-
-  document.getElementById("invited-trip-dates").textContent =
-    `${formatDate(announcement.startDate)} — ` +
-    formatDate(announcement.endDate);
-
-  document.getElementById("invited-trip-meta").textContent =
-    `다이빙 ${announcement.dives}회 · ` +
-    `최대 ${announcement.maximum}명 · ` +
-    `최소 출발 ${announcement.minimum}명`;
-
-  document.getElementById("invited-trip-link").href =
-    announcement.href;
-
-  document.getElementById("invited-trip-credit").href =
-    announcement.imageSource;
-
-  let previousFocus = null;
-
-  function closePopup() {
-    popup.close();
-  }
-
-  popup.querySelectorAll("[data-trip-close]").forEach(button => {
-    button.addEventListener("click", closePopup);
-  });
-
-  // 팝업 바깥 배경 클릭으로 닫기
-  popup.addEventListener("click", event => {
-    if (event.target === popup) closePopup();
-  });
-
-  // Esc로 닫아도 스크롤 잠금과 포커스를 복원합니다.
-  popup.addEventListener("close", () => {
-    document.body.classList.remove("invited-trip-open");
-
-    if (previousFocus instanceof HTMLElement) {
-      previousFocus.focus({ preventScroll: true });
-    }
-  });
-
-  document.getElementById("invited-trip-link")
-    .addEventListener("click", closePopup);
-
-  // 첫 화면을 잠시 보여준 뒤 안내합니다.
-  window.setTimeout(() => {
-    const isUsingPage =
-      document.activeElement &&
-      document.activeElement !== document.body;
-
-    if (
-      document.hidden ||
-      window.location.hash ||
-      window.scrollY > 80 ||
-      isUsingPage ||
-      document.querySelector("dialog[open]")
-    ) {
-      return;
     }
 
-    const image = document.getElementById("invited-trip-image");
+    const koreaParts = new Intl.DateTimeFormat(
+        'en-US', {
+            timeZone: 'Asia/Seoul',
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric'
+        }
+    ).formatToParts(new Date());
 
-    image.alt = announcement.imageAlt;
+    const todayYear = Number(
+        koreaParts.find(p => p.type === 'year').value
+    );
 
-    // 외부 사진 로딩 실패 시 깨진 이미지 대신 본문만 표시합니다.
-    image.addEventListener("error", () => {
-      image.hidden = true;
-    }, { once: true });
+    const todayMonth = Number(
+        koreaParts.find(p => p.type === 'month').value
+    );
 
-    image.src = announcement.image;
+    const todayDay = Number(
+        koreaParts.find(p => p.type === 'day').value
+    );
 
-    previousFocus = document.activeElement;
-    popup.showModal();
-    document.body.classList.add("invited-trip-open");
+    function dateString(year, month, day) {
 
-    // 표시 즉시 저장하여 새로고침해도 반복하지 않습니다.
-    try {
-      sessionStorage.setItem(storageKey, "shown");
-    } catch {
-      // 저장소 차단 환경에서는 새로고침 시 재표시될 수 있습니다.
+        return year + '-' +
+            String(month).padStart(2, '0') + '-' +
+            String(day).padStart(2, '0');
+
     }
-  }, 300);
-})();
+
+    const todayString = dateString(
+        todayYear, todayMonth, todayDay
+    );
+
+    let currentMonth = new Date(
+        todayYear, todayMonth - 1, 1
+    );
+
+    const calendarGrid =
+        document.getElementById('calendarGrid');
+
+    const calendarMonth =
+        document.getElementById('calendarMonth');
+
+    const scheduleList =
+        document.getElementById('scheduleList');
+
+    function renderCalendar() {
+
+        const year = currentMonth.getFullYear();
+
+        const month = currentMonth.getMonth();
+
+        calendarMonth.textContent =
+            `${year}. ${String(month + 1).padStart(2, '0')}`;
+
+        calendarGrid.replaceChildren();
+
+        const weekdays = [
+            '일', '월', '화', '수',
+            '목', '금', '토'
+        ];
+
+        weekdays.forEach(day => {
+
+            const cell = document.createElement('div');
+
+            cell.className = 'calendar-weekday';
+
+            cell.textContent = day;
+
+            calendarGrid.appendChild(cell);
+
+        });
+
+        const firstDay =
+            new Date(year, month, 1).getDay();
+
+        const lastDate =
+            new Date(year, month + 1, 0).getDate();
+
+        const totalCells = Math.ceil(
+            (firstDay + lastDate) / 7
+        ) * 7;
+
+        for (let i = 0; i < totalCells; i++) {
+
+            const day = i - firstDay + 1;
+
+            const actualDate = new Date(
+                year, month, day
+            );
+
+            const date = dateString(
+                actualDate.getFullYear(),
+                actualDate.getMonth() + 1,
+                actualDate.getDate()
+            );
+
+            const cell =
+                document.createElement('div');
+
+            cell.className = 'calendar-day';
+
+            cell.textContent = actualDate.getDate();
+
+            const outside =
+                actualDate.getMonth() !== month;
+
+            if (outside) {
+
+                cell.classList.add('is-outside');
+
+            }
+
+            if (date === todayString) {
+
+                cell.classList.add('is-today');
+
+            }
+
+            if (!outside) {
+
+                events.filter(event =>
+
+                    date >= event.start &&
+                    date <= event.end
+
+                ).forEach(event => {
+
+                    const marker =
+                        document.createElement('a');
+
+                    marker.className =
+                        'calendar-event';
+
+                    marker.textContent = event.title;
+
+                    marker.href = event.link;
+
+                    marker.setAttribute(
+                        'aria-label', event.title
+                    );
+
+                    cell.appendChild(marker);
+
+                });
+
+            }
+
+            calendarGrid.appendChild(cell);
+
+        }
+
+        renderScheduleList(year, month);
+
+    }
+
+    function renderScheduleList(year, month) {
+
+        scheduleList.replaceChildren();
+
+        const first = dateString(
+            year, month + 1, 1
+        );
+
+        const last = dateString(
+            year,
+            month + 1,
+            new Date(year, month + 1, 0).getDate()
+        );
+
+        const monthlyEvents = events.filter(event =>
+
+            event.start <= last &&
+            event.end >= first
+
+        );
+
+        if (monthlyEvents.length === 0) {
+
+            const message =
+                document.createElement('p');
+
+            message.className = 'schedule-note';
+
+            message.textContent =
+                '현재 등록된 공개 일정이 없습니다.';
+
+            scheduleList.appendChild(message);
+
+            return;
+
+        }
+
+        monthlyEvents.forEach(event => {
+
+            const item = document.createElement('a');
+
+            item.className = 'schedule-item';
+
+            item.href = event.link;
+
+            const copy = document.createElement('div');
+
+            const title = document.createElement('strong');
+
+            title.textContent = event.title;
+
+            const description =
+                document.createElement('p');
+
+            description.textContent =
+                event.start.slice(5).replace('-', '.') +
+                ' – ' +
+                event.end.slice(5).replace('-', '.') +
+                ' · ' + event.description;
+
+            const arrow = document.createElement('span');
+
+            arrow.textContent = '↗';
+
+            copy.append(title, description);
+
+            item.append(copy, arrow);
+
+            scheduleList.appendChild(item);
+
+        });
+
+    }
+
+    document.getElementById('prevMonth')
+        .addEventListener('click', () => {
+
+            currentMonth.setMonth(
+                currentMonth.getMonth() - 1
+            );
+
+            renderCalendar();
+
+        });
+
+    document.getElementById('nextMonth')
+        .addEventListener('click', () => {
+
+            currentMonth.setMonth(
+                currentMonth.getMonth() + 1
+            );
+
+            renderCalendar();
+
+        });
+
+
+    /* PROMOTION STATUS */
+
+    const promotion =
+        document.getElementById('promotion');
+
+    const promotionButton =
+        document.getElementById('promotionButton');
+
+    if (todayString <= '2026-12-31') {
+
+        promotion.hidden = false;
+
+        if (todayString < '2026-12-01') {
+
+            promotionButton.textContent =
+                '12월 1일 모집 시작';
+
+            promotionButton.removeAttribute('href');
+
+            promotionButton.removeAttribute('target');
+
+        }
+
+    } else {
+
+        events[0].link =
+            'https://pf.kakao.com/_bCxexaX';
+
+        events[0].title =
+            '오픈워터 1+1 모집 기간 종료';
+
+    }
+
+    renderCalendar();
+
 </script>
-<script>
-  function trackDiveTripClick() {
 
-    // Google Analytics
-    if (typeof gtag === 'function') {
-      gtag('event', 'dive_trip_click', {
-        event_category: 'navigation',
-        event_label: 'home_to_dive_trip'
-      });
-    }
-
-    // Meta Pixel
-    if (typeof fbq === 'function') {
-      fbq('trackCustom', 'DiveTripClick', {
-        location: 'home'
-      });
-    }
-
-  }
-</script>
 </body>
 </html>
