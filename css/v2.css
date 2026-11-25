@@ -1305,3 +1305,120 @@ body {
         font-weight: 500;
     }
 }
+
+/* ========================================
+   19. PROMOTION CAMPAIGN
+======================================== */
+
+#promotion.promotion-section {
+    background: #FFFFFF;
+    padding-block: 24px 32px;
+}
+
+#promotion[hidden] {
+    display: none !important;
+}
+
+.campaign-link {
+    display: block;
+    overflow: hidden;
+}
+
+.campaign-link picture {
+    display: block;
+    width: 100%;
+}
+
+.campaign-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.campaign-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-top: 20px;
+}
+
+.campaign-information {
+    flex: 1;
+}
+
+.campaign-included {
+    font-size: 13px;
+    font-weight: 500;
+    color: #333333;
+    line-height: 1.7;
+}
+
+.campaign-excluded {
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #777777;
+    line-height: 1.7;
+}
+
+.campaign-button {
+    flex-shrink: 0;
+    min-height: 48px;
+    padding: 12px 28px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.campaign-button[aria-disabled="true"] {
+    background: #F2F2F2;
+    color: #666666;
+    border-color: #E8E8E8;
+    cursor: default;
+}
+
+/* TABLET */
+
+@media (max-width: 1023px) {
+
+    .campaign-footer {
+        gap: 16px;
+    }
+
+}
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+
+    #promotion.promotion-section {
+        padding-block: 12px 24px;
+    }
+
+    .campaign-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        padding-top: 16px;
+    }
+
+    .campaign-information {
+        text-align: center;
+    }
+
+    .campaign-included {
+        font-size: 12px;
+    }
+
+    .campaign-excluded {
+        font-size: 11px;
+        line-height: 1.7;
+    }
+
+    .campaign-button {
+        width: 100%;
+        min-height: 48px;
+    }
+
+}
