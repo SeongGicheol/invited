@@ -21,10 +21,10 @@
 
     <style>
         .brand-logo img {
-              width: 240px;
-    max-height: 72px;
-    object-fit: contain;
-    margin-left: -40px;
+            width: 205px;
+            max-height: 62px;
+            object-fit: contain;
+            margin-left: -35px;
         }
 
         .hero {
@@ -131,9 +131,9 @@
         @media (max-width: 767px) {
 
             .brand-logo img {
-                width: 192px;
-    max-height: 58px;
-    margin-left: -32px;
+               width: 165px;
+                max-height: 50px;
+                margin-left: -28px;
             }
 
             .hero-media {
@@ -182,6 +182,26 @@
     width: 210px;
     margin-left: -35px;
     margin-bottom: 20px;
+}
+    @media (min-width: 1024px) {
+    .header-inner {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        height: 80px;
+    }
+
+    .brand-logo {
+        justify-self: start;
+    }
+
+    .desktop-nav {
+        justify-self: center;
+        gap: 36px;
+    }
+
+    .header-contact {
+        justify-self: end;
+    }
 }
     </style>
 
