@@ -945,3 +945,363 @@ textarea:focus-visible {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* ========================================
+   17. INVITED V2.1
+   Layout & Typography Refinement
+======================================== */
+
+:root {
+    --section-spacing: 72px;
+    --color-black: #171717;
+    --color-gray: #707070;
+    --color-light: #F7F8F9;
+    --color-border: #ECECEC;
+}
+
+/* TYPOGRAPHY */
+
+body {
+    font-weight: 400;
+    letter-spacing: -0.015em;
+}
+
+.section-title {
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1.3;
+}
+
+.section-description {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.section-heading {
+    margin-bottom: 28px;
+}
+
+.section-link {
+    font-weight: 400;
+    font-size: 13px;
+}
+
+/* MAIN VISUAL */
+
+.hero .hero-title {
+    font-weight: 400;
+    letter-spacing: -0.04em;
+}
+
+.hero .hero-content {
+    padding-block: 32px;
+}
+
+.hero .hero-description {
+    margin-top: 8px;
+    font-weight: 400;
+}
+
+/* QUICK MENU */
+
+.quick-menu {
+    border-top: 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.quick-menu-item + .quick-menu-item {
+    border-left: 0;
+}
+
+.quick-menu-item {
+    min-height: 88px;
+    gap: 8px;
+    font-weight: 400;
+}
+
+.quick-menu-item svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 1.4;
+}
+
+/* SCHEDULE */
+
+#schedule .calendar-header {
+    padding: 16px 0;
+}
+
+#schedule .calendar-day {
+    min-height: 64px;
+    padding: 10px;
+}
+
+.calendar-weekday {
+    padding: 10px 4px;
+}
+
+.calendar-month {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.calendar-controls button {
+    border: 1px solid var(--color-border);
+}
+
+.calendar-day.is-today {
+    background: #EDF5FB;
+}
+
+/* COURSES & TRIP CARDS */
+
+.card-grid {
+    gap: 24px;
+}
+
+.card-body {
+    padding-top: 14px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+}
+
+.card-description {
+    margin-top: 5px;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.card-category {
+    font-size: 11px;
+    letter-spacing: 0.03em;
+}
+
+.card-price {
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* PROMOTION */
+
+#promotion {
+    background: #F2F6FA;
+    padding-block: 36px;
+}
+
+#promotion .promotion-title {
+    font-weight: 500;
+}
+
+#promotion .promotion-label {
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+/* COMMUNITY & MAGAZINE */
+
+.community-layout {
+    column-gap: 48px;
+}
+
+.community-copy p {
+    font-weight: 400;
+}
+
+.community-photo {
+    border-radius: 0;
+}
+
+/* BUTTONS */
+
+.btn {
+    border-radius: 0;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+/* TABLET */
+
+@media (max-width: 1023px) {
+
+    :root {
+        --section-spacing: 56px;
+    }
+
+    .section-heading {
+        margin-bottom: 24px;
+    }
+
+    #schedule .calendar-day {
+        min-height: 56px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+
+    :root {
+        --section-spacing: 40px;
+        --page-padding: 20px;
+    }
+
+    .section-title {
+        font-size: 26px;
+        font-weight: 500;
+    }
+
+    .section-heading {
+        margin-bottom: 20px;
+        align-items: center;
+    }
+
+    .section-description {
+        font-size: 13px;
+        margin-top: 6px;
+    }
+
+    .section-link {
+        font-size: 12px;
+    }
+
+    .hero .hero-title {
+        font-size: clamp(23px, 6.5vw, 27px);
+        font-weight: 400;
+    }
+
+    .hero .hero-content {
+        padding-block: 24px;
+    }
+
+    .hero .hero-description {
+        font-size: 13px;
+    }
+
+    .quick-menu-item {
+        min-height: 72px;
+        padding: 12px 4px;
+        gap: 7px;
+        font-size: 12px;
+    }
+
+    .quick-menu-item svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    #schedule .calendar-day {
+        min-height: 40px;
+        padding: 5px;
+        font-size: 11px;
+    }
+
+    .calendar-weekday {
+        padding: 8px 2px;
+        font-size: 11px;
+    }
+
+    .calendar-month {
+        font-size: 19px;
+    }
+
+    .card-grid,
+    .card-grid.two-columns,
+    .card-grid.four-columns {
+        gap: 24px 14px;
+    }
+
+    .card-body {
+        padding-top: 12px;
+    }
+
+    .card-title {
+        font-size: 17px;
+        font-weight: 500;
+    }
+
+    .card-description {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .card-category {
+        font-size: 10px;
+    }
+
+    .card-price {
+        font-size: 14px;
+    }
+
+    #promotion {
+        padding-block: 28px;
+    }
+
+    #promotion .promotion-title {
+        font-size: 24px;
+    }
+
+    .community-layout {
+        row-gap: 24px;
+    }
+
+    .contact-title {
+        font-size: 26px;
+        font-weight: 500;
+    }
+}
+
+/* ========================================
+   18. MOBILE COURSE LIST
+======================================== */
+
+@media (max-width: 767px) {
+
+    #programs .card-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    #programs .content-card {
+        display: grid;
+        grid-template-columns: 38% minmax(0, 1fr);
+        align-items: center;
+        gap: 18px;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    #programs .content-card:first-child {
+        padding-top: 0;
+    }
+
+    #programs .card-image {
+        aspect-ratio: 1 / 1;
+    }
+
+    #programs .card-body {
+        padding: 0;
+    }
+
+    #programs .card-title {
+        font-size: 19px;
+        font-weight: 500;
+        margin-top: 5px;
+    }
+
+    #programs .card-description {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    #programs .card-price {
+        margin-top: 8px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+}
