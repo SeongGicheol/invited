@@ -1161,7 +1161,7 @@
 <!-- ==============================
      JAVASCRIPT
 ============================== -->
-
+<script src="js/schedule-data.js"></script>
 <script>
 
     /* MOBILE MENU */
@@ -1294,292 +1294,611 @@
     }
 
 
-    /* SCHEDULE DATA */
+   
+/* ========================================
+   INVITED CENTRAL SCHEDULE
+   MULTI-DAY CALENDAR
+======================================== */
 
-    const events = [
+const scheduleData = window.INVITED_SCHEDULE;
+const scheduleUtils = window.INVITED_SCHEDULE_UTILS;
 
-        {
-            start: '2026-12-01',
-            end: '2026-12-31',
-            title: '오픈워터 1+1 모집',
-            description: '선착순 10팀 · 2인 교육비 500,000원',
-            link: '#promotion'
-        }
+const todayString = scheduleUtils.getToday();
 
+const [todayYear, todayMonth, todayDay] =
+    todayString.split('-').map(Number);
+
+let currentMonth = new Date(
+    todayYear, todayMonth - 1, 1
+);
+
+let selectedDate = null;
+let selectedCategory = 'all';
+
+const calendarGrid =
+    document.getElementById('calendarGrid');
+
+const calendarMonth =
+    document.getElementById('calendarMonth');
+
+const scheduleList =
+    document.getElementById('scheduleList');
+
+
+/* DATE UTILITIES */
+
+function dateString(date) {
+
+    return [
+        date.getFullYear(),
+        String(date.getMonth() + 1).padStart(2, '0'),
+        String(date.getDate()).padStart(2, '0')
+    ].join('-');
+
+}
+
+function formatShortDate(date) {
+
+    return date.slice(5).replace('-', '.');
+
+}
+
+function getColor(event) {
+
+    return scheduleData.categories[event.category]
+        ?.color || '#3977B9';
+
+}
+
+function getVisibleEvents() {
+
+    return scheduleUtils
+        .getEvents(selectedCategory)
+        .filter(event =>
+            event.currentStatus !== 'cancelled'
+        );
+
+}
+
+
+/* CALENDAR FILTER */
+
+const filterContainer =
+    document.createElement('div');
+
+filterContainer.className = 'schedule-filters';
+
+const categories = [
+    ['all', { label: '전체', color: '#222222' }],
+    ...Object.entries(scheduleData.categories)
+];
+
+categories.forEach(([key, category]) => {
+
+    const button = document.createElement('button');
+
+    button.type = 'button';
+    button.className = 'schedule-filter';
+    button.dataset.category = key;
+
+    if (key === 'all') {
+        button.classList.add('is-active');
+    }
+
+    button.setAttribute(
+        'aria-pressed', String(key === 'all')
+    );
+
+    const dot = document.createElement('span');
+
+    dot.className = 'schedule-color';
+    dot.style.backgroundColor = category.color;
+
+    const label = document.createElement('span');
+
+    label.textContent = category.label;
+
+    button.append(dot, label);
+
+    button.addEventListener('click', () => {
+
+        selectedCategory = key;
+        selectedDate = null;
+
+        filterContainer
+            .querySelectorAll('button')
+            .forEach(item => {
+
+                const active =
+                    item.dataset.category === key;
+
+                item.classList.toggle(
+                    'is-active', active
+                );
+
+                item.setAttribute(
+                    'aria-pressed', String(active)
+                );
+
+            });
+
+        renderCalendar();
+
+    });
+
+    filterContainer.appendChild(button);
+
+});
+
+calendarGrid.before(filterContainer);
+
+
+/* CALENDAR RENDERING */
+
+function renderCalendar() {
+
+    const year = currentMonth.getFullYear();
+    const month = currentMonth.getMonth();
+
+    calendarMonth.textContent =
+        `${year}. ${String(month + 1).padStart(2, '0')}`;
+
+    calendarGrid.replaceChildren();
+
+    calendarGrid.classList.add('multi-calendar');
+
+    const events = getVisibleEvents();
+
+    const firstDate = dateString(
+        new Date(year, month, 1)
+    );
+
+    const lastDate = dateString(
+        new Date(year, month + 1, 0)
+    );
+
+
+    /* WEEKDAY HEADER */
+
+    const weekdays = [
+        '일', '월', '화', '수',
+        '목', '금', '토'
     ];
 
+    const weekdayRow =
+        document.createElement('div');
 
-    /* CALENDAR */
+    weekdayRow.className = 'calendar-weekdays';
 
-    function getKoreaDate() {
+    weekdays.forEach((day, index) => {
 
-        return new Intl.DateTimeFormat('en-CA', {
+        const cell = document.createElement('div');
 
-            timeZone: 'Asia/Seoul',
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit'
+        cell.className = 'calendar-weekday';
 
-        }).format(new Date());
-
-    }
-
-    const koreaParts = new Intl.DateTimeFormat(
-        'en-US', {
-            timeZone: 'Asia/Seoul',
-            year: 'numeric',
-            month: 'numeric',
-            day: 'numeric'
+        if (index === 0) {
+            cell.classList.add('sunday');
         }
-    ).formatToParts(new Date());
 
-    const todayYear = Number(
-        koreaParts.find(p => p.type === 'year').value
+        if (index === 6) {
+            cell.classList.add('saturday');
+        }
+
+        cell.textContent = day;
+
+        weekdayRow.appendChild(cell);
+
+    });
+
+    calendarGrid.appendChild(weekdayRow);
+
+
+    /* MONTH INFORMATION */
+
+    const firstDay =
+        new Date(year, month, 1).getDay();
+
+    const daysInMonth =
+        new Date(year, month + 1, 0).getDate();
+
+    const weeks = Math.ceil(
+        (firstDay + daysInMonth) / 7
     );
 
-    const todayMonth = Number(
-        koreaParts.find(p => p.type === 'month').value
-    );
 
-    const todayDay = Number(
-        koreaParts.find(p => p.type === 'day').value
-    );
+    /* CREATE WEEK ROWS */
 
-    function dateString(year, month, day) {
+    for (let week = 0; week < weeks; week++) {
 
-        return year + '-' +
-            String(month).padStart(2, '0') + '-' +
-            String(day).padStart(2, '0');
+        const weekRow =
+            document.createElement('div');
 
-    }
+        weekRow.className = 'calendar-week';
 
-    const todayString = dateString(
-        todayYear, todayMonth, todayDay
-    );
+        const dates = [];
 
-    let currentMonth = new Date(
-        todayYear, todayMonth - 1, 1
-    );
+        for (let col = 0; col < 7; col++) {
 
-    const calendarGrid =
-        document.getElementById('calendarGrid');
-
-    const calendarMonth =
-        document.getElementById('calendarMonth');
-
-    const scheduleList =
-        document.getElementById('scheduleList');
-
-    function renderCalendar() {
-
-        const year = currentMonth.getFullYear();
-
-        const month = currentMonth.getMonth();
-
-        calendarMonth.textContent =
-            `${year}. ${String(month + 1).padStart(2, '0')}`;
-
-        calendarGrid.replaceChildren();
-
-        const weekdays = [
-            '일', '월', '화', '수',
-            '목', '금', '토'
-        ];
-
-        weekdays.forEach(day => {
-
-            const cell = document.createElement('div');
-
-            cell.className = 'calendar-weekday';
-
-            cell.textContent = day;
-
-            calendarGrid.appendChild(cell);
-
-        });
-
-        const firstDay =
-            new Date(year, month, 1).getDay();
-
-        const lastDate =
-            new Date(year, month + 1, 0).getDate();
-
-        const totalCells = Math.ceil(
-            (firstDay + lastDate) / 7
-        ) * 7;
-
-        for (let i = 0; i < totalCells; i++) {
-
-            const day = i - firstDay + 1;
-
-            const actualDate = new Date(
-                year, month, day
+            const date = new Date(
+                year,
+                month,
+                week * 7 + col - firstDay + 1
             );
 
-            const date = dateString(
-                actualDate.getFullYear(),
-                actualDate.getMonth() + 1,
-                actualDate.getDate()
-            );
+            const dateKey = dateString(date);
+
+            dates.push(dateKey);
 
             const cell =
-                document.createElement('div');
+                document.createElement('button');
 
-            cell.className = 'calendar-day';
+            cell.type = 'button';
 
-            cell.textContent = actualDate.getDate();
+            cell.className = 'calendar-date';
 
-            const outside =
-                actualDate.getMonth() !== month;
+            cell.style.gridColumn = col + 1;
 
-            if (outside) {
+            cell.style.gridRow = '1 / -1';
+
+            if (date.getMonth() !== month) {
 
                 cell.classList.add('is-outside');
 
+                cell.disabled = true;
+
             }
 
-            if (date === todayString) {
+            if (dateKey === todayString) {
 
                 cell.classList.add('is-today');
 
             }
 
-            if (!outside) {
+            if (dateKey === selectedDate) {
 
-                events.filter(event =>
-
-                    date >= event.start &&
-                    date <= event.end
-
-                ).forEach(event => {
-
-                    const marker =
-                        document.createElement('a');
-
-                    marker.className =
-                        'calendar-event';
-
-                    marker.textContent = event.title;
-
-                    marker.href = event.link;
-
-                    marker.setAttribute(
-                        'aria-label', event.title
-                    );
-
-                    cell.appendChild(marker);
-
-                });
+                cell.classList.add('is-selected');
 
             }
 
-            calendarGrid.appendChild(cell);
+            if (col === 0) {
+                cell.classList.add('sunday');
+            }
+
+            if (col === 6) {
+                cell.classList.add('saturday');
+            }
+
+            cell.setAttribute(
+                'aria-label', dateKey
+            );
+
+            cell.setAttribute(
+                'aria-pressed',
+                String(dateKey === selectedDate)
+            );
+
+            const number =
+                document.createElement('span');
+
+            number.className = 'calendar-date-number';
+
+            number.textContent = date.getDate();
+
+            cell.appendChild(number);
+
+            cell.addEventListener('click', () => {
+
+                selectedDate =
+                    selectedDate === dateKey
+                        ? null
+                        : dateKey;
+
+                renderCalendar();
+
+            });
+
+            weekRow.appendChild(cell);
 
         }
 
-        renderScheduleList(year, month);
+
+        /* EVENTS OVERLAPPING THIS WEEK */
+
+        const weekEvents = events
+
+            .filter(event =>
+
+                event.start <= dates[6] &&
+                event.end >= dates[0] &&
+                event.start <= lastDate &&
+                event.end >= firstDate
+
+            )
+
+            .sort((a, b) =>
+
+                a.start.localeCompare(b.start) ||
+                b.end.localeCompare(a.end)
+
+            );
+
+
+        /* AUTOMATIC EVENT TRACKS */
+
+        const tracks = [];
+
+        weekEvents.forEach(event => {
+
+            const segmentStart = [
+                event.start, dates[0], firstDate
+            ].sort().pop();
+
+            const segmentEnd = [
+                event.end, dates[6], lastDate
+            ].sort()[0];
+
+            const startColumn =
+                dates.indexOf(segmentStart);
+
+            const endColumn =
+                dates.indexOf(segmentEnd);
+
+            if (
+                startColumn < 0 ||
+                endColumn < startColumn
+            ) {
+                return;
+            }
+
+            let trackIndex = tracks.findIndex(
+                lastColumn => lastColumn < startColumn
+            );
+
+            if (trackIndex === -1) {
+
+                trackIndex = tracks.length;
+
+                tracks.push(endColumn);
+
+            } else {
+
+                tracks[trackIndex] = endColumn;
+
+            }
+
+
+            /* MULTI-DAY EVENT BAR */
+
+            const bar =
+                document.createElement('button');
+
+            bar.type = 'button';
+
+            bar.className = 'calendar-event-bar';
+
+            bar.style.gridColumn =
+                `${startColumn + 1} / ${endColumn + 2}`;
+
+            bar.style.gridRow = trackIndex + 2;
+
+            bar.style.backgroundColor =
+                getColor(event);
+
+            if (event.start < segmentStart) {
+
+                bar.classList.add('continues-before');
+
+            }
+
+            if (event.end > segmentEnd) {
+
+                bar.classList.add('continues-after');
+
+            }
+
+            if (
+                ['closed', 'completed'].includes(
+                    event.currentStatus
+                )
+            ) {
+
+                bar.classList.add('is-inactive');
+
+            }
+
+            bar.textContent = event.title;
+
+            bar.title =
+                `${event.title} (${event.start} ~ ${event.end})`;
+
+            bar.addEventListener('click', () => {
+
+                selectedDate = segmentStart;
+
+                renderCalendar();
+
+                scheduleList.scrollIntoView({
+                    block: 'nearest'
+                });
+
+            });
+
+            weekRow.appendChild(bar);
+
+        });
+
+
+        /* ADJUST HEIGHT TO EVENT COUNT */
+
+        weekRow.style.gridTemplateRows =
+            `28px repeat(${Math.max(tracks.length, 1)}, 24px) 1fr`;
+
+        calendarGrid.appendChild(weekRow);
 
     }
 
-    function renderScheduleList(year, month) {
+    renderScheduleList();
 
-        scheduleList.replaceChildren();
+}
 
-        const first = dateString(
-            year, month + 1, 1
-        );
 
-        const last = dateString(
-            year,
-            month + 1,
-            new Date(year, month + 1, 0).getDate()
-        );
+/* ========================================
+   SCHEDULE DETAIL LIST
+======================================== */
 
-        const monthlyEvents = events.filter(event =>
+function renderScheduleList() {
 
-            event.start <= last &&
-            event.end >= first
+    scheduleList.replaceChildren();
 
-        );
+    const year = currentMonth.getFullYear();
+    const month = currentMonth.getMonth() + 1;
 
-        if (monthlyEvents.length === 0) {
+    let events = selectedDate
 
-            const message =
-                document.createElement('p');
+        ? scheduleUtils.getEventsByDate(selectedDate)
 
-            message.className = 'schedule-note';
+        : scheduleUtils.getEventsByMonth(year, month);
 
-            message.textContent =
-                '현재 등록된 공개 일정이 없습니다.';
+    events = events.filter(event =>
 
-            scheduleList.appendChild(message);
+        event.currentStatus !== 'cancelled' &&
 
-            return;
+        (
+            selectedCategory === 'all' ||
+            event.category === selectedCategory
+        )
 
+    );
+
+    const heading = document.createElement('h3');
+
+    heading.className = 'schedule-list-title';
+
+    heading.textContent = selectedDate
+
+        ? `${formatShortDate(selectedDate)} 일정`
+
+        : `${month}월 전체 일정`;
+
+    scheduleList.appendChild(heading);
+
+
+    if (events.length === 0) {
+
+        const empty = document.createElement('p');
+
+        empty.className = 'schedule-empty';
+
+        empty.textContent =
+            '등록된 공개 일정이 없습니다.';
+
+        scheduleList.appendChild(empty);
+
+        return;
+
+    }
+
+
+    events.forEach(event => {
+
+        const item = document.createElement('a');
+
+        item.className = 'schedule-detail-item';
+
+        item.href = event.link || '#contact';
+
+        if (
+            event.category === 'promotion' &&
+            event.currentStatus === 'completed'
+        ) {
+            item.href = '#contact';
         }
 
-        monthlyEvents.forEach(event => {
+        const color = document.createElement('span');
 
-            const item = document.createElement('a');
+        color.className = 'schedule-detail-color';
 
-            item.className = 'schedule-item';
+        color.style.backgroundColor = getColor(event);
 
-            item.href = event.link;
+        const content = document.createElement('div');
 
-            const copy = document.createElement('div');
+        content.className = 'schedule-detail-content';
 
-            const title = document.createElement('strong');
+        const title = document.createElement('h4');
 
-            title.textContent = event.title;
+        title.textContent = event.title;
 
-            const description =
-                document.createElement('p');
+        const date = document.createElement('p');
 
-            description.textContent =
-                event.start.slice(5).replace('-', '.') +
-                ' – ' +
-                event.end.slice(5).replace('-', '.') +
-                ' · ' + event.description;
+        date.textContent =
 
-            const arrow = document.createElement('span');
+            formatShortDate(event.start) +
 
-            arrow.textContent = '↗';
-
-            copy.append(title, description);
-
-            item.append(copy, arrow);
-
-            scheduleList.appendChild(item);
-
-        });
-
-    }
-
-    document.getElementById('prevMonth')
-        .addEventListener('click', () => {
-
-            currentMonth.setMonth(
-                currentMonth.getMonth() - 1
+            (
+                event.start !== event.end
+                    ? ' — ' + formatShortDate(event.end)
+                    : ''
             );
 
-            renderCalendar();
+        const description =
+            document.createElement('p');
 
-        });
+        description.textContent =
+            event.description || '';
 
-    document.getElementById('nextMonth')
-        .addEventListener('click', () => {
+        content.append(title, date, description);
 
-            currentMonth.setMonth(
-                currentMonth.getMonth() + 1
-            );
+        const status = document.createElement('span');
 
-            renderCalendar();
+        status.className = 'schedule-detail-status';
 
-        });
+        status.textContent =
+            scheduleData.statuses[event.currentStatus]
+            || '';
+
+        item.append(color, content, status);
+
+        scheduleList.appendChild(item);
+
+    });
+
+}
 
 
-   
-/* PROMOTION STATUS */
+/* ========================================
+   MONTH NAVIGATION
+======================================== */
+
+document.getElementById('prevMonth')
+    .addEventListener('click', () => {
+
+        currentMonth.setMonth(
+            currentMonth.getMonth() - 1
+        );
+
+        selectedDate = null;
+
+        renderCalendar();
+
+    });
+
+document.getElementById('nextMonth')
+    .addEventListener('click', () => {
+
+        currentMonth.setMonth(
+            currentMonth.getMonth() + 1
+        );
+
+        selectedDate = null;
+
+        renderCalendar();
+
+    });
+
+
+/* ========================================
+   PROMOTION STATUS SYNC
+======================================== */
 
 const promotion =
     document.getElementById('promotion');
@@ -1590,65 +1909,88 @@ const promotionButton =
 const promotionImageLink =
     document.getElementById('promotionImageLink');
 
-/* CAMPAIGN SETTINGS */
-
-const promotionStart = '2026-12-01';
-const promotionEnd = '2026-12-31';
-
-/* 모집 완료 시 false를 true로 변경 */
-
-const promotionSoldOut = false;
+const promotionEvent = scheduleUtils
+    .getEvents('promotion')
+    .find(event =>
+        event.id === 'openwater-promotion-2026'
+    );
 
 function disablePromotion(message) {
 
-    promotionButton.textContent = message;
+    if (promotionButton) {
 
-    promotionButton.removeAttribute('href');
-    promotionButton.removeAttribute('target');
+        promotionButton.textContent = message;
 
-    promotionButton.setAttribute(
-        'aria-disabled', 'true'
-    );
+        promotionButton.removeAttribute('href');
+        promotionButton.removeAttribute('target');
 
-    promotionImageLink.removeAttribute('href');
-    promotionImageLink.removeAttribute('target');
+        promotionButton.setAttribute(
+            'aria-disabled', 'true'
+        );
 
-    promotionImageLink.style.cursor = 'default';
+    }
 
-}
+    if (promotionImageLink) {
 
-if (todayString > promotionEnd) {
+        promotionImageLink.removeAttribute('href');
+        promotionImageLink.removeAttribute('target');
 
-    promotion.hidden = true;
-
-    events[0].title =
-        '오픈워터 1+1 모집 종료';
-
-    events[0].link = '#contact';
-
-} else {
-
-    promotion.hidden = false;
-
-    if (promotionSoldOut) {
-
-        disablePromotion('선착순 모집 마감');
-
-        events[0].title =
-            '오픈워터 1+1 모집 마감';
-
-    } else if (todayString < promotionStart) {
-
-        disablePromotion('12월 1일 모집 시작');
-
-    } else {
-
-        promotionButton.textContent =
-            '프로모션 신청 및 문의 ↗';
+        promotionImageLink.style.cursor = 'default';
 
     }
 
 }
+
+if (promotion) {
+
+    if (
+        !promotionEvent ||
+        ['completed', 'cancelled'].includes(
+            promotionEvent.currentStatus
+        )
+    ) {
+
+        promotion.hidden = true;
+
+    } else {
+
+        promotion.hidden = false;
+
+        if (promotionEvent.currentStatus === 'scheduled') {
+
+            disablePromotion('12월 1일 모집 시작');
+
+        } else if (promotionEvent.currentStatus === 'closed') {
+
+            disablePromotion('모집 마감');
+
+        } else {
+
+            if (promotionButton) {
+
+                promotionButton.textContent =
+                    '프로모션 신청 및 문의 ↗';
+
+                promotionButton.href =
+                    promotionEvent.contact;
+
+            }
+
+            if (promotionImageLink) {
+
+                promotionImageLink.href =
+                    promotionEvent.contact;
+
+            }
+
+        }
+
+    }
+
+}
+
+
+/* INITIAL RENDER */
 
 renderCalendar();
 
